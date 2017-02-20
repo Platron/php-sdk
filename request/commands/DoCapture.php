@@ -2,7 +2,7 @@
 
 namespace platron_sdk\request\commands;
 
-use platron\request\data_objects\LongRecord;
+use platron_sdk\request\data_objects\LongRecord;
 
 /**
  * Команда для проведения клиринга по транзакции

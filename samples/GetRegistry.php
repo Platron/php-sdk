@@ -5,9 +5,9 @@ namespace platron_sdk\samples;
 require_once '../autoload.php';
 
 use DateTime;
-use platron\request\commands\GetRegistry;
-use platron\request\Exception;
-use platron\request\Requester;
+use platron_sdk\request\commands\GetRegistry;
+use platron_sdk\request\Exception;
+use platron_sdk\request\Requester;
 
 class Registry {
 	public function actionIndex($merchant, $secretKey){

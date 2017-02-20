@@ -1,8 +1,8 @@
 <?php
 
-namespace platron\callback;
+namespace platron_sdk\callback;
 
-use platron\SigHelper;
+use platron_sdk\SigHelper;
 use SimpleXMLElement;
 
 class Callback {

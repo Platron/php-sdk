@@ -4,9 +4,9 @@ namespace platron_sdk\samples;
 
 require_once '../autoload.php';
 
-use platron\request\commands\InitPayment;
-use platron\request\Exception;
-use platron\request\Requester;
+use platron_sdk\request\commands\InitPayment;
+use platron_sdk\request\Exception;
+use platron_sdk\request\Requester;
 
 class CreateTransaction {
 		
