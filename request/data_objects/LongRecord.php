@@ -1,8 +1,8 @@
 <?php
 
-namespace platron\request\data_objects;
+namespace platron_sdk\request\data_objects;
 
-use platron\request\Exception;
+use platron_sdk\request\Exception;
 
 class LongRecord extends Data implements iData {
 	

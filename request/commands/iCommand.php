@@ -1,6 +1,6 @@
 <?php
 
-namespace platron\request\commands;
+namespace platron_sdk\request\commands;
 
 interface iCommand {
 	public function getParameters();

@@ -1,6 +1,6 @@
 <?php
 
-namespace platron\request\commands;
+namespace platron_sdk\request\commands;
 
 /**
  * Команда для получения информации по бину. Для работы с этим запросом необходимо согласование с менеджером

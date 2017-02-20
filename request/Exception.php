@@ -1,6 +1,6 @@
 <?php
 
-namespace platron\request;
+namespace platron_sdk\request;
 
 class Exception extends \Exception {
 

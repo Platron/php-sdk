@@ -1,6 +1,6 @@
 <?php
 
-namespace platron\request\data_objects;
+namespace platron_sdk\request\data_objects;
 
 class LongRecordTripleg extends Data implements iData {
 	

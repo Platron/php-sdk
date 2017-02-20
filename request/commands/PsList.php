@@ -1,9 +1,9 @@
 <?php
 
-namespace platron\request\commands;
+namespace platron_sdk\request\commands;
 
-use platron\request\Command;
-use platron\request\iCommand;
+use platron_sdk\request\Command;
+use platron_sdk\request\iCommand;
 
 /**
  * 

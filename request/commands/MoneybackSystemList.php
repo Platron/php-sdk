@@ -1,6 +1,6 @@
 <?php
 
-namespace platron\request\commands;
+namespace platron_sdk\request\commands;
 
 /**
  * Команда для получения манибек систем, номеров договора и параметров манибек систем для последующего запроса создания выплаты CreateMoneyback

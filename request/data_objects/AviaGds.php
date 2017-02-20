@@ -1,6 +1,6 @@
 <?php
 
-namespace platron\request\data_objects;
+namespace platron_sdk\request\data_objects;
 
 class AviaGds extends Data implements iData {
 	/** @var string[] Список брендов карт, принимаемых к оплате */

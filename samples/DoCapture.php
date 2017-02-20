@@ -1,6 +1,6 @@
 <?php
 
-namespace platron\samples;
+namespace platron_sdk\samples;
 
 require_once '../autoload.php';
 

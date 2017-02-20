@@ -1,6 +1,6 @@
 <?php
 
-namespace platron;
+namespace platron_sdk;
 
 class SigHelper {
 

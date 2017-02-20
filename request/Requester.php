@@ -1,9 +1,9 @@
 <?php
 
-namespace platron\request;
+namespace platron_sdk\request;
 
-use platron\request\commands\iCommand;
-use platron\SigHelper;
+use platron_sdk\request\commands\iCommand;
+use platron_sdk\SigHelper;
 use SimpleXMLElement;
 
 class Requester {
