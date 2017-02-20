@@ -1,0 +1,7 @@
+{
+    "name": "platron/sdk",
+    "description": "Platron payment SDK",
+    "require": {
+        "php": ">=5.4.0"
+    }
+}
