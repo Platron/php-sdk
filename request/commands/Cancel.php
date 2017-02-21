@@ -12,9 +12,11 @@ class Cancel extends Command implements iCommand {
 	
 	/**
 	 * @param int $payment
+	 * @return $this
 	 */
 	public function __construct($payment) {
 		$this->payment = $payment;
+		return $this;
 	}
 
 	public function getRequestUrl() {

@@ -72,10 +72,12 @@ class InitPayment extends Command implements iCommand{
 	/**
 	 * @param float $amount Сумма транзакции
 	 * @param string $description Описание транзакции
+	 * @return $this
 	 */
 	public function __construct($amount, $description) {
 		$this->pg_amount = $amount;
 		$this->pg_description = $description;
+		return $this;
 	}
 	
 	public function getRequestUrl() {
@@ -85,203 +87,254 @@ class InitPayment extends Command implements iCommand{
 	/**
 	 * Уставновить банковскую карту
 	 * @param BankCard $bankCard
+	 * @return $this
 	 */
 	public function addBankCard(BankCard $bankCard){
 		$this->bankCard = $bankCard;
+		return $this;
 	}
 	
 	/**
 	 * Установить GDS данные
 	 * @param AviaGds $aviaGds
+	 * @return $this
 	 */
 	public function addGds(AviaGds $aviaGds){
 		$this->aviaGds = $aviaGds;
+		return $this;
 	}
 	
 	/**
 	 * Установить в тарнзакцию платежную систему
 	 * @param string $paymentSystem
+	 * @return $this
 	 */
 	public function addPaymentSystem($paymentSystem){
 		$this->pg_payment_system = $paymentSystem;
+		return $this;
 	}
 	
 	/**
 	 * Добавить номер заказа магазина
 	 * @param string $order
+	 * @return $this
 	 */
 	public function addOrderId($order){
 		$this->pg_order_id = $order;
+		return $this;
 	}
 
 	/**
 	 * Добавить валюту транзакции
 	 * @param string $currency
+	 * @return $this
 	 */
 	public function addCurrency($currency){
 		$this->pg_currency = $currency;
+		return $this;
 	}
 	
 	/**
 	 * Установить время жизни транзакции
 	 * @param type $lifetime
+	 * @return $this
 	 */
 	public function addLifetime($lifetime){
 		$this->pg_lifetime = $lifetime;
+		return $this;
 	}
 	
 	/**
 	 * Установить транзакцию как отложенную
+	 * @return $this
 	 */
 	public function addPostpone(){
 		$this->pg_postpone = 1;
+		return $this;
 	}
 	
 	/**
 	 * Установить язык транзакции
 	 * @param type $language
+	 * @return $this
 	 */
 	public function addLanguage($language){
 		$this->pg_language = $language;
+		return $this;
 	}
 	
 	/**
 	 * Установить демо режим транзакции
+	 * @return $this
 	 */
 	public function addTestingMode(){
 		$this->pg_testing_mode = 1;
+		return $this;
 	}
 	
 	/**
 	 * Установить старт рекуррентной транзакции
+	 * @return $this
 	 */
 	public function addRecurringStart(){
 		$this->pg_recurring_start = 1;
+		return $this;
 	}
 	
 	/**
 	 * Добавить check url
 	 * @param string $url
+	 * @return $this
 	 */
 	public function addCheckUrl($url){
 		$this->pg_check_url = $url;
+		return $this;
 	}
 	
 	/**
 	 * Добавить result url
 	 * @param string $url
+	 * @return $this
 	 */
 	public function addResultUrl($url){
 		$this->pg_result_url = $url;
+		return $this;
 	}
 	
 	/**
 	 * Добавить refund url
 	 * @param string $url
+	 * @return $this
 	 */
 	public function addRefundUrl($url){
 		$this->pg_refund_url = $url;
+		return $this;
 	}
 	
 	/**
 	 * Добавить capture url
 	 * @param string $url
+	 * @return $this
 	 */
 	public function addCaptureUrl($url){
 		$this->pg_capture_url = $url;
+		return $this;
 	}
 	
 	/**
 	 * Добавить request метод
 	 * @param string $method
+	 * @return $this
 	 */
 	public function addRequestMethod($method){
 		$this->pg_request_method = $method;
+		return $this;
 	}
 	
 	/**
 	 * Добавить success url
 	 * @param string $url
+	 * @return $this
 	 */
 	public function addSuccessUrl($url){
 		$this->pg_success_url = $url;
+		return $this;
 	}
 	
 	/**
 	 * Добавить success url method
 	 * @param string $method
+	 * @return $this
 	 */
 	public function addSuccessUrlMethod($method){
 		$this->pg_success_url_method = $method;
+		return $this;
 	}
 	
 	/**
 	 * Добавить state url
 	 * @param string $url
+	 * @return $this
 	 */
 	public function addStateUrl($url){
 		$this->pg_state_url = $url;
+		return $this;
 	}
 	
 	/**
 	 * Добавить state url method
 	 * @param string $method
+	 * @return $this
 	 */
 	public function addStateUrlMethod($method){
 		$this->pg_state_url_method = $method;
+		return $this;
 	}
 	
 	/**
 	 * Добавить failure url
 	 * @param string $url
+	 * @return $this
 	 */
 	public function addFailureUrl($url){
 		$this->pg_failure_url = $url;
+		return $this;
 	}
 	
 	/**
 	 * Добавить failure url method
 	 * @param string $method
+	 * @return $this
 	 */
 	public function addFailureUrlMethod($method){
 		$this->pg_failure_url_method = $method;
+		return $this;
 	}
 	
 	/**
 	 * Добавить site url
 	 * @param string $url
+	 * @return $this
 	 */
 	public function addSiteUrl($url){
 		$this->pg_site_url = $url;
+		return $this;
 	}
 	
 	/**
 	 * Добавить номер телефона покупателя
 	 * @param int $phone
+	 * @return $this
 	 */
 	public function addUserPhone($phone){
 		$this->pg_user_phone = $phone;
+		return $this;
 	}
 	
 	/**
 	 * Добавить email покупателя
 	 * @param string $email
+	 * @return $this
 	 */
 	public function addUserEmail($email){
 		$this->pg_user_contact_email = $email;
+		return $this;
 	}
 	
 	/**
 	 * Добавить ip покупателя в формате long
 	 * @param string $ip
+	 * @return $this
 	 */
 	public function addUserIp($ip){
 		$this->pg_user_ip = $ip;
+		return $this;
 	}
 	
 	/**
 	 * Установить произвольные поля магазина
 	 * @param type $parameters
+	 * @return $this
 	 */
 	public function addMerchantParams($parameters){
 		foreach($parameters as $name => $value){
@@ -289,17 +342,20 @@ class InitPayment extends Command implements iCommand{
 				throw new Exception('Только параметры без pg_');
 			}
 			$this->$name = $value;
+			return $this;
 		}
 	}
 	
 	/**
 	 * Установить дополнительные для ПС параметры (например, для альфаклик идентификатор в интернет банке)
 	 * @param array $parameters
+	 * @return $this
 	 */
 	public function addPsAdditionalParameters($parameters){
 		foreach($parameters as $name => $value){
 			$this->$name = $value;
 		}
+		return $this;
 	}
 	
 	public function getParameters() {

@@ -12,9 +12,11 @@ class GetMoneybackStatus extends Command implements iCommand {
 	
 	/**
 	 * @param int $moneyback Id манибека
+	 * @return $this
 	 */	
 	public function __construct($moneyback){
 		$this->moneyback = $moneyback;
+		return $this;
 	}
 	
 	public function getRequestUrl() {

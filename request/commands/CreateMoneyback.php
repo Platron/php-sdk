@@ -26,6 +26,7 @@ class CreateMoneyback extends Command implements iCommand {
 	 * @param float $amount Сумма выплаты
 	 * @param string $description Описание выплаты
 	 * @param array $additionalParams Дополнительные параметры, необходимые для системы выплат (можно получить из GetMoneybackList)
+	 * @return $this
 	 */
 	public function __construct($contract, $moneybackSystem, $amount, $description, $additionalParams) {
 		$this->contract = $contract;
@@ -33,14 +34,17 @@ class CreateMoneyback extends Command implements iCommand {
 		$this->amount = $amount;
 		$this->description = $description;
 		$this->additionalParams = $additionalParams;
+		return $this;
 	}
 	
 	/**
 	 * Привязать выплату к транзакции
 	 * @param int $payment Id транзакции
+	 * @return $this
 	 */
 	public function bindToTransaction($payment){
 		$this->payment = $payment;
+		return $this;
 	}
 	
 	public function getRequestUrl() {

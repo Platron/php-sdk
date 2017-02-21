@@ -15,10 +15,12 @@ class CreateRefundRequest extends Command implements iCommand {
 	/**
 	 * @param int $payment Id транзакции
 	 * @param float $amount Сумма заявки на возврат
+	 * @return $this
 	 */
 	public function __construct($payment, $amount) {
 		$this->payment = $payment;
 		$this->amount = $amount;
+		return $this;
 	}
 
 	public function getRequestUrl() {

@@ -12,9 +12,11 @@ class GetStatus extends Command implements iCommand{
 	
 	/**
 	 * @param int $payment Id транзакции
+	 * @return $this
 	 */
 	public function __construct($payment) {
 		$this->payment = $payment;
+		return $this;
 	}
 
 	public function getRequestUrl() {

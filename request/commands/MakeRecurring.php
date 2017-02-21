@@ -25,66 +25,77 @@ class MakeRecurring extends Command implements iCommand{
 	/**
 	 * @param int $recurringProfile Id рекуррентного платежа
 	 * @param string $description Опсиание платежа
+	 * @return $this
 	 */
 	public function __construct($recurringProfile, $description) {
 		$this->recurringProfile = $recurringProfile;
 		$this->description = $description;
-	}
-	
-	public function getParameters() {
-		
+		return $this;
 	}
 	
 	/**
 	 * Добавить номер заказа магазина к запросу
 	 * @param int $order
+	 * @return $this
 	 */
 	public function addOrderId($order){
 		$this->order = $order;
+		return $this;
 	}
 	
 	/**
 	 * Установить сумму. По умолчанию - равно сумме первого платежа
 	 * @param float $amount
+	 * @return $this
 	 */
 	public function addAmount($amount){
 		$this->amount = $amount;
+		return $this;
 	}
 	
 	/**
 	 * Установить result url в транзакции
 	 * @param string $resultUrl
+	 * @return $this
 	 */
 	public function addResultUrl($resultUrl){
 		$this->resultUrl = $resultUrl;
+		return $this;
 	}
 	
 	/**
 	 * Установить refund url в транзакцию
 	 * @param type $refundUrl
+	 * @return $this
 	 */
 	public function addRefundUrl($refundUrl){
 		$this->refundUrl = $refundUrl;
+		return $this;
 	}
 	
 	/**
 	 * Установить метод для запроса в магазин
 	 * @param string $reqestMethod
+	 * @return $this
 	 */
 	public function addRequestMethod($reqestMethod){
 		$this->requestMethod = $reqestMethod;
+		return $this;
 	}
 	
 	/**
 	 * Установить кодировку транзакции
 	 * @param string $encoding
+	 * @return $this
 	 */
 	public function addEncoding($encoding){
 		$this->encoding = $encoding;
+		return $this;
 	}
 	
 	/**
 	 * @param array $params Список дополнительных параметров магазина
+	 * @return $this
 	 */
 	public function addMerchantParams($params){
 		foreach($params as $name => $value){
@@ -93,6 +104,7 @@ class MakeRecurring extends Command implements iCommand{
 			}
 			$this->$name = $value;
 		}
+		return $this;
 	}
 	
 	public function getRequestUrl() {
