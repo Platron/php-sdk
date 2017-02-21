@@ -14,7 +14,8 @@ class Registry {
 	public function actionIndex($merchant, $secretKey) {
 		$client = new Client($merchant, $secretKey);
 		try {
-			$response = (new GetRegistry(new DateTime('now - 1 day')))->execute($client);
+			$command = new GetRegistry(new DateTime('now - 1 day'));
+			$response = $command->execute($client);
 		} catch (Exception $e) {
 			var_dump($e);
 			die();
@@ -24,3 +25,6 @@ class Registry {
 	}
 
 }
+
+$class = new Registry();
+$class->actionIndex(82, 'rydijimoraqatery');

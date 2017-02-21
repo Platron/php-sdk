@@ -14,7 +14,8 @@ class Capture {
 		$client = new Client($merchant, $secretKey);
 
 		try {
-			$response = (new DoCapture($transaction))->execute($client);
+			$command = new DoCapture($transaction);
+			$response = $command->execute($client);
 		} catch (Exception $e) {
 			var_dump($e);
 			die();

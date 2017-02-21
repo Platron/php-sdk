@@ -13,7 +13,8 @@ class CreateTransaction {
 	public function actionIndex($merchant, $secretKey){
 		$client = new Client($merchant, $secretKey);
 		try {
-			$response = (new InitPayment('10.00', 'Test transaction'))
+			$command = new InitPayment('10.00', 'Test transaction');
+			$response = $command
 				->addTestingMode()
 				->addUserEmail('test@test.ru')
 				->addUserPhone('79055770000')
