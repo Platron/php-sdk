@@ -3,6 +3,7 @@
 namespace platron_sdk\request\commands;
 
 use platron_sdk\request\clients\iClient;
+use SimpleXMLElement;
 
 abstract class BaseCommand {
 
@@ -29,6 +30,11 @@ abstract class BaseCommand {
 		return $filledvars;
 	}
 
+	/**
+	 * Выполнить команду
+	 * @param iClient $client
+	 * @return SimpleXMLElement
+	 */
 	public function execute(iClient $client) {
 		return $client->request($this->getRequestUrl(), $this->getParameters());
 	}
