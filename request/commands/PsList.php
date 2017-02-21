@@ -14,6 +14,13 @@ class PsList extends BaseCommand {
 	protected $pg_testing_mode;
 	
 	/**
+	 * @inheritdoc
+	 */
+	protected function getRequestUrl() {
+		return self::PLATRON_URL . 'ps_list.php';
+	}
+	
+	/**
 	 * @param float $amount Сумма для расчета стоимости по каждой ПС
 	 * @return $this
 	 */
@@ -40,10 +47,6 @@ class PsList extends BaseCommand {
 	public function addTestingMode($testingMode) {
 		$this->pg_testing_mode = $testingMode;
 		return $this;
-	}
-
-	public function getRequestUrl() {
-		return self::PLATRON_URL . 'ps_list.php';
 	}
 
 }

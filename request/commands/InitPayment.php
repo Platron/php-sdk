@@ -70,6 +70,39 @@ class InitPayment extends BaseCommand {
 	protected $pg_user_phone;
 	
 	/**
+	 * @inheritdoc
+	 */
+	protected function getRequestUrl() {
+		return self::PLATRON_URL . 'init_payment.php';
+	}
+	
+	/**
+	 * @inheritdoc
+	 */	
+	protected function getParameters() {
+		$filledvars = [];
+		foreach(get_object_vars($this) as $name => $value){
+			if($value && !in_array($name, ['bankCard', 'aviaGds'])){
+				$filledvars[$name] = $value;
+			}
+		}
+		
+		if(!empty($this->aviaGds)){
+			foreach($this->aviaGds->getParameters() as $name => $value){
+				$filledvars[$name] = $value;
+			}
+		}
+		
+		if(!empty($this->bankCard)){
+			foreach($this->bankCard->getParameters() as $name => $value){
+				$filledvars[$name] = $value;
+			}
+		}
+		
+		return $filledvars;
+	}
+	
+	/**
 	 * @param float $amount Сумма транзакции
 	 * @param string $description Описание транзакции
 	 * @return $this
@@ -78,10 +111,6 @@ class InitPayment extends BaseCommand {
 		$this->pg_amount = $amount;
 		$this->pg_description = $description;
 		return $this;
-	}
-	
-	public function getRequestUrl() {
-		return self::PLATRON_URL . 'init_payment.php';
 	}
 	
 	/**
@@ -356,28 +385,5 @@ class InitPayment extends BaseCommand {
 			$this->$name = $value;
 		}
 		return $this;
-	}
-	
-	public function getParameters() {
-		$filledvars = [];
-		foreach(get_object_vars($this) as $name => $value){
-			if($value && !in_array($name, ['bankCard', 'aviaGds'])){
-				$filledvars[$name] = $value;
-			}
-		}
-		
-		if(!empty($this->aviaGds)){
-			foreach($this->aviaGds->getParameters() as $name => $value){
-				$filledvars[$name] = $value;
-			}
-		}
-		
-		if(!empty($this->bankCard)){
-			foreach($this->bankCard->getParameters() as $name => $value){
-				$filledvars[$name] = $value;
-			}
-		}
-		
-		return $filledvars;
 	}
 }

@@ -23,6 +23,13 @@ class MakeRecurring extends BaseCommand {
 	/** @var string Кодировка запроса */
 	protected $encoding;
 	
+	/**
+	 * @inheritdoc
+	 */	
+	protected function getRequestUrl() {
+		return self::PLATRON_URL . 'make_recurring.php';
+	}
+	
 	
 	/**
 	 * @param int $recurringProfile Id рекуррентного платежа
@@ -107,10 +114,6 @@ class MakeRecurring extends BaseCommand {
 			$this->$name = $value;
 		}
 		return $this;
-	}
-	
-	public function getRequestUrl() {
-		return self::PLATRON_URL . 'make_recurring.php';
 	}
 
 }

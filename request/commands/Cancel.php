@@ -11,16 +11,19 @@ class Cancel extends BaseCommand {
 	protected $payment;
 	
 	/**
+	 * @inheritdoc
+	 */
+	protected function getRequestUrl() {
+		return self::PLATRON_URL . 'cancel.php';
+	}
+	
+	/**
 	 * @param int $payment
 	 * @return $this
 	 */
 	public function __construct($payment) {
 		$this->payment = $payment;
 		return $this;
-	}
-
-	public function getRequestUrl() {
-		return self::PLATRON_URL . 'cancel.php';
 	}
 
 }

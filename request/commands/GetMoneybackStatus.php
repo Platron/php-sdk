@@ -11,16 +11,19 @@ class GetMoneybackStatus extends BaseCommand {
 	protected $moneyback;
 	
 	/**
+	 * @inheritdoc
+	 */
+	protected function getRequestUrl() {
+		return self::PLATRON_URL . 'get_moneyback_status.php';
+	}
+	
+	/**
 	 * @param int $moneyback Id манибека
 	 * @return $this
 	 */	
 	public function __construct($moneyback){
 		$this->moneyback = $moneyback;
 		return $this;
-	}
-	
-	public function getRequestUrl() {
-		return self::PLATRON_URL . 'get_moneyback_status.php';
 	}
 
 }

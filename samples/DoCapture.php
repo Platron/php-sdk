@@ -4,16 +4,16 @@ namespace platron_sdk\samples;
 
 require_once '../autoload.php';
 
-use platron_sdk\request\commands\DoCapture;
 use platron_sdk\Exception;
-use platron_sdk\request\Requester;
+use platron_sdk\request\clients\Client;
+use platron_sdk\request\commands\DoCapture;
 
 class Capture {
 	public function actionIndex($transaction, $secretKey, $merchant){
-		$requester = new Requester($merchant, $secretKey);
-		$command = new DoCapture($transaction);
+		$client = new Client($merchant, $secretKey);
+
 		try {
-			$requester->request($command);
+			$response = (new DoCapture($transaction))->execute($client);
 		}
 		catch (Exception $e){
 			var_dump($e);

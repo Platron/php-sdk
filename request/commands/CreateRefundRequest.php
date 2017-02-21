@@ -13,6 +13,13 @@ class CreateRefundRequest extends BaseCommand {
 	protected $amount;
 	
 	/**
+	 * @inheritdoc
+	 */
+	protected function getRequestUrl() {
+		return self::PLATRON_URL . 'create_refund_request.php';
+	}
+	
+	/**
 	 * @param int $payment Id транзакции
 	 * @param float $amount Сумма заявки на возврат
 	 * @return $this
@@ -21,10 +28,6 @@ class CreateRefundRequest extends BaseCommand {
 		$this->payment = $payment;
 		$this->amount = $amount;
 		return $this;
-	}
-
-	public function getRequestUrl() {
-		return self::PLATRON_URL . 'create_refund_request.php';
 	}
 
 }

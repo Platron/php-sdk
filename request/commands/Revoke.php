@@ -11,6 +11,13 @@ class Revoke extends BaseCommand {
 	protected $pg_payment_id;
 	/** @var float Сумма */
 	protected $pg_refund_amount;
+	
+	/**
+	 * @inheritdoc
+	 */	
+	protected function getRequestUrl() {
+		return self::PLATRON_URL . 'revoke.php';
+	}
 
 	/**
 	 * @param int $payment Id платежа
@@ -25,10 +32,6 @@ class Revoke extends BaseCommand {
 	 */
 	public function setAmount($amount){
 		$this->pg_refund_amount = $amount;
-	}
-	
-	public function getRequestUrl() {
-		return self::PLATRON_URL . 'revoke.php';
 	}
 
 }

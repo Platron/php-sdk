@@ -11,16 +11,19 @@ class GetBinInfo extends BaseCommand {
 	protected $pg_bin;
 	
 	/**
+	 * @inheritdoc
+	 */
+	protected function getRequestUrl() {
+		return self::PLATRON_URL . 'get_bin_info.php';
+	}
+	
+	/**
 	 * @param int $bin Бин карты
 	 * @return $this
 	 */
 	public function __construct($bin) {
 		$this->pg_bin = $bin;
 		return $this;
-	}
-	
-	public function getRequestUrl() {
-		return self::PLATRON_URL . 'get_bin_info.php';
 	}
 
 }

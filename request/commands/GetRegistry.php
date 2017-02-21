@@ -11,6 +11,13 @@ class GetRegistry extends BaseCommand {
 	protected $pg_date;
 	
 	/**
+	 * @inheritdoc
+	 */
+	protected function getRequestUrl() {
+		return self::PLATRON_URL . 'get_registry.php';
+	}
+	
+	/**
 	 * @param \DateTime $dateTime
 	 * @return $this
 	 */
@@ -19,7 +26,4 @@ class GetRegistry extends BaseCommand {
 		return $this;
 	}
 
-	public function getRequestUrl() {
-		return self::PLATRON_URL . 'get_registry.php';
-	}
 }

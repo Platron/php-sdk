@@ -21,6 +21,13 @@ class CreateMoneyback extends BaseCommand {
 	protected $payment;
 	
 	/**
+	 * @inheritdoc
+	 */
+	protected function getRequestUrl() {
+		return self::PLATRON_URL . 'create_moneyback.php';
+	}
+	
+	/**
 	 * @param int $contract Id договора (можно получить из GetMoneybackList)
 	 * @param string $moneybackSystem Название системы выплат
 	 * @param float $amount Сумма выплаты
@@ -45,10 +52,6 @@ class CreateMoneyback extends BaseCommand {
 	public function bindToTransaction($payment){
 		$this->payment = $payment;
 		return $this;
-	}
-	
-	public function getRequestUrl() {
-		return self::PLATRON_URL . 'create_moneyback.php';
 	}
 
 }

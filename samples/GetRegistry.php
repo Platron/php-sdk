@@ -7,14 +7,14 @@ require_once '../autoload.php';
 use DateTime;
 use platron_sdk\request\commands\GetRegistry;
 use platron_sdk\Exception;
-use platron_sdk\request\Requester;
+use platron_sdk\request\clients\Client;
 
 class Registry {
 	public function actionIndex($merchant, $secretKey){
-		$requester = new Requester($merchant, $secretKey);
-		$command = new GetRegistry(new DateTime('now - 1 day'));
+		$client = new Client($merchant, $secretKey);
+
 		try {
-			$response = $requester->request($command);
+			$response = (new GetRegistry(new DateTime('now - 1 day')))->execute($client);
 		}
 		catch (Exception $e){
 			var_dump($e);

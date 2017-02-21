@@ -11,15 +11,18 @@ class GetStatus extends BaseCommand {
 	protected $payment;
 	
 	/**
+	 * @inheritdoc
+	 */
+	protected function getRequestUrl() {
+		return self::PLATRON_URL . 'get_status.php';
+	}
+	
+	/**
 	 * @param int $payment Id транзакции
 	 * @return $this
 	 */
 	public function __construct($payment) {
 		$this->payment = $payment;
 		return $this;
-	}
-
-	public function getRequestUrl() {
-		return self::PLATRON_URL . 'get_status.php';
 	}
 }

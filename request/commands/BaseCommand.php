@@ -2,6 +2,8 @@
 
 namespace platron_sdk\request\commands;
 
+use platron_sdk\request\clients\iClient;
+
 abstract class BaseCommand {
 	
 	const PLATRON_URL = 'https://www.platron.ru/';
@@ -9,33 +11,17 @@ abstract class BaseCommand {
 	/** @var array */
 	protected $errors = [];
 
+	/**
+	 * Получить url ждя запроса
+	 * @return string
+	 */
 	abstract protected function getRequestUrl();
 	
 	/**
-	 * Предпроверка отправляемых полей
-	 * @return boolean
-	 */
-	public function beforeValidate(){
-		return true;
-	}
-	
-	/**
-	 * Добавить ошибку
-	 * @param string $error
-	 * @param int $errorCode
-	 */
-	protected function addError($error, $errorCode){
-		$this->errors[$errorCode] = $error;
-	}
-	
-	/**
-	 * @return array Список ошибок
-	 */
-	public function getErrors(){
-		return $this->errors;
-	}
-	
-	public function getParameters() {
+	 * Получить параметры, сгенерированные командой
+	 * @return array
+	 */	
+	protected function getParameters() {
 		$filledvars = [];
 		foreach(get_object_vars($this) as $name => $value){
 			if($value){
@@ -46,7 +32,7 @@ abstract class BaseCommand {
 		return $filledvars;
 	}
 	
-	public function execute(){
-		
+	public function execute(iClient $client){
+		return $client->request($this->getRequestUrl(), $this->getParameters());
 	}
 }
