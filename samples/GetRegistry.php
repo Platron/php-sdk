@@ -25,6 +25,3 @@ class Registry {
 	}
 
 }
-
-$class = new Registry();
-$class->actionIndex(82, 'rydijimoraqatery');
