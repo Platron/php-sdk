@@ -6,20 +6,23 @@ namespace platron_sdk\request\commands;
  * Команда для получения списка доступных платежных систем и расчета итоговой стоимости
  */
 class PsList extends BaseCommand {
+
 	/** @var float Сумма */
 	protected $pg_amount;
+
 	/** @var string Валюта */
 	protected $pg_currency;
+
 	/** @var bool Тестовый режим */
 	protected $pg_testing_mode;
-	
+
 	/**
 	 * @inheritdoc
 	 */
 	protected function getRequestUrl() {
 		return self::PLATRON_URL . 'ps_list.php';
 	}
-	
+
 	/**
 	 * @param float $amount Сумма для расчета стоимости по каждой ПС
 	 * @return $this
@@ -28,7 +31,7 @@ class PsList extends BaseCommand {
 		$this->pg_amount = $amount;
 		return $this;
 	}
-	
+
 	/**
 	 * Установить в запрос валюту. По умолчанию - рубли
 	 * @param string $currency
@@ -38,7 +41,7 @@ class PsList extends BaseCommand {
 		$this->pg_currency = $currency;
 		return $this;
 	}
-	
+
 	/**
 	 * Установить тестовый режим в запрос
 	 * @param bool $testingMode

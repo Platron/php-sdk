@@ -12,7 +12,6 @@ class CreateTransaction {
 		
 	public function actionIndex($merchant, $secretKey){
 		$client = new Client($merchant, $secretKey);
-		
 		try {
 			$response = (new InitPayment('10.00', 'Test transaction'))
 				->addTestingMode()

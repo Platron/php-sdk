@@ -13,4 +13,5 @@ class MoneybackSystemList extends BaseCommand {
 	protected function getRequestUrl() {
 		return self::PLATRON_URL . 'moneyback_system_list.php';
 	}
+
 }

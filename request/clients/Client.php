@@ -47,13 +47,14 @@ class Client implements iClient {
 	 * @param SimpleXMLElement $xml
 	 * @return boolean
 	 */
-	protected function hasError(SimpleXMLElement $xml){
-		if(!empty($xml->pg_error_code)){
-			$this->errorCode = (string)$xml->pg_error_code;
-			$this->errorDescription = (string)$xml->pg_error_description;
+	protected function hasError(SimpleXMLElement $xml) {
+		if (!empty($xml->pg_error_code)) {
+			$this->errorCode = (string) $xml->pg_error_code;
+			$this->errorDescription = (string) $xml->pg_error_description;
 			return true;
 		}
-		
+
 		return false;
 	}
+
 }

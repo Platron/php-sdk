@@ -10,17 +10,17 @@ use platron_sdk\Exception;
 use platron_sdk\request\clients\Client;
 
 class Registry {
-	public function actionIndex($merchant, $secretKey){
-		$client = new Client($merchant, $secretKey);
 
+	public function actionIndex($merchant, $secretKey) {
+		$client = new Client($merchant, $secretKey);
 		try {
 			$response = (new GetRegistry(new DateTime('now - 1 day')))->execute($client);
-		}
-		catch (Exception $e){
+		} catch (Exception $e) {
 			var_dump($e);
 			die();
 		}
-		
+
 		var_dump($response);
 	}
+
 }
