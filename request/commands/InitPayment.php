@@ -103,9 +103,9 @@ class InitPayment extends BaseCommand {
 	 * @inheritdoc
 	 */
 	protected function getParameters() {
-		$filledvars = [];
+		$filledvars = array();
 		foreach (get_object_vars($this) as $name => $value) {
-			if ($value && !in_array($name, ['bankCard', 'aviaGds'])) {
+			if ($value && !in_array($name, array('bankCard', 'aviaGds'))) {
 				$filledvars[$name] = $value;
 			}
 		}

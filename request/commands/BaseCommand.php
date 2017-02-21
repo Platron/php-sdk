@@ -8,9 +8,6 @@ abstract class BaseCommand {
 
 	const PLATRON_URL = 'https://www.platron.ru/';
 
-	/** @var array */
-	protected $errors = [];
-
 	/**
 	 * Получить url ждя запроса
 	 * @return string
@@ -22,7 +19,7 @@ abstract class BaseCommand {
 	 * @return array
 	 */
 	protected function getParameters() {
-		$filledvars = [];
+		$filledvars = array();
 		foreach (get_object_vars($this) as $name => $value) {
 			if ($value) {
 				$filledvars[$name] = $value;

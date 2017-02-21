@@ -9,7 +9,7 @@ abstract class BaseData {
 	 * @return array
 	 */
 	public function getParameters() {
-		$parameters = [];
+		$parameters = array();
 		foreach(get_object_vars($this) as $name => $value){
 			if($value){
 				$parameters[$name] = $value;

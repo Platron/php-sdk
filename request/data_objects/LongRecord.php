@@ -18,7 +18,7 @@ class LongRecord extends BaseData {
 	protected $pg_ticket_agency_code;
 	
 	/** @var LongRecordTripleg[] Список шагов полета */
-	public $triplegs = [];
+	public $triplegs = array();
 	
 	/**
 	 * @param string $passangerName
@@ -60,9 +60,9 @@ class LongRecord extends BaseData {
 	}
 	
 	public function getParameters() {
-		$parameters = [];
+		$parameters = array();
 		foreach(get_object_vars($this) as $name => $value){
-			if($value && !in_array($name, ['triplegs'])){
+			if($value && !in_array($name, array('triplegs'))){
 				$parameters[$name] = $value;
 			}
 		}

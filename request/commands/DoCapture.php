@@ -26,7 +26,7 @@ class DoCapture extends BaseCommand {
 	 * @inheritdoc
 	 */
 	protected function getParameters() {
-		$parameters = [];
+		$parameters = array();
 		$parameters['pg_payment_id'] = $this->pg_payment_id;
 
 		if (!empty($this->longRecord)) {

@@ -1,6 +1,5 @@
 <?php
 
-
 class PlatronSdkAutoloader {
 	public static function autoload($className) {
 		$parsedPath = explode('\\', $className);
@@ -10,4 +9,4 @@ class PlatronSdkAutoloader {
 	}
 }
 
-spl_autoload_register(['PlatronSdkAutoloader', 'autoload'], true, true);
+spl_autoload_register(array('PlatronSdkAutoloader', 'autoload'), true, true);

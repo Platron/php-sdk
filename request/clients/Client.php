@@ -31,8 +31,8 @@ class Client implements iClient {
 		$parameters['pg_merchant_id'] = $this->merchant;
 		$parameters['pg_salt'] = rand(21,43433);
 		
-		$fileName = pathinfo($url)['basename'];
-		$parameters['pg_sig'] = SigHelper::make($fileName, $parameters, $this->secretKey);
+		$fileName = pathinfo($url);
+		$parameters['pg_sig'] = SigHelper::make($fileName['basename'], $parameters, $this->secretKey);
 
 		$response = new SimpleXMLElement(file_get_contents($url.'?'.http_build_query($parameters)));
 		if($this->hasError($response)){
