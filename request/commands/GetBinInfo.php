@@ -5,7 +5,7 @@ namespace platron_sdk\request\commands;
 /**
  * Команда для получения информации по бину. Для работы с этим запросом необходимо согласование с менеджером
  */
-class GetBinInfo extends Command implements iCommand {
+class GetBinInfo extends BaseCommand {
 	
 	/** @var int Бин карты */
 	protected $pg_bin;

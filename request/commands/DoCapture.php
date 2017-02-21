@@ -7,7 +7,7 @@ use platron_sdk\request\data_objects\LongRecord;
 /**
  * Команда для проведения клиринга по транзакции. Для возможности работы по двухстадийной схеме нужно связаться с менеджером
  */
-class DoCapture extends Command implements iCommand {
+class DoCapture extends BaseCommand {
 	/** @var int Id платежа */
 	protected $pg_payment_id;
 	/** @var LongRecord Длинная запись */

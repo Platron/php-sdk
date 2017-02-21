@@ -5,7 +5,7 @@ namespace platron_sdk\request\commands;
 /**
  * Команда для создания выплаты. Может быть связана с платежной транзакцией
  */
-class CreateMoneyback extends Command implements iCommand {
+class CreateMoneyback extends BaseCommand {
 	
 	/** @var int Id договора */
 	protected $contract;

@@ -2,12 +2,14 @@
 
 namespace platron_sdk\request\commands;
 
-abstract class Command {
+abstract class BaseCommand {
 	
 	const PLATRON_URL = 'https://www.platron.ru/';
 	
 	/** @var array */
 	protected $errors = [];
+
+	abstract protected function getRequestUrl();
 	
 	/**
 	 * Предпроверка отправляемых полей
@@ -42,5 +44,9 @@ abstract class Command {
 		}
 		
 		return $filledvars;
+	}
+	
+	public function execute(){
+		
 	}
 }

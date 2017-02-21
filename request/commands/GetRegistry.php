@@ -5,7 +5,7 @@ namespace platron_sdk\request\commands;
 /**
  * Команда для получения реестра платежей
  */
-class GetRegistry extends Command implements iCommand {
+class GetRegistry extends BaseCommand {
 	
 	/** @var string */
 	protected $pg_date;

@@ -2,7 +2,7 @@
 
 namespace platron_sdk\request\data_objects;
 
-class BankCard extends Data implements iData {
+class BankCard extends BaseData {
 	/** @var int Номер карты */
 	public $pg_card_number;
 	/** @var string Имя на карте */

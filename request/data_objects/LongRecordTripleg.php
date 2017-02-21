@@ -2,7 +2,7 @@
 
 namespace platron_sdk\request\data_objects;
 
-class LongRecordTripleg extends Data implements iData {
+class LongRecordTripleg extends BaseData {
 	
 	/**
 	 * @param int $triplegNumber Номер шага

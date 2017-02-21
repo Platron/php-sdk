@@ -5,7 +5,7 @@ namespace platron_sdk\request\commands;
 /**
  * Команда для отмены транзакции, которая еще не была оплачена
  */
-class Cancel extends Command implements iCommand {
+class Cancel extends BaseCommand {
 	
 	/** @var int $payment */
 	protected $payment;

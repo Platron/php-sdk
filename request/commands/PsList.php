@@ -5,7 +5,7 @@ namespace platron_sdk\request\commands;
 /**
  * Команда для получения списка доступных платежных систем и расчета итоговой стоимости
  */
-class PsList extends Command implements iCommand{
+class PsList extends BaseCommand {
 	/** @var float Сумма */
 	protected $pg_amount;
 	/** @var string Валюта */

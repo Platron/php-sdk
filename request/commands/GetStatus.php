@@ -5,7 +5,7 @@ namespace platron_sdk\request\commands;
 /**
  * Класс для получения статуса по транзакции
  */
-class GetStatus extends Command implements iCommand{
+class GetStatus extends BaseCommand {
 	
 	/** @var int Id транзакции */
 	protected $payment;

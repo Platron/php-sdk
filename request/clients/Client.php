@@ -1,12 +1,11 @@
 <?php
 
-namespace platron_sdk\request;
+namespace platron_sdk\request\clients;
 
-use platron_sdk\request\commands\iCommand;
 use platron_sdk\SigHelper;
 use SimpleXMLElement;
 
-class Requester {
+class Client implements iClient {
 	
 	/** @var Описание ошибки */
 	protected $errorDescription;
@@ -28,15 +27,14 @@ class Requester {
 		$this->secretKey = $secretKey;
 	}
 	
-	public function request(iCommand $command){
-		$commandParams = $command->getParameters();
-		$commandParams['pg_merchant_id'] = $this->merchant;
-		$commandParams['pg_salt'] = rand(21,43433);
+	public function request($url, $parameters){
+		$parameters['pg_merchant_id'] = $this->merchant;
+		$parameters['pg_salt'] = rand(21,43433);
 		
-		$fileName = pathinfo($command->getRequestUrl())['basename'];
-		$commandParams['pg_sig'] = SigHelper::make($fileName, $commandParams, $this->secretKey);
+		$fileName = pathinfo($url)['basename'];
+		$parameters['pg_sig'] = SigHelper::make($fileName, $parameters, $this->secretKey);
 
-		$response = new SimpleXMLElement(file_get_contents($command->getRequestUrl().'?'.http_build_query($commandParams)));
+		$response = new SimpleXMLElement(file_get_contents($url.'?'.http_build_query($parameters)));
 		if($this->hasError($response)){
 			throw new Exception($this->errorDescription, $this->errorCode);
 		}

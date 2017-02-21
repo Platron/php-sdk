@@ -2,7 +2,7 @@
 
 namespace platron_sdk\request\data_objects;
 
-class AviaGds extends Data implements iData {
+class AviaGds extends BaseData {
 	/** @var string[] Список брендов карт, принимаемых к оплате */
 	protected $pg_card_brand;
 	/** @var string PNR */

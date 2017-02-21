@@ -2,7 +2,12 @@
 
 namespace platron_sdk\request\data_objects;
 
-abstract class Data {
+abstract class BaseData {
+
+	/**
+	 * Получить данные
+	 * @return array
+	 */
 	public function getParameters() {
 		$parameters = [];
 		foreach(get_object_vars($this) as $name => $value){

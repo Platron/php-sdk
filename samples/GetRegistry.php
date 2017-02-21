@@ -6,7 +6,7 @@ require_once '../autoload.php';
 
 use DateTime;
 use platron_sdk\request\commands\GetRegistry;
-use platron_sdk\request\Exception;
+use platron_sdk\Exception;
 use platron_sdk\request\Requester;
 
 class Registry {

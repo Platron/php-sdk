@@ -5,7 +5,7 @@ namespace platron_sdk\request\commands;
 /**
  * Команда для полного / частичного возврата оплаченной транзакции
  */
-class Revoke extends Command implements iCommand{
+class Revoke extends BaseCommand {
 	
 	/** @var int Id платежа */
 	protected $pg_payment_id;

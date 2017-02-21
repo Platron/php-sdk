@@ -5,7 +5,7 @@ namespace platron_sdk\request\commands;
 /**
  * Команда для создания заявки на возврат. См. поддерживающие ПС в справочнике в документации
  */
-class CreateRefundRequest extends Command implements iCommand {
+class CreateRefundRequest extends BaseCommand {
 	
 	/** @var int Id Платежа*/
 	protected $payment;

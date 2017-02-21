@@ -2,7 +2,9 @@
 
 namespace platron_sdk\request\commands;
 
-class MakeRecurring extends Command implements iCommand{
+use platron_sdk\Exception;
+
+class MakeRecurring extends BaseCommand {
 	
 	/** @var int Id рекурретного профиля */
 	protected $recurringProfile;

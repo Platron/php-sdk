@@ -2,9 +2,9 @@
 
 namespace platron_sdk\request\data_objects;
 
-use platron_sdk\request\Exception;
+use platron_sdk\Exception;
 
-class LongRecord extends Data implements iData {
+class LongRecord extends BaseData {
 	
 	/** @var string Имя пассажира */
 	protected $pg_ticket_passenger_name;

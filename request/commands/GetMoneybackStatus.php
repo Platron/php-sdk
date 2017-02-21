@@ -5,7 +5,7 @@ namespace platron_sdk\request\commands;
 /**
  * Команда для получения статуса выплаты
  */
-class GetMoneybackStatus extends Command implements iCommand {
+class GetMoneybackStatus extends BaseCommand {
 	
 	/** @var $moneyback */
 	protected $moneyback;
