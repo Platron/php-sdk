@@ -8,11 +8,14 @@ namespace platron_sdk\request\commands;
 class CreateRefundRequest extends BaseCommand {
 
 	/** @var int Id Платежа */
-	protected $payment;
+	protected $pg_payment_id;
 
 	/** @var float Сумма заявки на возврат */
-	protected $amount;
+	protected $pg_refund_amount;
 
+	/** @var string Причина возврата */
+	protected $pg_comment;
+	
 	/**
 	 * @inheritdoc
 	 */
@@ -23,11 +26,13 @@ class CreateRefundRequest extends BaseCommand {
 	/**
 	 * @param int $payment Id транзакции
 	 * @param float $amount Сумма заявки на возврат
+	 * @param string $comment Причина возврата
 	 * @return $this
 	 */
-	public function __construct($payment, $amount) {
-		$this->payment = $payment;
-		$this->amount = $amount;
+	public function __construct($payment, $amount, $comment) {
+		$this->pg_payment_id = $payment;
+		$this->pg_refund_amount = $amount;
+		$this->pg_comment = $comment;
 		return $this;
 	}
 

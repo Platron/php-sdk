@@ -7,34 +7,34 @@ use platron_sdk\Exception;
 class MakeRecurring extends BaseCommand {
 
 	/** @var int Id рекурретного профиля */
-	protected $recurringProfile;
+	protected $pg_recurring_profile;
 
 	/** @var string Описание платежа */
-	protected $description;
+	protected $pg_description;
 
 	/** @var string Номер заказа магазина */
-	protected $order;
+	protected $pg_order_id;
 
 	/** @var float Сумма */
-	protected $amount;
+	protected $pg_amount;
 
 	/** @var string Result Url */
-	protected $resultUrl;
+	protected $pg_result_url;
 
 	/** @var string Refund Url */
-	protected $refundUrl;
+	protected $pg_refund_url;
 
 	/** @var string Метод запросов */
-	protected $requestMethod;
+	protected $pg_request_method;
 
 	/** @var string Кодировка запроса */
-	protected $encoding;
+	protected $pg_encoding;
 
 	/**
 	 * @inheritdoc
 	 */
 	protected function getRequestUrl() {
-		return self::PLATRON_URL . 'make_recurring.php';
+		return self::PLATRON_URL . 'make_recurring_payment.php';
 	}
 
 	/**
@@ -43,8 +43,8 @@ class MakeRecurring extends BaseCommand {
 	 * @return $this
 	 */
 	public function __construct($recurringProfile, $description) {
-		$this->recurringProfile = $recurringProfile;
-		$this->description = $description;
+		$this->pg_recurring_profile = $recurringProfile;
+		$this->pg_description = $description;
 		return $this;
 	}
 
@@ -54,7 +54,7 @@ class MakeRecurring extends BaseCommand {
 	 * @return $this
 	 */
 	public function addOrderId($order) {
-		$this->order = $order;
+		$this->pg_order_id = $order;
 		return $this;
 	}
 
@@ -64,7 +64,7 @@ class MakeRecurring extends BaseCommand {
 	 * @return $this
 	 */
 	public function addAmount($amount) {
-		$this->amount = $amount;
+		$this->pg_amount = $amount;
 		return $this;
 	}
 
@@ -74,7 +74,7 @@ class MakeRecurring extends BaseCommand {
 	 * @return $this
 	 */
 	public function addResultUrl($resultUrl) {
-		$this->resultUrl = $resultUrl;
+		$this->pg_result_url = $resultUrl;
 		return $this;
 	}
 
@@ -84,7 +84,7 @@ class MakeRecurring extends BaseCommand {
 	 * @return $this
 	 */
 	public function addRefundUrl($refundUrl) {
-		$this->refundUrl = $refundUrl;
+		$this->pg_refund_url = $refundUrl;
 		return $this;
 	}
 
@@ -94,7 +94,7 @@ class MakeRecurring extends BaseCommand {
 	 * @return $this
 	 */
 	public function addRequestMethod($reqestMethod) {
-		$this->requestMethod = $reqestMethod;
+		$this->pg_request_method = $reqestMethod;
 		return $this;
 	}
 
@@ -104,7 +104,7 @@ class MakeRecurring extends BaseCommand {
 	 * @return $this
 	 */
 	public function addEncoding($encoding) {
-		$this->encoding = $encoding;
+		$this->pg_encoding = $encoding;
 		return $this;
 	}
 

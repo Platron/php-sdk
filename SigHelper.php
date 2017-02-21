@@ -2,6 +2,8 @@
 
 namespace platron_sdk;
 
+use SimpleXMLElement;
+
 class SigHelper {
 
 	/**

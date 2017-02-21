@@ -8,22 +8,19 @@ namespace platron_sdk\request\commands;
 class CreateMoneyback extends BaseCommand {
 
 	/** @var int Id договора */
-	protected $contract;
+	protected $pg_contract_id;
 
 	/** @var string Название системы выплат */
-	protected $moneybackSystem;
+	protected $pg_moneyback_system;
 
 	/** @var float Сумма */
-	protected $amount;
+	protected $pg_amount;
 
 	/** @var string Описание */
-	protected $description;
-
-	/** @var array Дополнительные параметры для манибек системы */
-	protected $additionalParams;
+	protected $pg_description;
 
 	/** @var int $transaction Id транзакции */
-	protected $payment;
+	protected $pg_payment_id;
 
 	/**
 	 * @inheritdoc
@@ -41,11 +38,14 @@ class CreateMoneyback extends BaseCommand {
 	 * @return $this
 	 */
 	public function __construct($contract, $moneybackSystem, $amount, $description, $additionalParams) {
-		$this->contract = $contract;
-		$this->moneybackSystem = $moneybackSystem;
-		$this->amount = $amount;
-		$this->description = $description;
-		$this->additionalParams = $additionalParams;
+		$this->pg_contract_id = $contract;
+		$this->pg_moneyback_system = $moneybackSystem;
+		$this->pg_amount = $amount;
+		$this->pg_description = $description;
+		foreach($additionalParams as $name => $param){
+			$this->$name = $param;
+		}
+
 		return $this;
 	}
 
@@ -55,7 +55,7 @@ class CreateMoneyback extends BaseCommand {
 	 * @return $this
 	 */
 	public function bindToTransaction($payment) {
-		$this->payment = $payment;
+		$this->pg_payment_id = $payment;
 		return $this;
 	}
 

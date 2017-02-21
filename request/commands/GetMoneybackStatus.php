@@ -8,7 +8,7 @@ namespace platron_sdk\request\commands;
 class GetMoneybackStatus extends BaseCommand {
 
 	/** @var $moneyback */
-	protected $moneyback;
+	protected $pg_moneyback_id;
 
 	/**
 	 * @inheritdoc
@@ -22,7 +22,7 @@ class GetMoneybackStatus extends BaseCommand {
 	 * @return $this
 	 */
 	public function __construct($moneyback) {
-		$this->moneyback = $moneyback;
+		$this->pg_moneyback_id = $moneyback;
 		return $this;
 	}
 

@@ -8,7 +8,7 @@ namespace platron_sdk\request\commands;
 class Cancel extends BaseCommand {
 
 	/** @var int $payment */
-	protected $payment;
+	protected $pg_payment_id;
 
 	/**
 	 * @inheritdoc
@@ -22,7 +22,7 @@ class Cancel extends BaseCommand {
 	 * @return $this
 	 */
 	public function __construct($payment) {
-		$this->payment = $payment;
+		$this->pg_payment_id = $payment;
 		return $this;
 	}
 

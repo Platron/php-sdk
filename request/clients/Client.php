@@ -2,6 +2,7 @@
 
 namespace platron_sdk\request\clients;
 
+use platron_sdk\Exception;
 use platron_sdk\SigHelper;
 use SimpleXMLElement;
 

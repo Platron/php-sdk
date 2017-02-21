@@ -18,7 +18,9 @@ class Callback {
 		$xml->addChild('pg_salt', $salt); // в ответе необходимо указывать тот же pg_salt, что и в запросе
 		$xml->addChild('pg_status', $status);
 		$xml->addChild('pg_description', $description);
-		return $xml->addChild('pg_sig', SigHelper::makeXML(SigHelper::getOurScriptName(), $xml, $this->secretKey));
+		$xml->addChild('pg_sig', SigHelper::makeXML(SigHelper::getOurScriptName(), $xml, $this->secretKey));
+		
+		return $xml;
 	}
 	
 	/**
