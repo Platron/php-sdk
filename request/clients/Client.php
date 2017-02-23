@@ -35,7 +35,17 @@ class Client implements iClient {
 		$fileName = pathinfo($url);
 		$parameters['pg_sig'] = SigHelper::make($fileName['basename'], $parameters, $this->secretKey);
 
-		$response = new SimpleXMLElement(file_get_contents($url.'?'.http_build_query($parameters)));
+		$curl = curl_init($url);
+		curl_setopt($curl, CURLOPT_POST, 1);
+		curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($parameters));
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		$response = new SimpleXMLElement(curl_exec($curl));
+		curl_close($curl);
+		
+		if(curl_errno($curl)){
+			throw new Exception(curl_error($curl), curl_errno($curl));
+		}
+		
 		if($this->hasError($response)){
 			throw new Exception($this->errorDescription, $this->errorCode);
 		}
