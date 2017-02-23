@@ -138,6 +138,7 @@ class InitPayment extends BaseCommand {
 
 	/**
 	 * Уставновить банковскую карту
+	 * Внимание! Возможно использование только при наличии у магазина сертификата PSI DSS и при согласовании с менеджером
 	 * @param BankCard $bankCard
 	 * @return $this
 	 */
