@@ -58,22 +58,14 @@ class SigHelper {
 		return (string)$signature === self::make($strScriptName, $arrParams, $strSecretKey);
 	}
 
-
 	/**
-	 * Returns a string, a hash of which coincide with the result of the make() method.
-	 * WARNING: This method can be used only for debugging purposes!
-	 *
-	 * @param array $arrParams  associative array of parameters for the signature
-	 * @param string $strSecretKey
-	 * @return string
+	 * Return concated string to make hash
+	 * 
+	 * @param type $strScriptName
+	 * @param array $arrParams
+	 * @param type $strSecretKey
+	 * @return type
 	 */
-	static function debug_only_SigStr ( $strScriptName, $arrParams, $strSecretKey )
-	{
-		$arrFlatParams = self::makeFlatParamsArray($arrParams);
-		return self::makeSigStr($strScriptName, $arrFlatParams, $strSecretKey);
-	}
-
-
 	private static function makeSigStr ( $strScriptName, array $arrParams, $strSecretKey ) {
 		unset($arrParams['pg_sig']);
 		
@@ -85,6 +77,13 @@ class SigHelper {
 		return join(';', $arrParams);
 	}
 	
+	/**
+	 * Returns flat array
+	 * 
+	 * @param type $arrParams
+	 * @param type $parent_name
+	 * @return type
+	 */
 	private static function makeFlatParamsArray ( $arrParams, $parent_name = '' )
 	{
 		$arrFlatParams = array();
@@ -112,10 +111,8 @@ class SigHelper {
 		return $arrFlatParams;
 	}
 
-	/********************** singing XML ***********************/
-
 	/**
-	 * make the signature for XML
+	 * Make the signature for XML
 	 *
 	 * @param string|SimpleXMLElement $xml
 	 * @param string $strSecretKey
@@ -125,36 +122,6 @@ class SigHelper {
 	{
 		$arrFlatParams = self::makeFlatParamsXML($xml);
 		return self::make($strScriptName, $arrFlatParams, $strSecretKey);
-	}
-
-	/**
-	 * Verifies the signature of XML
-	 *
-	 * @param string|SimpleXMLElement $xml
-	 * @param string $strSecretKey
-	 * @return bool
-	 */
-	public static function checkXML ( $strScriptName, $xml, $strSecretKey )
-	{
-		if ( ! $xml instanceof SimpleXMLElement ) {
-			$xml = new SimpleXMLElement($xml);
-		}
-		$arrFlatParams = self::makeFlatParamsXML($xml);
-		return self::check((string)$xml->pg_sig, $strScriptName, $arrFlatParams, $strSecretKey);
-	}
-
-	/**
-	 * Returns a string, a hash of which coincide with the result of the makeXML() method.
-	 * WARNING: This method can be used only for debugging purposes!
-	 *
-	 * @param string|SimpleXMLElement $xml
-	 * @param string $strSecretKey
-	 * @return string
-	 */
-	public static function debug_only_SigStrXML ( $strScriptName, $xml, $strSecretKey )
-	{
-		$arrFlatParams = self::makeFlatParamsXML($xml);
-		return self::makeSigStr($strScriptName, $arrFlatParams, $strSecretKey);
 	}
 
 	/**
