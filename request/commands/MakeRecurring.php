@@ -4,6 +4,9 @@ namespace platron_sdk\request\commands;
 
 use platron_sdk\Exception;
 
+/**
+ * Команда для создании транзакции по рекуррентному платежу. Рекуррентные платежи нужно согласовать с менеджером
+ */
 class MakeRecurring extends BaseCommand {
 
 	/** @var int Id рекурретного профиля */
