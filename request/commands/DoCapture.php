@@ -48,7 +48,7 @@ class DoCapture extends BaseCommand {
 	}
 
 	/**
-	 * Добавить длинную запись к клирингу
+	 * Добавить длинную запись к клирингу. Для использования длинной записи нужно согласовать это с менеджером
 	 * @param LongRecord $longRecord
 	 */
 	public function addLongRecord(LongRecord $longRecord) {

@@ -34,22 +34,27 @@ class LongRecord extends BaseData {
 	/**
 	 * Установить билетную систему
 	 * @param string $ticketSystem
+	 * @return $this
 	 */
 	public function setTicketSystem($ticketSystem){
 		$this->pg_ticket_system = $ticketSystem;
+		return $this;
 	}
 	
 	/**
 	 * Установить код агента
 	 * @param string $ticketAgencyCode
+	 * @return $this
 	 */
 	public function setAgencyCode($ticketAgencyCode){
 		$this->pg_ticket_agency_code = $ticketAgencyCode;
+		return $this;
 	}
 	
 	/**
 	 * Добавить шаг в билет. Возможно добавить только 4 шага
 	 * @param LongRecordTripleg $tripLeg
+	 * @return $this
 	 */
 	public function addTripLeg(LongRecordTripleg $tripLeg){
 		if(count($this->triplegs) > 3){
@@ -57,6 +62,7 @@ class LongRecord extends BaseData {
 		}
 			
 		$this->triplegs[] = $tripLeg;
+		return $this;
 	}
 	
 	public function getParameters() {
