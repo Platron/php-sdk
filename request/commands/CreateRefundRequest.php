@@ -27,13 +27,11 @@ class CreateRefundRequest extends BaseCommand {
 	 * @param int $payment Id транзакции
 	 * @param float $amount Сумма заявки на возврат
 	 * @param string $comment Причина возврата
-	 * @return $this
 	 */
 	public function __construct($payment, $amount, $comment) {
 		$this->pg_payment_id = $payment;
 		$this->pg_refund_amount = $amount;
 		$this->pg_comment = $comment;
-		return $this;
 	}
 
 }

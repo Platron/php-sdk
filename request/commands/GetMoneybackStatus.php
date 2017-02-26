@@ -19,11 +19,9 @@ class GetMoneybackStatus extends BaseCommand {
 
 	/**
 	 * @param int $moneyback Id манибека
-	 * @return $this
 	 */
 	public function __construct($moneyback) {
 		$this->pg_moneyback_id = $moneyback;
-		return $this;
 	}
 
 }
