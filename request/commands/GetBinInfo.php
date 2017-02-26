@@ -19,11 +19,9 @@ class GetBinInfo extends BaseCommand {
 
 	/**
 	 * @param int $bin Бин карты
-	 * @return $this
 	 */
 	public function __construct($bin) {
 		$this->pg_bin = $bin;
-		return $this;
 	}
 
 }

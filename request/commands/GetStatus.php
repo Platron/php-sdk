@@ -24,7 +24,6 @@ class GetStatus extends BaseCommand {
 	 * Поиск происходил либо по номеру транзакции в platron, либо по order id магазина
 	 * @param int $payment Id транзакции
 	 * @param string $order Order id транзакции в магазине
-	 * @return $this
 	 */
 	public function __construct($payment = null, $order = null) {
 		if($payment){
@@ -33,8 +32,6 @@ class GetStatus extends BaseCommand {
 		else {
 			$this->pg_order_id = $order;
 		}
-		
-		return $this;
 	}
 
 }

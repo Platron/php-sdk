@@ -128,12 +128,10 @@ class InitPayment extends BaseCommand {
 	/**
 	 * @param float $amount Сумма транзакции
 	 * @param string $description Описание транзакции
-	 * @return $this
 	 */
 	public function __construct($amount, $description) {
 		$this->pg_amount = $amount;
 		$this->pg_description = $description;
-		return $this;
 	}
 
 	/**

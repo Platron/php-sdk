@@ -35,7 +35,6 @@ class CreateMoneyback extends BaseCommand {
 	 * @param float $amount Сумма выплаты
 	 * @param string $description Описание выплаты
 	 * @param array $additionalParams Дополнительные параметры, необходимые для системы выплат (можно получить из GetMoneybackList)
-	 * @return $this
 	 */
 	public function __construct($contract, $moneybackSystem, $amount, $description, $additionalParams) {
 		$this->pg_contract_id = $contract;
@@ -45,18 +44,14 @@ class CreateMoneyback extends BaseCommand {
 		foreach($additionalParams as $name => $param){
 			$this->$name = $param;
 		}
-
-		return $this;
 	}
 
 	/**
 	 * Привязать выплату к транзакции
 	 * @param int $payment Id транзакции
-	 * @return $this
 	 */
 	public function bindToTransaction($payment) {
 		$this->pg_payment_id = $payment;
-		return $this;
 	}
 
 }

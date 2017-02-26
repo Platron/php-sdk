@@ -19,11 +19,9 @@ class GetRegistry extends BaseCommand {
 
 	/**
 	 * @param \DateTime $dateTime
-	 * @return $this
 	 */
 	public function __construct(\DateTime $dateTime) {
 		$this->pg_date = $dateTime->format('Y-m-d');
-		return $this;
 	}
 
 }

@@ -42,21 +42,17 @@ class DoCapture extends BaseCommand {
 
 	/**
 	 * @param int $payment Id платежа
-	 * @return $this
 	 */
 	public function __construct($payment) {
 		$this->pg_payment_id = $payment;
-		return $this;
 	}
 
 	/**
 	 * Добавить длинную запись к клирингу
 	 * @param LongRecord $longRecord
-	 * @return $this
 	 */
 	public function addLongRecord(LongRecord $longRecord) {
 		$this->longRecord = $longRecord;
-		return $this;
 	}
 
 }

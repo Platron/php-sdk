@@ -19,11 +19,9 @@ class Cancel extends BaseCommand {
 
 	/**
 	 * @param int $payment
-	 * @return $this
 	 */
 	public function __construct($payment) {
 		$this->pg_payment_id = $payment;
-		return $this;
 	}
 
 }

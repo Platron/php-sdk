@@ -43,12 +43,10 @@ class MakeRecurring extends BaseCommand {
 	/**
 	 * @param int $recurringProfile Id рекуррентного платежа
 	 * @param string $description Опсиание платежа
-	 * @return $this
 	 */
 	public function __construct($recurringProfile, $description) {
 		$this->pg_recurring_profile = $recurringProfile;
 		$this->pg_description = $description;
-		return $this;
 	}
 
 	/**

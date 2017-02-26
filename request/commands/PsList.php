@@ -25,11 +25,9 @@ class PsList extends BaseCommand {
 
 	/**
 	 * @param float $amount Сумма для расчета стоимости по каждой ПС
-	 * @return $this
 	 */
 	public function __construct($amount) {
 		$this->pg_amount = $amount;
-		return $this;
 	}
 
 	/**
