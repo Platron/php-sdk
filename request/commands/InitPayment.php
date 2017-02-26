@@ -187,7 +187,7 @@ class InitPayment extends BaseCommand {
 
 	/**
 	 * Установить время жизни транзакции
-	 * @param type $lifetime
+	 * @param int $lifetime
 	 * @return $this
 	 */
 	public function addLifetime($lifetime) {
@@ -209,8 +209,8 @@ class InitPayment extends BaseCommand {
 	 * @param type $language
 	 * @return $this
 	 */
-	public function addLanguage($language) {
-		$this->pg_language = $language;
+	public function addLanguageEn() {
+		$this->pg_language = 'en';
 		return $this;
 	}
 
@@ -224,7 +224,7 @@ class InitPayment extends BaseCommand {
 	}
 
 	/**
-	 * Установить старт рекуррентной транзакции
+	 * Установить старт рекуррентной транзакции. Необходимо согласование с магазином
 	 * @return $this
 	 */
 	public function addRecurringStart() {
