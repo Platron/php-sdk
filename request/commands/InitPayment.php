@@ -146,7 +146,7 @@ class InitPayment extends BaseCommand {
 	}
 
 	/**
-	 * Установить GDS данные
+	 * Установить GDS данные. Используется после согласования с менеджером
 	 * @param AviaGds $aviaGds
 	 * @return $this
 	 */
