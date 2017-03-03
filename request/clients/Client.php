@@ -28,6 +28,13 @@ class Client implements iClient {
 		$this->secretKey = $secretKey;
 	}
 	
+	/**
+	 * Отправить запрос
+	 * @param type $url
+	 * @param type $parameters
+	 * @return SimpleXMLElement
+	 * @throws Exception
+	 */
 	public function request($url, $parameters){
 		$parameters['pg_merchant_id'] = $this->merchant;
 		$parameters['pg_salt'] = rand(21,43433);
