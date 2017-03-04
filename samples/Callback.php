@@ -3,12 +3,18 @@
 namespace platron_sdk\samples;
 
 use Exception;
+use platron_sdk\SigHelper;
 use platron_sdk\callback\Callback;
 
 class Callback {
 
-	public function actionIndex($request, $secretKey) {
-		$callback = new Callback($secretKey);
+	/**
+	 * @param string $urlScriptName
+	 * @param array $request
+	 * @param string $secretKey
+	 */
+	public function actionIndex($urlScriptName, $request, $secretKey) {
+		$callback = new Callback($urlScriptName, new SigHelper($secretKey));
 		if ($callback->validateSig($request)) {
 			try {
 				if ($this->checkOrderAvailiable()) {

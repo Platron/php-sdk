@@ -15,23 +15,22 @@ class Client implements iClient {
 	
 	/** @var int Номер магазина */
 	protected $merchant;
-	/** @var string Секреный ключ */
-	protected $secretKey;
+	
+	/** @var SigHelper Помощник создания подписи */
+	protected $sigHelper;
 	
 	/**
-	 * @param int $merchant
-	 * @param string $secretKey
+	 * @inheritdoc
 	 * @throws Exception
 	 */
-	public function __construct($merchant, $secretKey){
+	public function __construct($merchant, SigHelper $sigHelper){
 		$this->merchant = $merchant;
-		$this->secretKey = $secretKey;
+		$this->sigHelper = $sigHelper;
 	}
 	
 	/**
 	 * Отправить запрос
-	 * @param type $url
-	 * @param type $parameters
+	 * @inheritdoc
 	 * @return SimpleXMLElement
 	 * @throws Exception
 	 */
@@ -40,18 +39,20 @@ class Client implements iClient {
 		$parameters['pg_salt'] = rand(21,43433);
 		
 		$fileName = pathinfo($url);
-		$parameters['pg_sig'] = SigHelper::make($fileName['basename'], $parameters, $this->secretKey);
+		$parameters['pg_sig'] = $this->sigHelper->make($fileName['basename'], $parameters);
 
 		$curl = curl_init($url);
 		curl_setopt($curl, CURLOPT_POST, 1);
 		curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($parameters));
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 		$response = new SimpleXMLElement(curl_exec($curl));
-		curl_close($curl);
+		
 		
 		if(curl_errno($curl)){
 			throw new Exception(curl_error($curl), curl_errno($curl));
 		}
+		
+		curl_close($curl);
 		
 		if($this->hasError($response)){
 			throw new Exception($this->errorDescription, $this->errorCode);

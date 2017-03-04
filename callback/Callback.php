@@ -6,9 +6,12 @@ use platron_sdk\SigHelper;
 use SimpleXMLElement;
 
 class Callback {
-
-	/** @var string Секреный ключ */
-	protected $secretKey;
+	
+	/** @var string Скрипт магазина, на который делается запрос */
+	protected $urlScriptName;
+	
+	/** @var SigHelper Помощник для создания подписи */
+	protected $sigHelper;
 	
 	/**
 	 * Ответить в Platron
@@ -18,16 +21,18 @@ class Callback {
 		$xml->addChild('pg_salt', $salt); // в ответе необходимо указывать тот же pg_salt, что и в запросе
 		$xml->addChild('pg_status', $status);
 		$xml->addChild('pg_description', $description);
-		$xml->addChild('pg_sig', SigHelper::makeXML(SigHelper::getOurScriptName(), $xml, $this->secretKey));
+		$xml->addChild('pg_sig', $this->sigHelper->makeXML($this->urlScriptName, $xml));
 		
 		return $xml;
 	}
 	
 	/**
-	 * @param string $secretKey
+	 * @param string $urlScriptName Название скрипта, из url, на который Platron делает запрос. Например, www.site.ru/request - будет request
+	 * @param SigHelper $sigHelper
 	 */
-	public function __construct($secretKey){
-		$this->secretKey = $secretKey;
+	public function __construct($urlScriptName, SigHelper $sigHelper){
+		$this->urlScriptName = $urlScriptName;
+		$this->sigHelper = $sigHelper;
 	}
 	
 	/**
@@ -36,7 +41,7 @@ class Callback {
 	 * @return boolean
 	 */
 	public function validateSig($params){
-		return SigHelper::check($params['pg_sig'], SigHelper::getOurScriptName(), $params, $this->secretKey);
+		return $this->sigHelper->check($params['pg_sig'], $this->urlScriptName, $params);
 	}
 	
 	/**
@@ -44,7 +49,7 @@ class Callback {
 	 * @param array $params
 	 */
 	public function canReject($params){
-		return !empty($params['pg_can_reject']);
+		return !empty($params['pg_can_reject']) && $params['pg_can_reject'];
 	}
 	
 	/**

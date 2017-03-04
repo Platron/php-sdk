@@ -5,138 +5,23 @@ namespace platron_sdk;
 use SimpleXMLElement;
 
 class SigHelper {
-
-	/**
-	 * Get script name from URL (for use as parameter in self::make, self::check, etc.)
-	 *
-	 * @param string $url
-	 * @return string
-	 */
-	public static function getScriptNameFromUrl ( $url )
-	{
-		$path = parse_url($url, PHP_URL_PATH);
-		$len  = strlen($path);
-		if ( $len == 0  ||  '/' == $path{$len-1} ) {
-			return "";
-		}
-		return basename($path);
-	}
 	
-	/**
-	 * Get name of currently executed script (need to check signature of incoming message using self::check)
-	 *
-	 * @return string
-	 */
-	public static function getOurScriptName ()
-	{
-		return self::getScriptNameFromUrl( $_SERVER['PHP_SELF'] );
-	}
-
-	/**
-	 * Creates a signature
-	 *
-	 * @param array $arrParams  associative array of parameters for the signature
-	 * @param string $strSecretKey
-	 * @return string
-	 */
-	public static function make ( $strScriptName, $arrParams, $strSecretKey )
-	{
-		$arrFlatParams = self::makeFlatParamsArray($arrParams);
-		return md5( self::makeSigStr($strScriptName, $arrFlatParams, $strSecretKey) );
-	}
-
-	/**
-	 * Verifies the signature
-	 *
-	 * @param string $signature
-	 * @param array $arrParams  associative array of parameters for the signature
-	 * @param string $strSecretKey
-	 * @return bool
-	 */
-	public static function check ( $signature, $strScriptName, $arrParams, $strSecretKey )
-	{
-		return (string)$signature === self::make($strScriptName, $arrParams, $strSecretKey);
-	}
-
-	/**
-	 * Return concated string to make hash
-	 * 
-	 * @param type $strScriptName
-	 * @param array $arrParams
-	 * @param type $strSecretKey
-	 * @return type
-	 */
-	private static function makeSigStr ( $strScriptName, array $arrParams, $strSecretKey ) {
-		unset($arrParams['pg_sig']);
-		
-		ksort($arrParams);
-
-		array_unshift($arrParams, $strScriptName);
-		array_push   ($arrParams, $strSecretKey);
-
-		return join(';', $arrParams);
-	}
+	/** @var string Секретное слово */
+	protected $secretKey;
 	
-	/**
-	 * Returns flat array
-	 * 
-	 * @param type $arrParams
-	 * @param type $parent_name
-	 * @return type
-	 */
-	private static function makeFlatParamsArray ( $arrParams, $parent_name = '' )
-	{
-		$arrFlatParams = array();
-		$i = 0;
-		foreach ( $arrParams as $key => $val ) {
-			
-			$i++;
-			if ( 'pg_sig' === $key )
-				continue;
-				
-			/**
-			 * Имя делаем вида tag001subtag001
-			 * Чтобы можно было потом нормально отсортировать и вложенные узлы не запутались при сортировке
-			 */
-			$name = $parent_name . $key . sprintf('%03d', $i);
-
-			if (is_array($val) ) {
-				$arrFlatParams = array_merge($arrFlatParams, self::makeFlatParamsArray($val, $name));
-				continue;
-			}
-
-			$arrFlatParams += array($name => (string)$val);
-		}
-
-		return $arrFlatParams;
-	}
-
-	/**
-	 * Make the signature for XML
-	 *
-	 * @param string|SimpleXMLElement $xml
-	 * @param string $strSecretKey
-	 * @return string
-	 */
-	public static function makeXML ( $strScriptName, $xml, $strSecretKey )
-	{
-		$arrFlatParams = self::makeFlatParamsXML($xml);
-		return self::make($strScriptName, $arrFlatParams, $strSecretKey);
-	}
-
 	/**
 	 * Returns flat array of XML params
 	 *
 	 * @param (string|SimpleXMLElement) $xml
 	 * @return array
 	 */
-	private static function makeFlatParamsXML ( $xml, $parent_name = '' )
+	private function makeFlatParamsXML ( $xml, $parentName = '' )
 	{
 		if ( ! $xml instanceof SimpleXMLElement ) {
 			$xml = new SimpleXMLElement($xml);
 		}
 
-		$arrParams = array();
+		$params = array();
 		$i = 0;
 		foreach ( $xml->children() as $tag ) {
 			
@@ -148,16 +33,129 @@ class SigHelper {
 			 * Имя делаем вида tag001subtag001
 			 * Чтобы можно было потом нормально отсортировать и вложенные узлы не запутались при сортировке
 			 */
-			$name = $parent_name . $tag->getName().sprintf('%03d', $i);
+			$name = $parentName . $tag->getName().sprintf('%03d', $i);
 
 			if ( $tag->children()->count() > 0 ) {
-				$arrParams = array_merge($arrParams, self::makeFlatParamsXML($tag, $name));
+				$params = array_merge($params, $this->makeFlatParamsXML($tag, $name));
 				continue;
 			}
 
-			$arrParams += array($name => (string)$tag);
+			$params += array($name => (string)$tag);
 		}
 
-		return $arrParams;
+		return $params;
+	}
+	
+	/**
+	 * Return concated string to make hash
+	 * 
+	 * @param type $scriptName
+	 * @param array $params
+	 * @return type
+	 */
+	private function makeSigStr ( $scriptName, array $params ) {
+		unset($params['pg_sig']);
+		
+		ksort($params);
+
+		array_unshift($params, $scriptName);
+		array_push   ($params, $this->secretKey );
+
+		return join(';', $params);
+	}	
+	
+	/**
+	 * Returns flat array
+	 * 
+	 * @param array $params
+	 * @param string $parentName
+	 * @return array
+	 */
+	private function makeFlatParamsArray ( $params, $parentName = '' )
+	{
+		$flatParams = array();
+		$i = 0;
+		foreach ( $params as $key => $val ) {
+			
+			$i++;
+			if ( 'pg_sig' === $key )
+				continue;
+				
+			/**
+			 * Имя делаем вида tag001subtag001
+			 * Чтобы можно было потом нормально отсортировать и вложенные узлы не запутались при сортировке
+			 */
+			$name = $parentName . $key . sprintf('%03d', $i);
+
+			if (is_array($val) ) {
+				$flatParams = array_merge($flatParams, $this->makeFlatParamsArray($val, $name));
+				continue;
+			}
+
+			$flatParams += array($name => (string)$val);
+		}
+
+		return $flatParams;
+	}
+
+	/**
+	 * @param type $secretKey
+	 */
+	public function __construct($secretKey) {
+		$this->secretKey = $secretKey;
+	}
+	
+	/**
+	 * Get script name from URL
+	 *
+	 * @param string $url
+	 * @return string
+	 */
+	public function getScriptNameFromUrl ( $url )
+	{
+		$path = parse_url($url, PHP_URL_PATH);
+		$len  = strlen($path);
+		if ( $len == 0  ||  '/' == $path{$len-1} ) {
+			return "";
+		}
+		return basename($path);
+	}
+	
+	/**
+	 * Creates a signature
+	 *
+	 * @param string $scriptName String where will be request
+	 * @param array $params  associative array of parameters for the signature
+	 * @return string
+	 */
+	public function make ( $scriptName, $params )
+	{
+		$flatParams = $this->makeFlatParamsArray($params);
+		return md5( $this->makeSigStr($scriptName, $flatParams) );
+	}
+
+	/**
+	 * Verifies the signature
+	 *
+	 * @param string $signature
+	 * @param array $params  associative array of parameters for the signature
+	 * @return bool
+	 */
+	public function check ( $signature, $scriptName, $params )
+	{
+		return (string)$signature === $this->make($scriptName, $params );
+	}
+
+	/**
+	 * Make the signature for XML
+	 *
+	 * @param string $scriptName String where will be request
+	 * @param string|SimpleXMLElement $xml
+	 * @return string
+	 */
+	public function makeXML ( $scriptName, $xml )
+	{
+		$flatParams = $this->makeFlatParamsXML($xml);
+		return $this->make($scriptName, $flatParams, $this->secretKey);
 	}
 }

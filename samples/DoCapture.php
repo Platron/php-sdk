@@ -7,11 +7,12 @@ require_once '../autoload.php';
 use platron_sdk\Exception;
 use platron_sdk\request\clients\Client;
 use platron_sdk\request\commands\DoCapture;
+use platron_sdk\SigHelper;
 
 class Capture {
 
 	public function actionIndex($transaction, $secretKey, $merchant) {
-		$client = new Client($merchant, $secretKey);
+		$client = new Client($merchant, new SigHelper($secretKey));
 
 		try {
 			$command = new DoCapture($transaction);

@@ -38,4 +38,14 @@ class CallbackTest extends \PHPUnit_Framework_TestCase {
 		$this->assertNotNull($response->pg_description);
 		$this->assertNotNull($response->pg_salt);
 	}
+	
+	public function testCanReject(){
+		$this->assertTrue($this->fixture->canReject(array('pg_can_reject' => 1)));
+		$this->assertFalse($this->fixture->canReject(array('pg_can_reject' => 0)));
+		$this->assertFalse($this->fixture->canReject(array()));
+	}
+	
+	public function testValidateSig(){
+		
+	}
 }
