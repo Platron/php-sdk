@@ -17,7 +17,7 @@ class Callback {
 	 * Ответить в Platron
 	 */
 	protected function response($salt, $status, $description){
-		$xml = new SimpleXMLElement('<?xml version="1.0" encoding="utf-8"?><response><response/>');
+		$xml = new SimpleXMLElement('<?xml version="1.0" encoding="utf-8"?><response/>');
 		$xml->addChild('pg_salt', $salt); // в ответе необходимо указывать тот же pg_salt, что и в запросе
 		$xml->addChild('pg_status', $status);
 		$xml->addChild('pg_description', $description);

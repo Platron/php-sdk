@@ -10,7 +10,8 @@ class CallbackTest extends \PHPUnit_Framework_TestCase {
 	protected $fixture;
 	
 	protected function setUp() {
-		$this->fixture = new Callback();
+		$stub = $this->getMock('platron_sdk\SigHelper')->expects($this->once())->method('check')->will($this->returnValue(true));
+		$this->fixture = new Callback('test.php', $stub);
 	}
 	
 	public function testOkAnswear(){
@@ -46,6 +47,6 @@ class CallbackTest extends \PHPUnit_Framework_TestCase {
 	}
 	
 	public function testValidateSig(){
-		
+		$this->assertTrue($this->fixture->validateSig(array('pg_sig' => 'hjbhjbhjjhbd')));
 	}
 }

@@ -54,7 +54,9 @@ class SigHelper {
 	 * @return type
 	 */
 	private function makeSigStr ( $scriptName, array $params ) {
-		unset($params['pg_sig']);
+		if(!empty($params['pg_sig'])){
+			unset($params['pg_sig']);
+		}
 		
 		ksort($params);
 
