@@ -2,8 +2,6 @@
 
 namespace platron_sdk\tests;
 
-require_once '../autoload.php';
-
 use platron_sdk\callback\Callback;
 
 class CallbackTest extends \PHPUnit_Framework_TestCase {
