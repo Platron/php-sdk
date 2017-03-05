@@ -45,8 +45,8 @@ class PsList extends BaseCommand {
 	 * @param bool $testingMode
 	 * @return $this
 	 */
-	public function addTestingMode($testingMode) {
-		$this->pg_testing_mode = $testingMode;
+	public function addTestingMode() {
+		$this->pg_testing_mode = 1;
 		return $this;
 	}
 
