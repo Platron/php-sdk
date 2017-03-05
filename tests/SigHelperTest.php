@@ -2,6 +2,8 @@
 
 namespace platron_sdk\tests;
 
+require_once '../autoload.php';
+
 use platron_sdk\SigHelper;
 use SimpleXMLElement;
 
