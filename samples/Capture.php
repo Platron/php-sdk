@@ -2,19 +2,17 @@
 
 namespace platron_sdk\samples;
 
-require_once '../autoload.php';
-
-use DateTime;
-use platron_sdk\request\commands\GetRegistry;
 use platron_sdk\Exception;
 use platron_sdk\request\clients\Client;
+use platron_sdk\request\commands\DoCapture;
 
-class Registry {
+class Capture {
 
-	public function actionIndex($merchant, $secretKey) {
+	public function actionIndex($transaction, $secretKey, $merchant) {
 		$client = new Client($merchant, $secretKey);
+
 		try {
-			$command = new GetRegistry(new DateTime('now - 1 day'));
+			$command = new DoCapture($transaction);
 			$response = $command->execute($client);
 		} catch (Exception $e) {
 			var_dump($e);
