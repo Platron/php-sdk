@@ -4,7 +4,7 @@ namespace platron_sdk\tests;
 
 require_once '../autoload.php';
 
-use \platron_sdk\callback\Callback;
+use platron_sdk\callback\Callback;
 
 class CallbackTest extends \PHPUnit_Framework_TestCase {
 	
@@ -12,8 +12,7 @@ class CallbackTest extends \PHPUnit_Framework_TestCase {
 	protected $fixture;
 	
 	protected function setUp() {
-		$stub = $this->getMock('platron_sdk\SigHelper')->expects($this->once())->method('check')->will($this->returnValue(true));
-		$this->fixture = new Callback('test.php', $stub);
+		$this->fixture = new Callback('test.php', 'adfsvsdfvsd');
 	}
 	
 	public function testOkAnswear(){
@@ -26,8 +25,7 @@ class CallbackTest extends \PHPUnit_Framework_TestCase {
 	
 	public function testErrorAnswear(){
 		$response = $this->fixture->responseError(array('pg_salt' => 1111), 'some_error');
-		$this->assertEquals($response, 'error');
-		$this->assertEquals($response->pg_status, 'ok');
+		$this->assertEquals($response->pg_status, 'error');
 		$this->assertNotNull($response->pg_sig);
 		$this->assertNotNull($response->pg_description);
 		$this->assertNotNull($response->pg_salt);
@@ -35,8 +33,7 @@ class CallbackTest extends \PHPUnit_Framework_TestCase {
 	
 	public function testRejectedAnswear(){
 		$response = $this->fixture->responseRejected(array('pg_salt' => 1111), 'reject please');
-		$this->assertEquals($response, 'rejected');
-		$this->assertEquals($response->pg_status, 'ok');
+		$this->assertEquals($response->pg_status, 'rejected');
 		$this->assertNotNull($response->pg_sig);
 		$this->assertNotNull($response->pg_description);
 		$this->assertNotNull($response->pg_salt);
@@ -46,9 +43,5 @@ class CallbackTest extends \PHPUnit_Framework_TestCase {
 		$this->assertTrue($this->fixture->canReject(array('pg_can_reject' => 1)));
 		$this->assertFalse($this->fixture->canReject(array('pg_can_reject' => 0)));
 		$this->assertFalse($this->fixture->canReject(array()));
-	}
-	
-	public function testValidateSig(){
-		$this->assertTrue($this->fixture->validateSig(array('pg_sig' => 'hjbhjbhjjhbd')));
 	}
 }
