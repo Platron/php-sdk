@@ -3,6 +3,7 @@
 namespace platron_sdk\tests;
 
 use platron_sdk\request\commands\DoCapture;
+use platron_sdk\Exception;
 
 class DoCaptureTest extends \PHPUnit_Framework_TestCase {
 	public function testExecute(){
@@ -34,5 +35,24 @@ class DoCaptureTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals('1', $command->execute($client)->pg_tripleg_1_stopover);
 		$this->assertEquals('B', $command->execute($client)->pg_tripleg_1_fare_basis_code);
 		$this->assertEquals('666', $command->execute($client)->pg_tripleg_1_flight_number);
+	}
+	
+	public function testExecuteLongRecordException(){
+		$longRecord = new \platron_sdk\request\data_objects\LongRecord('alexey lashnev', 'FFF666', '1');
+		$tripleg1 = new \platron_sdk\request\data_objects\LongRecordTripleg(1, '2016-01-01', 'F', 'B', 'SVE', 'SVO', '1', 'B', '666');
+		$tripleg2 = new \platron_sdk\request\data_objects\LongRecordTripleg(2, '2016-01-01', 'F', 'B', 'SVE', 'SVO', '1', 'B', '666');
+		$tripleg3 = new \platron_sdk\request\data_objects\LongRecordTripleg(3, '2016-01-01', 'F', 'B', 'SVE', 'SVO', '1', 'B', '666');
+		$tripleg4 = new \platron_sdk\request\data_objects\LongRecordTripleg(4, '2016-01-01', 'F', 'B', 'SVE', 'SVO', '1', 'B', '666');
+		$tripleg5 = new \platron_sdk\request\data_objects\LongRecordTripleg(5, '2016-01-01', 'F', 'B', 'SVE', 'SVO', '1', 'B', '666');
+		
+		$longRecord->addTripLeg($tripleg1)->addTripLeg($tripleg2)->addTripLeg($tripleg3)->addTripLeg($tripleg4);
+		
+		try {
+			$longRecord->addTripLeg($tripleg5);
+		} catch (Exception $ex) {
+			return true;
+		}
+		
+		return false;
 	}
 }
