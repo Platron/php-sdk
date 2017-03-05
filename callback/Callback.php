@@ -28,11 +28,11 @@ class Callback {
 	
 	/**
 	 * @param string $urlScriptName Название скрипта, из url, на который Platron делает запрос. Например, www.site.ru/request - будет request
-	 * @param SigHelper $sigHelper
+	 * @param string $secretKey
 	 */
-	public function __construct($urlScriptName, SigHelper $sigHelper){
+	public function __construct($urlScriptName, $secretKey){
 		$this->urlScriptName = $urlScriptName;
-		$this->sigHelper = $sigHelper;
+		$this->sigHelper = new SigHelper($secretKey);
 	}
 	
 	/**

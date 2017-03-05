@@ -23,9 +23,9 @@ class Client implements iClient {
 	 * @inheritdoc
 	 * @throws Exception
 	 */
-	public function __construct($merchant, SigHelper $sigHelper){
+	public function __construct($merchant, $secretKey){
 		$this->merchant = $merchant;
-		$this->sigHelper = $sigHelper;
+		$this->sigHelper = new SigHelper($secretKey);
 	}
 	
 	/**
