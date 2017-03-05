@@ -45,8 +45,7 @@ class Client implements iClient {
 		curl_setopt($curl, CURLOPT_POST, 1);
 		curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($parameters));
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-		$response = new SimpleXMLElement(curl_exec($curl));
-		
+		$response = curl_exec($curl);
 		
 		if(curl_errno($curl)){
 			throw new Exception(curl_error($curl), curl_errno($curl));
@@ -58,15 +57,24 @@ class Client implements iClient {
 			throw new Exception($this->errorDescription, $this->errorCode);
 		}
 		
-		return $response;
+		return new SimpleXMLElement($response);
 	}
 	
 	/**
 	 * Проверить ответ на наличие ошибок
-	 * @param SimpleXMLElement $xml
+	 * @param string $response
 	 * @return boolean
 	 */
-	protected function hasError(SimpleXMLElement $xml) {
+	protected function hasError($response) {
+		try {
+			$xml = new SimpleXMLElement($response);
+		}
+		catch (\Exception $e){
+			$this->errorCode = $e->getCode();
+			$this->errorDescription = $e->getMessage();
+			return true;
+		}
+		
 		if (!empty($xml->pg_error_code)) {
 			$this->errorCode = (string) $xml->pg_error_code;
 			$this->errorDescription = (string) $xml->pg_error_description;

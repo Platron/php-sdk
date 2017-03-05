@@ -2,6 +2,4 @@
 
 namespace platron_sdk;
 
-class Exception extends \Exception {
-
-}
+class Exception extends \Exception {}
