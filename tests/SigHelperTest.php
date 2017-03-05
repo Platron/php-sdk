@@ -44,7 +44,7 @@ class SigHelperTest extends \PHPUnit_Framework_TestCase{
 	public function providerCheck(){
 		return array(
 			array ('27a5edfcb35e2fa44c9adef6994af3f0', 'payment.php', array('test' => 'test1', 'test2' => 'test3')),
-			array ('329102fce0b6b85fbd319abd69550447', 'payment.php', array(array('foo' => 1, 'foo' => 2))),
+			array ('329102fce0b6b85fbd319abd69550447', 'payment.php', array('foo' => array(1, 2))),
 		);
 	}
 	
