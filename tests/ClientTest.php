@@ -16,15 +16,18 @@ class ClientTest extends \PHPUnit_Framework_TestCase {
 	
 	/**
 	 * @dataProvider provider
-	 * @expectedException Exception
 	 * @param string $url
 	 * @param array $parameters
 	 */
 	public function testRequest($url, $parameters){
-		$exception = new Exception();
-		$this->expectException($exception);
-		
+		try {		
 		$this->fixture->request($url, $parameters);
+		}
+		catch (Exception $e){
+			return true;
+		}
+		
+		return false;
 	}
 	
 	public function provider(){

@@ -140,12 +140,26 @@ class SigHelper {
 	 * Verifies the signature
 	 *
 	 * @param string $signature
-	 * @param array $params  associative array of parameters for the signature
+	 * @param string $scriptName
+	 * @param array $params Associative array of parameters for the signature
 	 * @return bool
 	 */
 	public function check ( $signature, $scriptName, $params )
 	{
 		return (string)$signature === $this->make($scriptName, $params );
+	}
+	
+	/**
+	 * Verifies the signature in xml
+	 *
+	 * @param string $signature
+	 * @param string $scriptName
+	 * @param string $xml
+	 * @return bool
+	 */
+	public function checkXml ( $signature, $scriptName, $xml )
+	{
+		return (string)$signature === $this->makeXml($scriptName, $xml);
 	}
 
 	/**
@@ -155,7 +169,7 @@ class SigHelper {
 	 * @param string|SimpleXMLElement $xml
 	 * @return string
 	 */
-	public function makeXML ( $scriptName, $xml )
+	public function makeXml ( $scriptName, $xml )
 	{
 		$flatParams = $this->makeFlatParamsXML($xml);
 		return $this->make($scriptName, $flatParams, $this->secretKey);

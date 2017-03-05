@@ -3,6 +3,6 @@
     "description": "Platron payment SDK",
     "require": {
         "php": ">=5.3.0",
-        "phpunit/phpunit": "5.3.*"
+        "phpunit/phpunit": "4.8.35"
     }
 }

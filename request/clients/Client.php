@@ -19,6 +19,9 @@ class Client implements iClient {
 	/** @var SigHelper Помощник создания подписи */
 	protected $sigHelper;
 	
+	/** @var string */
+	protected $secretKey;
+	
 	/**
 	 * @inheritdoc
 	 * @throws Exception
@@ -26,6 +29,7 @@ class Client implements iClient {
 	public function __construct($merchant, $secretKey){
 		$this->merchant = $merchant;
 		$this->sigHelper = new SigHelper($secretKey);
+		$this->secretKey = $secretKey;
 	}
 	
 	/**
@@ -53,7 +57,7 @@ class Client implements iClient {
 		
 		curl_close($curl);
 		
-		if($this->hasError($response)){
+		if($this->hasError($response, $url )){
 			throw new Exception($this->errorDescription, $this->errorCode);
 		}
 		
@@ -63,15 +67,23 @@ class Client implements iClient {
 	/**
 	 * Проверить ответ на наличие ошибок
 	 * @param string $response
+	 * @param string $url
+	 * @param type $parameters Description
 	 * @return boolean
 	 */
-	protected function hasError($response) {
+	protected function hasError($response, $url) {
 		try {
 			$xml = new SimpleXMLElement($response);
 		}
 		catch (\Exception $e){
 			$this->errorCode = $e->getCode();
 			$this->errorDescription = $e->getMessage();
+			return true;
+		}
+		
+		$sigHelper = new SigHelper($this->secretKey);
+		if(empty($xml->pg_sig) || !$sigHelper->checkXml($xml->pg_sig, $sigHelper->getScriptNameFromUrl($url), $xml)){
+			$this->errorDescription = 'Not valid sig in response';
 			return true;
 		}
 		
