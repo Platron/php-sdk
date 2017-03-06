@@ -404,6 +404,9 @@ class InitPayment extends BaseCommand {
 	 */
 	public function addPsAdditionalParameters($parameters) {
 		foreach ($parameters as $name => $value) {
+			if(substr($name, 0, 3) !== 'pg_'){
+				throw new Exception('Только параметры с pg_');
+			}
 			$this->$name = $value;
 		}
 		return $this;
