@@ -1,10 +1,10 @@
 <?php
 
-namespace platron_sdk\samples;
+namespace Platron\PhpSdk\samples;
 
-use platron_sdk\Exception;
-use platron_sdk\request\clients\Client;
-use platron_sdk\request\commands\InitPayment;
+use Platron\PhpSdk\Exception;
+use Platron\PhpSdk\request\clients\Client;
+use Platron\PhpSdk\request\commands\InitPayment;
 
 class CreateTransaction {
 		

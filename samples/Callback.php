@@ -1,6 +1,6 @@
 <?php
 
-namespace platron_sdk\samples;
+namespace Platron\PhpSdk\samples;
 
 use Exception;
 use platron_sdk\callback\Callback;

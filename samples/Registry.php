@@ -1,11 +1,11 @@
 <?php
 
-namespace platron_sdk\samples;
+namespace Platron\PhpSdk\samples;
 
 use DateTime;
-use platron_sdk\request\commands\GetRegistry;
-use platron_sdk\Exception;
-use platron_sdk\request\clients\Client;
+use Platron\PhpSdk\request\commands\GetRegistry;
+use Platron\PhpSdk\Exception;
+use Platron\PhpSdk\request\clients\Client;
 
 class Registry {
 
