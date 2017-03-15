@@ -1,6 +1,6 @@
 <?php
 
-namespace platron_sdk\request\data_objects;
+namespace Platron\PhpSdk\request\data_objects;
 
 class AviaGds extends BaseData {
 	/** @var string[] Список брендов карт, принимаемых к оплате */

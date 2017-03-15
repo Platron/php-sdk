@@ -1,6 +1,6 @@
 <?php
 
-namespace platron_sdk\request\commands;
+namespace Platron\PhpSdk\request\commands;
 
 /**
  * Команда для создания заявки на возврат. См. поддерживающие ПС в справочнике в документации

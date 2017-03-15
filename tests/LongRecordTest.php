@@ -1,9 +1,9 @@
 <?php
 
-namespace platron_sdk\tests;
+namespace Platron\PhpSdk\tests;
 
-use platron_sdk\request\data_objects\LongRecord;
-use platron_sdk\Exception;
+use Platron\PhpSdk\request\data_objects\LongRecord;
+use Platron\PhpSdk\Exception;
 
 class LongRecordTest extends \PHPUnit_Framework_TestCase {
 	public function testGetParameters(){
@@ -11,7 +11,7 @@ class LongRecordTest extends \PHPUnit_Framework_TestCase {
 		$dataObject->setAgencyCode('F');
 		$dataObject->setTicketSystem('GAT');
 		
-		$stubTripleg = $this->getMockBuilder('platron_sdk\request\data_objects\LongRecordTripleg')->disableOriginalConstructor()->setMethods(array('getParameters'))->getMock();
+		$stubTripleg = $this->getMockBuilder('Platron\PhpSdk\request\data_objects\LongRecordTripleg')->disableOriginalConstructor()->setMethods(array('getParameters'))->getMock();
 		$stubTripleg->expects($this->any())->method('getParameters')->willReturn(array('tripleg_param' => 'test'));
 
 		$dataObject->addTripLeg($stubTripleg);
@@ -26,7 +26,7 @@ class LongRecordTest extends \PHPUnit_Framework_TestCase {
 	}
 	
 	public function testMore4TriplegExceptions(){
-		$stubTripleg = $this->getMockBuilder('platron_sdk\request\data_objects\LongRecordTripleg')->disableOriginalConstructor()->getMock();
+		$stubTripleg = $this->getMockBuilder('Platron\PhpSdk\request\data_objects\LongRecordTripleg')->disableOriginalConstructor()->getMock();
 		
 		$dataObject = new LongRecord('alexey lashnev', 'FFF666', '1');
 		$dataObject->addTripLeg($stubTripleg)->addTripLeg($stubTripleg)->addTripLeg($stubTripleg)->addTripLeg($stubTripleg);

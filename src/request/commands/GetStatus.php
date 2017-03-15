@@ -1,6 +1,6 @@
 <?php
 
-namespace platron_sdk\request\commands;
+namespace Platron\PhpSdk\request\commands;
 
 /**
  * Класс для получения статуса по транзакции

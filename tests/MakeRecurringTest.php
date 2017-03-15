@@ -1,9 +1,9 @@
 <?php
 
-namespace platron_sdk\tests;
+namespace Platron\PhpSdk\tests;
 
-use platron_sdk\request\commands\MakeRecurring;
-use platron_sdk\Exception;
+use Platron\PhpSdk\request\commands\MakeRecurring;
+use Platron\PhpSdk\Exception;
 
 class MakeRecurringTest extends \PHPUnit_Framework_TestCase {
 	public function testExecute(){

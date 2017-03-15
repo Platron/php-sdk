@@ -1,8 +1,8 @@
 <?php
 
-namespace platron_sdk\tests;
+namespace Platron\PhpSdk\tests;
 
-use platron_sdk\request\commands\PsList;
+use Platron\PhpSdk\request\commands\PsList;
 
 class PsListTest extends \PHPUnit_Framework_TestCase {
 	public function testExecute(){

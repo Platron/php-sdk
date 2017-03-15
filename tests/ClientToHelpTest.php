@@ -1,8 +1,8 @@
 <?php
 
-namespace platron_sdk\tests;
+namespace Platron\PhpSdk\tests;
 
-use platron_sdk\request\clients\iClient;
+use Platron\PhpSdk\request\clients\iClient;
 use stdClass;
 
 class ClientToHelpTest implements iClient{

@@ -1,6 +1,6 @@
 <?php
 
-namespace platron_sdk\request\commands;
+namespace Platron\PhpSdk\request\commands;
 
 /**
  * Команда для отмены транзакции, которая еще не была оплачена

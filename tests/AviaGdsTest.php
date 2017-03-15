@@ -1,8 +1,8 @@
 <?php
 
-namespace platron_sdk\tests;
+namespace Platron\PhpSdk\tests;
 
-use platron_sdk\request\data_objects\AviaGds;
+use Platron\PhpSdk\request\data_objects\AviaGds;
 
 class AviaGdsTest extends \PHPUnit_Framework_TestCase {
 	public function testGetParameters(){

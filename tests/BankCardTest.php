@@ -1,8 +1,8 @@
 <?php
 
-namespace platron_sdk\tests;
+namespace Platron\PhpSdk\tests;
 
-use platron_sdk\request\data_objects\BankCard;
+use Platron\PhpSdk\request\data_objects\BankCard;
 
 class BankCardTest extends \PHPUnit_Framework_TestCase {
 	public function testGetParameters(){

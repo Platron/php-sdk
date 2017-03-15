@@ -1,8 +1,8 @@
 <?php
 
-namespace platron_sdk\tests;
+namespace Platron\PhpSdk\tests;
 
-use platron_sdk\request\commands\CreateRefundRequest;
+use Platron\PhpSdk\request\commands\CreateRefundRequest;
 
 class CreateRefundRequestTest extends \PHPUnit_Framework_TestCase {
 	public function testExecute(){

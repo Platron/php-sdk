@@ -1,8 +1,8 @@
 <?php
 
-namespace platron_sdk\tests;
+namespace Platron\PhpSdk\tests;
 
-use platron_sdk\request\commands\GetStatus;
+use Platron\PhpSdk\request\commands\GetStatus;
 
 class GetStatusTest extends \PHPUnit_Framework_TestCase {
 	public function testExecute(){

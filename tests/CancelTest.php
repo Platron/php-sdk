@@ -1,8 +1,8 @@
 <?php
 
-namespace platron_sdk\tests;
+namespace Platron\PhpSdk\tests;
 
-use platron_sdk\request\commands\Cancel;
+use Platron\PhpSdk\request\commands\Cancel;
 
 class CancelTest extends \PHPUnit_Framework_TestCase {
 

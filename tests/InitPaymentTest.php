@@ -1,19 +1,19 @@
 <?php
 
-namespace platron_sdk\tests;
+namespace Platron\PhpSdk\tests;
 
-use platron_sdk\request\commands\InitPayment;
-use platron_sdk\Exception;
+use Platron\PhpSdk\request\commands\InitPayment;
+use Platron\PhpSdk\Exception;
 
 class InitPaymentTest extends \PHPUnit_Framework_TestCase {
 	public function testGetParameters(){
 		$command = new InitPayment('10.00', 'test');
 		$client = new ClientToHelpTest('82', 'sdfavsdfvsdfvsfd');
 		
-		$bankCardStub = $this->getMockBuilder('platron_sdk\request\data_objects\BankCard')->disableOriginalConstructor()->setMethods(array())->getMock();
+		$bankCardStub = $this->getMockBuilder('Platron\PhpSdk\request\data_objects\BankCard')->disableOriginalConstructor()->setMethods(array())->getMock();
 		$bankCardStub->expects($this->any())->method('getParameters')->willReturn(array('bank_card_parameter' => 'test'));
 		
-		$aviaGdsStub = $this->getMockBuilder('platron_sdk\request\data_objects\AviaGds')->disableOriginalConstructor()->setMethods(array())->getMock();
+		$aviaGdsStub = $this->getMockBuilder('Platron\PhpSdk\request\data_objects\AviaGds')->disableOriginalConstructor()->setMethods(array())->getMock();
 		$aviaGdsStub->expects($this->any())->method('getParameters')->willReturn(array('avia_gds_parameter' => 'test'));
 		
 		$command->addBankCard($bankCardStub)

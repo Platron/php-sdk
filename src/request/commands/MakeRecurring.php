@@ -1,8 +1,8 @@
 <?php
 
-namespace platron_sdk\request\commands;
+namespace Platron\PhpSdk\request\commands;
 
-use platron_sdk\Exception;
+use Platron\PhpSdk\Exception;
 
 /**
  * Команда для создании транзакции по рекуррентному платежу. Рекуррентные платежи нужно согласовать с менеджером

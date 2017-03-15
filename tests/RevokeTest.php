@@ -1,8 +1,8 @@
 <?php
 
-namespace platron_sdk\tests;
+namespace Platron\PhpSdk\tests;
 
-use platron_sdk\request\commands\Revoke;
+use Platron\PhpSdk\request\commands\Revoke;
 
 class RevokeTest extends \PHPUnit_Framework_TestCase {
 	public function testExecute(){

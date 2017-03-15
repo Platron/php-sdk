@@ -1,8 +1,8 @@
 <?php
 
-namespace platron_sdk\tests;
+namespace Platron\PhpSdk\tests;
 
-use platron_sdk\request\commands\GetMoneybackStatus;
+use Platron\PhpSdk\request\commands\GetMoneybackStatus;
 
 class GetMoneybackStatusTest extends \PHPUnit_Framework_TestCase {
 	public function testExecute(){

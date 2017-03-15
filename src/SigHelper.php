@@ -1,6 +1,6 @@
 <?php
 
-namespace platron_sdk;
+namespace Platron\PhpSdk;
 
 use SimpleXMLElement;
 

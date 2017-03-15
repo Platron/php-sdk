@@ -1,13 +1,13 @@
 <?php
 
-namespace platron_sdk\tests;
+namespace Platron\PhpSdk\tests;
 
-use platron_sdk\request\commands\DoCapture;
+use Platron\PhpSdk\request\commands\DoCapture;
 
 class DoCaptureTest extends \PHPUnit_Framework_TestCase {
 	public function testExecute(){
 		
-		$stubLongRecord = $this->getMockBuilder('platron_sdk\request\data_objects\LongRecord')->disableOriginalConstructor()->setMethods(array('getParameters'))->getMock();
+		$stubLongRecord = $this->getMockBuilder('Platron\PhpSdk\request\data_objects\LongRecord')->disableOriginalConstructor()->setMethods(array('getParameters'))->getMock();
 		$stubLongRecord->expects($this->any())->method('getParameters')->willReturn(array('long_record_param' => 'test'));
 		
 		$client = new ClientToHelpTest('82', 'sdfavsdfvsdfvsfd');

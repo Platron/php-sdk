@@ -1,6 +1,6 @@
 <?php
 
-namespace platron_sdk\request\clients;
+namespace Platron\PhpSdk\request\clients;
 
 interface iClient {
 

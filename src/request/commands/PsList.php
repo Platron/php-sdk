@@ -1,6 +1,6 @@
 <?php
 
-namespace platron_sdk\request\commands;
+namespace Platron\PhpSdk\request\commands;
 
 /**
  * Команда для получения списка доступных платежных систем и расчета итоговой стоимости

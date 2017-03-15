@@ -1,9 +1,9 @@
 <?php
 
-namespace platron_sdk\tests;
+namespace Platron\PhpSdk\tests;
 
-use platron_sdk\request\clients\Client;
-use platron_sdk\Exception;
+use Platron\PhpSdk\request\clients\Client;
+use Platron\PhpSdk\Exception;
 
 class ClientTest extends \PHPUnit_Framework_TestCase {
 	

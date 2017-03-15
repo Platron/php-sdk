@@ -1,5 +1,5 @@
 <?php
 
-namespace platron_sdk;
+namespace Platron\PhpSdk;
 
 class Exception extends \Exception {}

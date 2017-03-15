@@ -1,8 +1,8 @@
 <?php
 
-namespace platron_sdk\request\commands;
+namespace Platron\PhpSdk\request\commands;
 
-use platron_sdk\request\data_objects\LongRecord;
+use Platron\PhpSdk\request\data_objects\LongRecord;
 
 /**
  * Команда для проведения клиринга по транзакции. Для возможности работы по двухстадийной схеме нужно связаться с менеджером

@@ -1,8 +1,8 @@
 <?php
 
-namespace platron_sdk\request\commands;
+namespace Platron\PhpSdk\request\commands;
 
-use platron_sdk\request\clients\iClient;
+use Platron\PhpSdk\request\clients\iClient;
 use SimpleXMLElement;
 
 abstract class BaseCommand {

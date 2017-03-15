@@ -1,8 +1,8 @@
 <?php
 
-namespace platron_sdk\tests;
+namespace Platron\PhpSdk\tests;
 
-use platron_sdk\callback\Callback;
+use Platron\PhpSdk\callback\Callback;
 
 class CallbackTest extends \PHPUnit_Framework_TestCase {
 	

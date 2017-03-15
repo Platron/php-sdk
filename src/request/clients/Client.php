@@ -1,9 +1,9 @@
 <?php
 
-namespace platron_sdk\request\clients;
+namespace Platron\PhpSdk\request\clients;
 
-use platron_sdk\Exception;
-use platron_sdk\SigHelper;
+use Platron\PhpSdk\Exception;
+use Platron\PhpSdk\SigHelper;
 use SimpleXMLElement;
 
 class Client implements iClient {

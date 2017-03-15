@@ -1,8 +1,8 @@
 <?php
 
-namespace platron_sdk\request\data_objects;
+namespace Platron\PhpSdk\request\data_objects;
 
-use platron_sdk\Exception;
+use Platron\PhpSdk\Exception;
 
 class LongRecord extends BaseData {
 	

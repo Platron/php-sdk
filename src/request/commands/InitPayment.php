@@ -1,10 +1,10 @@
 <?php
 
-namespace platron_sdk\request\commands;
+namespace Platron\PhpSdk\request\commands;
 
-use platron_sdk\request\data_objects\AviaGds;
-use platron_sdk\request\data_objects\BankCard;
-use platron_sdk\Exception;
+use Platron\PhpSdk\request\data_objects\AviaGds;
+use Platron\PhpSdk\request\data_objects\BankCard;
+use Platron\PhpSdk\Exception;
 
 /**
  * Команда для создании транзакции
