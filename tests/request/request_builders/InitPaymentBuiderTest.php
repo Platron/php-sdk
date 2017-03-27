@@ -2,12 +2,12 @@
 
 namespace Platron\PhpSdk\tests;
 
-use Platron\PhpSdk\request\commands\InitPayment;
+use Platron\PhpSdk\request\request_builders\InitPaymentBuilder;
 use Platron\PhpSdk\Exception;
 
-class InitPaymentTest extends \PHPUnit_Framework_TestCase {
+class InitPaymentBuiderTest extends \PHPUnit_Framework_TestCase {
 	public function testGetParameters(){
-		$command = new InitPayment('10.00', 'test');
+		$command = new InitPaymentBuilder('10.00', 'test');
 		$client = new ClientToHelpTest('82', 'sdfavsdfvsdfvsfd');
 		
 		$bankCardStub = $this->getMockBuilder('Platron\PhpSdk\request\data_objects\BankCard')->disableOriginalConstructor()->setMethods(array())->getMock();
@@ -72,7 +72,7 @@ class InitPaymentTest extends \PHPUnit_Framework_TestCase {
 	}
 	
 	public function testExceptionAddMerchantParams(){
-		$command = new InitPayment('10.00', 'test');
+		$command = new InitPaymentBuilder('10.00', 'test');
 		try {
 			$command->addMerchantParams(array('pg_some_param' => 'test'));
 		} catch (Exception $ex) {
@@ -83,7 +83,7 @@ class InitPaymentTest extends \PHPUnit_Framework_TestCase {
 	}
 	
 	public function testExceptionAddPsAdditionalParameters(){
-		$command = new InitPayment('10.00', 'test');
+		$command = new InitPaymentBuilder('10.00', 'test');
 		try {
 			$command->addPaymentSystem(array('some_param' => 'test'));
 		} catch (Exception $ex) {

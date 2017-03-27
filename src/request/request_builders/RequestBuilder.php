@@ -1,11 +1,11 @@
 <?php
 
-namespace Platron\PhpSdk\request\commands;
+namespace Platron\PhpSdk\request\request_builders;
 
 use Platron\PhpSdk\request\clients\iClient;
 use SimpleXMLElement;
 
-abstract class BaseCommand {
+abstract class RequestBuilder {
 
 	const PLATRON_URL = 'https://www.platron.ru/';
 

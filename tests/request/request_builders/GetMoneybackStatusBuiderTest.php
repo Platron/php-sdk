@@ -2,12 +2,12 @@
 
 namespace Platron\PhpSdk\tests;
 
-use Platron\PhpSdk\request\commands\GetMoneybackStatus;
+use Platron\PhpSdk\request\request_builders\GetMoneybackStatusBulder;
 
-class GetMoneybackStatusTest extends \PHPUnit_Framework_TestCase {
+class GetMoneybackStatusBuiderTest extends \PHPUnit_Framework_TestCase {
 	public function testExecute(){
 		$client = new ClientToHelpTest('82', 'sdfsbsngfsgtbbtr');
-		$command = new GetMoneybackStatus('3344');
+		$command = new GetMoneybackStatusBulder('3344');
 		
 		$this->assertEquals('3344', $command->execute($client)->pg_moneyback_id);
 	}

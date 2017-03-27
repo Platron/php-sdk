@@ -2,16 +2,16 @@
 
 namespace Platron\PhpSdk\tests;
 
-use Platron\PhpSdk\request\commands\DoCapture;
+use Platron\PhpSdk\request\request_builders\DoCaptureBuilder;
 
-class DoCaptureTest extends \PHPUnit_Framework_TestCase {
+class DoCaptureBuiderTest extends \PHPUnit_Framework_TestCase {
 	public function testExecute(){
 		
 		$stubLongRecord = $this->getMockBuilder('Platron\PhpSdk\request\data_objects\LongRecord')->disableOriginalConstructor()->setMethods(array('getParameters'))->getMock();
 		$stubLongRecord->expects($this->any())->method('getParameters')->willReturn(array('long_record_param' => 'test'));
 		
 		$client = new ClientToHelpTest('82', 'sdfavsdfvsdfvsfd');
-		$command = new DoCapture('343242');
+		$command = new DoCaptureBuilder('343242');
 		$command->addLongRecord($stubLongRecord);
 		
 		$this->assertEquals('343242', $command->execute($client)->pg_payment_id);

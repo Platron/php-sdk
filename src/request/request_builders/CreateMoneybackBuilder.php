@@ -1,11 +1,11 @@
 <?php
 
-namespace Platron\PhpSdk\request\commands;
+namespace Platron\PhpSdk\request\request_builders;
 
 /**
- * Команда для создания выплаты. Может быть связана с платежной транзакцией
+ * Строитель для создания выплаты. Может быть связана с платежной транзакцией
  */
-class CreateMoneyback extends BaseCommand {
+class CreateMoneybackBuilder extends RequestBuilder {
 
 	/** @var int Id договора */
 	protected $pg_contract_id;

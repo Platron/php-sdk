@@ -1,11 +1,11 @@
 <?php
 
-namespace Platron\PhpSdk\request\commands;
+namespace Platron\PhpSdk\request\request_builders;
 
 /**
- * Команда для получения списка доступных платежных систем и расчета итоговой стоимости
+ * Строитель для получения списка доступных платежных систем и расчета итоговой стоимости
  */
-class PsList extends BaseCommand {
+class PsListBuilder extends RequestBuilder {
 
 	/** @var float Сумма */
 	protected $pg_amount;

@@ -2,12 +2,12 @@
 
 namespace Platron\PhpSdk\tests;
 
-use Platron\PhpSdk\request\commands\PsList;
+use Platron\PhpSdk\request\request_builders\PsListBuilder;
 
-class PsListTest extends \PHPUnit_Framework_TestCase {
+class PsListBuiderTest extends \PHPUnit_Framework_TestCase {
 	public function testExecute(){
 		$client = new ClientToHelpTest('82', 'sfdbjhsfvbshjd');
-		$command = new PsList('10.00');
+		$command = new PsListBuilder('10.00');
 		$command->addCurrency('RUB');
 		$command->addTestingMode();
 		

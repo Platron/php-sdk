@@ -1,11 +1,11 @@
 <?php
 
-namespace Platron\PhpSdk\request\commands;
+namespace Platron\PhpSdk\request\request_builders;
 
 /**
- * Команда для получения статуса выплаты
+ * Строитель для получения статуса выплаты
  */
-class GetMoneybackStatus extends BaseCommand {
+class GetMoneybackStatusBulder extends RequestBuilder {
 
 	/** @var $moneyback */
 	protected $pg_moneyback_id;

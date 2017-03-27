@@ -1,11 +1,11 @@
 <?php
 
-namespace Platron\PhpSdk\request\commands;
+namespace Platron\PhpSdk\request\request_builders;
 
 /**
- * Команда для создания заявки на возврат. См. поддерживающие ПС в справочнике в документации
+ * Строитель для создания заявки на возврат. См. поддерживающие ПС в справочнике в документации
  */
-class CreateRefundRequest extends BaseCommand {
+class CreateRefundRequestBuilder extends RequestBuilder {
 
 	/** @var int Id Платежа */
 	protected $pg_payment_id;

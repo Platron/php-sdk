@@ -1,15 +1,15 @@
 <?php
 
-namespace Platron\PhpSdk\request\commands;
+namespace Platron\PhpSdk\request\request_builders;
 
 use Platron\PhpSdk\request\data_objects\AviaGds;
 use Platron\PhpSdk\request\data_objects\BankCard;
 use Platron\PhpSdk\Exception;
 
 /**
- * Команда для создании транзакции
+ * Строитель для создании транзакции
  */
-class InitPayment extends BaseCommand {
+class InitPaymentBuilder extends RequestBuilder {
 
 	/** @var float Сумма транзакции */
 	protected $pg_amount;

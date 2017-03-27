@@ -2,13 +2,13 @@
 
 namespace Platron\PhpSdk\tests;
 
-use Platron\PhpSdk\request\commands\CreateMoneyback;
+use Platron\PhpSdk\request\request_builders\CreateMoneybackBuilder;
 
-class CreateMoneybackTest extends \PHPUnit_Framework_TestCase {
+class CreateMoneybackBuiderTest extends \PHPUnit_Framework_TestCase {
 
 	public function testExecute() {
 		$client = new ClientToHelpTest('82', 'fdsvsdfvfsdvsfd');
-		$command = new CreateMoneyback('346536', 'YANDEXMONEY_O', '10.00', 'test', array('destination_account' => '3454353453543'));
+		$command = new CreateMoneybackBuilder('346536', 'YANDEXMONEY_O', '10.00', 'test', array('destination_account' => '3454353453543'));
 		$command->bindToTransaction('3453523');
 		
 		$this->assertEquals('346536', $command->execute($client)->pg_contract_id);

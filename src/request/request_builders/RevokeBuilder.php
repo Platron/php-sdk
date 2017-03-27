@@ -1,11 +1,11 @@
 <?php
 
-namespace Platron\PhpSdk\request\commands;
+namespace Platron\PhpSdk\request\request_builders;
 
 /**
- * Команда для полного / частичного возврата оплаченной транзакции
+ * Строитель для полного / частичного возврата оплаченной транзакции
  */
-class Revoke extends BaseCommand {
+class RevokeBuilder extends RequestBuilder {
 
 	/** @var int Id платежа */
 	protected $pg_payment_id;

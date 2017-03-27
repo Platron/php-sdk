@@ -1,11 +1,11 @@
 <?php
 
-namespace Platron\PhpSdk\request\commands;
+namespace Platron\PhpSdk\request\request_builders;
 
 /**
- * Команда для получения реестра платежей
+ * Строитель для получения реестра платежей
  */
-class GetRegistry extends BaseCommand {
+class GetRegistryBuilder extends RequestBuilder {
 
 	/** @var string */
 	protected $pg_date;

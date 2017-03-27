@@ -1,11 +1,11 @@
 <?php
 
-namespace Platron\PhpSdk\request\commands;
+namespace Platron\PhpSdk\request\request_builders;
 
 /**
- * Класс для получения статуса по транзакции
+ * Строитель для получения статуса по транзакции
  */
-class GetStatus extends BaseCommand {
+class GetStatusBuilder extends RequestBuilder {
 
 	/** @var int Id транзакции */
 	protected $pg_payment_id;

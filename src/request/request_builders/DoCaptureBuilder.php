@@ -1,13 +1,13 @@
 <?php
 
-namespace Platron\PhpSdk\request\commands;
+namespace Platron\PhpSdk\request\request_builders;
 
 use Platron\PhpSdk\request\data_objects\LongRecord;
 
 /**
- * Команда для проведения клиринга по транзакции. Для возможности работы по двухстадийной схеме нужно связаться с менеджером
+ * Строитель для проведения клиринга по транзакции. Для возможности работы по двухстадийной схеме нужно связаться с менеджером
  */
-class DoCapture extends BaseCommand {
+class DoCaptureBuilder extends RequestBuilder {
 
 	/** @var int Id платежа */
 	protected $pg_payment_id;

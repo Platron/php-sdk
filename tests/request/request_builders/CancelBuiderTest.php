@@ -2,13 +2,13 @@
 
 namespace Platron\PhpSdk\tests;
 
-use Platron\PhpSdk\request\commands\Cancel;
+use Platron\PhpSdk\request\request_builders\CancelBuilder;
 
-class CancelTest extends \PHPUnit_Framework_TestCase {
+class CancelBuilderTest extends \PHPUnit_Framework_TestCase {
 
 	public function testExecute(){
 		$client = new ClientToHelpTest('82', 'hjbhjbjhbhj');
-		$command = new Cancel('363654');
+		$command = new CancelBuilder('363654');
 		$this->assertEquals('363654', $command->execute($client)->pg_payment_id);
 	}
 }

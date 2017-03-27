@@ -1,13 +1,13 @@
 <?php
 
-namespace Platron\PhpSdk\request\commands;
+namespace Platron\PhpSdk\request\request_builders;
 
 use Platron\PhpSdk\Exception;
 
 /**
- * Команда для создании транзакции по рекуррентному платежу. Рекуррентные платежи нужно согласовать с менеджером
+ * Строитель для создании транзакции по рекуррентному платежу. Рекуррентные платежи нужно согласовать с менеджером
  */
-class MakeRecurring extends BaseCommand {
+class MakeRecurringBuilder extends RequestBuilder {
 
 	/** @var int Id рекурретного профиля */
 	protected $pg_recurring_profile;

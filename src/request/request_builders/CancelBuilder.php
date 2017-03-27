@@ -1,11 +1,11 @@
 <?php
 
-namespace Platron\PhpSdk\request\commands;
+namespace Platron\PhpSdk\request\request_builders;
 
 /**
- * Команда для отмены транзакции, которая еще не была оплачена
+ * Строитель для отмены транзакции, которая еще не была оплачена
  */
-class Cancel extends BaseCommand {
+class CancelBuilder extends RequestBuilder {
 
 	/** @var int $payment */
 	protected $pg_payment_id;

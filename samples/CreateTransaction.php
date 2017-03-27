@@ -4,14 +4,14 @@ namespace Platron\PhpSdk\samples;
 
 use Platron\PhpSdk\Exception;
 use Platron\PhpSdk\request\clients\Client;
-use Platron\PhpSdk\request\commands\InitPayment;
+use Platron\PhpSdk\request\request_builders\InitPaymentBuilder;
 
 class CreateTransaction {
 		
 	public function actionIndex($merchant, $secretKey){
 		$client = new Client($merchant, $secretKey);
 		try {
-			$command = new InitPayment('10.00', 'Test transaction');
+			$command = new InitPaymentBuilder('10.00', 'Test transaction');
 			$response = $command
 				->addTestingMode()
 				->addUserEmail('test@test.ru')

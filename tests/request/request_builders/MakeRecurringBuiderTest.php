@@ -2,13 +2,13 @@
 
 namespace Platron\PhpSdk\tests;
 
-use Platron\PhpSdk\request\commands\MakeRecurring;
+use Platron\PhpSdk\request\request_builders\MakeRecurringBuilder;
 use Platron\PhpSdk\Exception;
 
-class MakeRecurringTest extends \PHPUnit_Framework_TestCase {
+class MakeRecurringBuiderTest extends \PHPUnit_Framework_TestCase {
 	public function testExecute(){
 		$client = new ClientToHelpTest('82', 'fadvhjvfblshdbvsldbv');
-		$command = new MakeRecurring('4321', 'test');
+		$command = new MakeRecurringBuilder('4321', 'test');
 		$command->addAmount('10.00')
 			->addEncoding('UTF8')
 			->addMerchantParams(array('merchant_param' => 'test'))
@@ -30,7 +30,7 @@ class MakeRecurringTest extends \PHPUnit_Framework_TestCase {
 	}
 	
 	public function testExecuteMerchantParamsException(){
-		$command = new MakeRecurring('4321', 'test');
+		$command = new MakeRecurringBuilder('4321', 'test');
 		try {
 			$command->addMerchantParams(array('pg_merchant_param' => 'test'));
 		} catch (Exception $ex) {

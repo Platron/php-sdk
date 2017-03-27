@@ -1,11 +1,11 @@
 <?php
 
-namespace Platron\PhpSdk\request\commands;
+namespace Platron\PhpSdk\request\request_builders;
 
 /**
- * Команда для получения информации по бину. Для работы с этим запросом необходимо согласование с менеджером
+ * Строитель для получения информации по бину. Для работы с этим запросом необходимо согласование с менеджером
  */
-class GetBinInfo extends BaseCommand {
+class GetBinInfoBuilder extends RequestBuilder {
 
 	/** @var int Бин карты */
 	protected $pg_bin;
