@@ -2,6 +2,8 @@
 
 namespace Platron\PhpSdk\request\clients;
 
+use Platron\PhpSdk\request\request_builders\RequestBuilder;
+
 interface iClient {
 
 	/**
