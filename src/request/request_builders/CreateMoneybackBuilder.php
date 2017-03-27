@@ -25,7 +25,7 @@ class CreateMoneybackBuilder extends RequestBuilder {
 	/**
 	 * @inheritdoc
 	 */
-	protected function getRequestUrl() {
+	public function getRequestUrl() {
 		return self::PLATRON_URL . 'create_moneyback.php';
 	}
 

@@ -19,7 +19,7 @@ class CreateRefundRequestBuilder extends RequestBuilder {
 	/**
 	 * @inheritdoc
 	 */
-	protected function getRequestUrl() {
+	public function getRequestUrl() {
 		return self::PLATRON_URL . 'create_refund_request.php';
 	}
 

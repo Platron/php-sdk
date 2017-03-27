@@ -6,9 +6,9 @@ use Platron\PhpSdk\request\request_builders\GetMoneybackStatusBulder;
 
 class GetMoneybackStatusBuiderTest extends \PHPUnit_Framework_TestCase {
 	public function testExecute(){
-		$client = new ClientToHelpTest('82', 'sdfsbsngfsgtbbtr');
-		$command = new GetMoneybackStatusBulder('3344');
+		$requestBuilder = new GetMoneybackStatusBulder('3344');
+		$requestBuilderParameters = $requestBuilder->getParameters();
 		
-		$this->assertEquals('3344', $command->execute($client)->pg_moneyback_id);
+		$this->assertEquals('3344', $requestBuilderParameters['pg_moneyback_id']);
 	}
 }

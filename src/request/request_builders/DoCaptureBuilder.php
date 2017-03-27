@@ -18,14 +18,14 @@ class DoCaptureBuilder extends RequestBuilder {
 	/**
 	 * @inheritdoc
 	 */
-	protected function getRequestUrl() {
+	public function getRequestUrl() {
 		return self::PLATRON_URL . 'do_capture.php';
 	}
 
 	/**
 	 * @inheritdoc
 	 */
-	protected function getParameters() {
+	public function getParameters() {
 		$parameters = array();
 		$parameters['pg_payment_id'] = $this->pg_payment_id;
 

@@ -13,7 +13,7 @@ class CancelBuilder extends RequestBuilder {
 	/**
 	 * @inheritdoc
 	 */
-	protected function getRequestUrl() {
+	public function getRequestUrl() {
 		return self::PLATRON_URL . 'cancel.php';
 	}
 

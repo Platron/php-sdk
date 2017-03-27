@@ -5,15 +5,15 @@ namespace Platron\PhpSdk\samples;
 use DateTime;
 use Platron\PhpSdk\request\request_builders\GetRegistryBuilder;
 use Platron\PhpSdk\Exception;
-use Platron\PhpSdk\request\clients\Client;
+use Platron\PhpSdk\request\clients\PostClient;
 
 class Registry {
 
 	public function actionIndex($merchant, $secretKey) {
-		$client = new Client($merchant, $secretKey);
+		$client = new PostClient($merchant, $secretKey);
 		try {
-			$command = new GetRegistryBuilder(new DateTime('now - 1 day'));
-			$response = $command->execute($client);
+			$requestBuilder = new GetRegistryBuilder(new DateTime('now - 1 day'));
+			$response = $client->request($requestBuilder);
 		} catch (Exception $e) {
 			var_dump($e);
 			die();

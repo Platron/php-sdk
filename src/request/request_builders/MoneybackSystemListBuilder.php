@@ -10,7 +10,7 @@ class MoneybackSystemListBuilder extends RequestBuilder {
 	/**
 	 * @inheritdoc
 	 */
-	protected function getRequestUrl() {
+	public function getRequestUrl() {
 		return self::PLATRON_URL . 'moneyback_system_list.php';
 	}
 

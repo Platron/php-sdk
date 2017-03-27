@@ -95,14 +95,14 @@ class InitPaymentBuilder extends RequestBuilder {
 	/**
 	 * @inheritdoc
 	 */
-	protected function getRequestUrl() {
+	public function getRequestUrl() {
 		return self::PLATRON_URL . 'init_payment.php';
 	}
 
 	/**
 	 * @inheritdoc
 	 */
-	protected function getParameters() {
+	public function getParameters() {
 		$filledvars = array();
 		foreach (get_object_vars($this) as $name => $value) {
 			if ($value && !in_array($name, array('bankCard', 'aviaGds'))) {

@@ -3,17 +3,17 @@
 namespace Platron\PhpSdk\samples;
 
 use Platron\PhpSdk\Exception;
-use Platron\PhpSdk\request\clients\Client;
+use Platron\PhpSdk\request\clients\PostClient;
 use Platron\PhpSdk\request\request_builders\DoCaptureBuilder;
 
 class Capture {
 
 	public function actionIndex($transaction, $secretKey, $merchant) {
-		$client = new Client($merchant, $secretKey);
+		$client = new PostClient($merchant, $secretKey);
 
 		try {
-			$command = new DoCaptureBuilder($transaction);
-			$response = $command->execute($client);
+			$requestBuilder = new DoCaptureBuilder($transaction);
+			$response = $client->request($requestBuilder);
 		} catch (Exception $e) {
 			var_dump($e);
 			die();

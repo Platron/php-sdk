@@ -5,8 +5,9 @@ namespace Platron\PhpSdk\request\clients;
 use Platron\PhpSdk\Exception;
 use Platron\PhpSdk\SigHelper;
 use SimpleXMLElement;
+use Platron\PhpSdk\request\request_builders\RequestBuilder;
 
-class Client implements iClient {
+class PostClient implements iClient {
 	
 	/** @var Описание ошибки */
 	protected $errorDescription;
@@ -38,7 +39,10 @@ class Client implements iClient {
 	 * @return SimpleXMLElement
 	 * @throws Exception
 	 */
-	public function request($url, $parameters){
+	public function request(RequestBuilder $requestBuilder){
+		$parameters = $requestBuilder->getParameters();
+		$url = $requestBuilder->getRequestUrl();
+		
 		$parameters['pg_merchant_id'] = $this->merchant;
 		$parameters['pg_salt'] = rand(21,43433);
 		

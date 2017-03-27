@@ -36,7 +36,7 @@ class MakeRecurringBuilder extends RequestBuilder {
 	/**
 	 * @inheritdoc
 	 */
-	protected function getRequestUrl() {
+	public function getRequestUrl() {
 		return self::PLATRON_URL . 'make_recurring_payment.php';
 	}
 

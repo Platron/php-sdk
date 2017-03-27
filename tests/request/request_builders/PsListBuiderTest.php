@@ -6,13 +6,13 @@ use Platron\PhpSdk\request\request_builders\PsListBuilder;
 
 class PsListBuiderTest extends \PHPUnit_Framework_TestCase {
 	public function testExecute(){
-		$client = new ClientToHelpTest('82', 'sfdbjhsfvbshjd');
-		$command = new PsListBuilder('10.00');
-		$command->addCurrency('RUB');
-		$command->addTestingMode();
+		$requestBuilder = new PsListBuilder('10.00');
+		$requestBuilder->addCurrency('RUB');
+		$requestBuilder->addTestingMode();
+		$requestBuilderParameters = $requestBuilder->getParameters();
 		
-		$this->assertEquals('10.00', $command->execute($client)->pg_amount);
-		$this->assertEquals('RUB', $command->execute($client)->pg_currency);
-		$this->assertEquals(1, $command->execute($client)->pg_testing_mode);
+		$this->assertEquals('10.00', $requestBuilderParameters['pg_amount']);
+		$this->assertEquals('RUB', $requestBuilderParameters['pg_currency']);
+		$this->assertEquals(1, $requestBuilderParameters['pg_testing_mode']);
 	}
 }

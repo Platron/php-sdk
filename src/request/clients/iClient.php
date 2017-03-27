@@ -11,8 +11,7 @@ interface iClient {
 	public function __construct($merchant, $secretKey);
 
 	/**
-	 * @param string $url
-	 * @param array $parameters
+	 * @param RequestBuilder $requestBuilder
 	 */
-	public function request($url, $parameters);
+	public function request(RequestBuilder $requestBuilder);
 }

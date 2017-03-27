@@ -6,11 +6,11 @@ use Platron\PhpSdk\request\request_builders\CreateRefundRequestBuilder;
 
 class CreateRefundRequestBuiderTest extends \PHPUnit_Framework_TestCase {
 	public function testExecute(){
-		$client = new ClientToHelpTest('82', 'sdfbsffsdbsffsd');
-		$command = new CreateRefundRequestBuilder('34324324', '10.00', 'test');
+		$requestBuilder = new CreateRefundRequestBuilder('34324324', '10.00', 'test');
+		$requestBuilderParameters = $requestBuilder->getParameters();
 		
-		$this->assertEquals('34324324', $command->execute($client)->pg_payment_id);
-		$this->assertEquals('10.00', $command->execute($client)->pg_refund_amount);
-		$this->assertEquals('test', $command->execute($client)->pg_comment);
+		$this->assertEquals('34324324', $requestBuilderParameters['pg_payment_id']);
+		$this->assertEquals('10.00', $requestBuilderParameters['pg_refund_amount']);
+		$this->assertEquals('test', $requestBuilderParameters['pg_comment']);
 	}
 }

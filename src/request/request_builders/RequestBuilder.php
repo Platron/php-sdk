@@ -2,9 +2,6 @@
 
 namespace Platron\PhpSdk\request\request_builders;
 
-use Platron\PhpSdk\request\clients\iClient;
-use SimpleXMLElement;
-
 abstract class RequestBuilder {
 
 	const PLATRON_URL = 'https://www.platron.ru/';
@@ -13,13 +10,13 @@ abstract class RequestBuilder {
 	 * Получить url ждя запроса
 	 * @return string
 	 */
-	abstract protected function getRequestUrl();
+	abstract public function getRequestUrl();
 
 	/**
 	 * Получить параметры, сгенерированные командой
 	 * @return array
 	 */
-	protected function getParameters() {
+	public function getParameters() {
 		$filledvars = array();
 		foreach (get_object_vars($this) as $name => $value) {
 			if ($value) {
@@ -29,14 +26,4 @@ abstract class RequestBuilder {
 
 		return $filledvars;
 	}
-
-	/**
-	 * Выполнить команду
-	 * @param iClient $client
-	 * @return SimpleXMLElement
-	 */
-	public function execute(iClient $client) {
-		return $client->request($this->getRequestUrl(), $this->getParameters());
-	}
-
 }

@@ -2,16 +2,16 @@
 
 namespace Platron\PhpSdk\tests;
 
-use Platron\PhpSdk\request\clients\Client;
+use Platron\PhpSdk\request\clients\PostClient;
 use Platron\PhpSdk\Exception;
 
 class ClientTest extends \PHPUnit_Framework_TestCase {
 	
-	/** @var Client */
+	/** @var PostClient */
 	protected $fixture;
 	
 	public function setUp() {
-		$this->fixture = new Client('82', 'sdfvdfvfsdvfsd');
+		$this->fixture = new PostClient('82', 'sdfvdfvfsdvfsd');
 	}
 	
 	/**
@@ -21,7 +21,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testRequest($url, $parameters){
 		try {		
-		$this->fixture->request($url, $parameters);
+			$this->fixture->request($url, $parameters);
 		}
 		catch (Exception $e){
 			return true;
