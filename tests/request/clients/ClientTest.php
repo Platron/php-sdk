@@ -4,7 +4,6 @@ namespace Platron\PhpSdk\tests;
 
 use Platron\PhpSdk\request\clients\PostClient;
 use Platron\PhpSdk\Exception;
-use Platron\PhpSdk\request\request_builders\RequestBuilder;
 
 class ClientTest extends \PHPUnit_Framework_TestCase {
 	
