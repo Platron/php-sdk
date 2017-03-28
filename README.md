@@ -68,10 +68,12 @@ try {
 ### 4. Обработка запроса от Platron
 
 <pre><code>
+
+$order_available = 1;
 $callback = new platron_sdk\callback\Callback('platron_dispatch.php', 'sdvsfdvsfdvsdv');
 if ($callback->validateSig($request)) {
     try {
-        if ($this->checkOrderAvailiable()) {
+        if ($order_available) {
             echo $callback->responseOk($request);
         } elseif ($callback->canReject($request)) {
             echo $callback->responseRejected($request, 'Заказ недоступен');
@@ -87,7 +89,4 @@ if ($callback->validateSig($request)) {
 }
 </pre></code>
 
-<pre><code>
-$this->checkOrderAvailiable()
-</pre></code>
-- метод, проверящий - доступен ли для оплаты заказ
+$order_available - вместо переменной долже быть метод, проверящий - доступен ли для оплаты заказ
