@@ -1,8 +1,8 @@
 <?php
 
-namespace platron_sdk\tests;
+namespace Platron\PhpSdk\tests;
 
-use platron_sdk\SigHelper;
+use Platron\PhpSdk\SigHelper;
 use SimpleXMLElement;
 
 class SigHelperTest extends \PHPUnit_Framework_TestCase{
