@@ -36,7 +36,7 @@ class SigHelperTest extends \PHPUnit_Framework_TestCase{
 		$xml = new SimpleXMLElement('<?xml version="1.0" encoding="utf-8"?><response/>');
 		$xml->addChild('pg_description', $description);
 		
-		$this->assertTrue($this->fixture->makeXml($scriptName, $xml));
+		$this->assertEquals($this->fixture->makeXml($scriptName, $xml), $sig);
 	}
 	
 	public function providerCheck(){
