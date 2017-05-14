@@ -65,7 +65,7 @@ try {
 }
 </pre></code>
 
-### 4. Обработка запроса от Platron
+### 4. Обработка запроса от Platron (check)
 
 <pre><code>
 
