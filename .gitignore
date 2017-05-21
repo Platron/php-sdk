@@ -9,3 +9,6 @@ composer.phar
 
 # Netbeans project files
 /nbproject/
+
+# Merchant settings for integration tests
+/tests/integration/MerchantSettings.php

@@ -106,19 +106,19 @@ class InitPaymentBuilder extends RequestBuilder {
 		$filledvars = array();
 		foreach (get_object_vars($this) as $name => $value) {
 			if ($value && !in_array($name, array('bankCard', 'aviaGds'))) {
-				$filledvars[$name] = $value;
+				$filledvars[$name] = (string)$value;
 			}
 		}
 
 		if (!empty($this->aviaGds)) {
 			foreach ($this->aviaGds->getParameters() as $name => $value) {
-				$filledvars[$name] = $value;
+				$filledvars[$name] = (string)$value;
 			}
 		}
 
 		if (!empty($this->bankCard)) {
 			foreach ($this->bankCard->getParameters() as $name => $value) {
-				$filledvars[$name] = $value;
+				$filledvars[$name] = (string)$value;
 			}
 		}
 

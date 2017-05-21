@@ -32,7 +32,7 @@ class DoCaptureBuilder extends RequestBuilder {
 		if (!empty($this->longRecord)) {
 			foreach ($this->longRecord->getParameters() as $name => $value) {
 				if ($value) {
-					$parameters[$name] = $value;
+					$parameters[$name] = (string)$value;
 				}
 			}
 		}

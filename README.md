@@ -14,9 +14,14 @@ composer install</pre></code>
 ```
 composer install
 ```
-Запустить тесты можно выполнив команду
+Запустить unit тесты можно выполнив команду из корня проекта
 ```
-vendor/bin/phpunit
+vendor/bin/phpunit tests/unit
+```
+Для того, чтобы запустить интеграционные тесты нужно скопировать файл tests/integration/MerchantSettingsSample.php удалив 
+из названия Sample и вставив настройки магазина. После выполнить команду из корня проекта
+```
+vendor/bin/phpunit tests/integration
 ```
 
 ## Примеры использования

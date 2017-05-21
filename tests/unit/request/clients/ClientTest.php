@@ -1,6 +1,6 @@
 <?php
 
-namespace Platron\PhpSdk\tests;
+namespace Platron\PhpSdk\tests\unit;
 
 use Platron\PhpSdk\request\clients\PostClient;
 use Platron\PhpSdk\Exception;

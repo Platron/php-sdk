@@ -10,7 +10,8 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"Platron\\PhpSdk\\": "src"
+			"Platron\\PhpSdk\\": "src",
+                        "Platron\\PhpSdk\\tests\\": "tests"
 		}
 	}
 }
