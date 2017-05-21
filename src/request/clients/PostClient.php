@@ -48,7 +48,7 @@ class PostClient implements iClient {
 		
 		$fileName = pathinfo($url);
 		$parameters['pg_sig'] = $this->sigHelper->make($fileName['basename'], $parameters);
-
+		
 		$curl = curl_init($url);
 		curl_setopt($curl, CURLOPT_POST, 1);
 		curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($parameters));

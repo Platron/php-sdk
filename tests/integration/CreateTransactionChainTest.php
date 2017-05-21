@@ -15,11 +15,11 @@ class CreateTransactionChainTest extends IntegrationTestBase {
 		$psListResponse = $postClient->request($psListBuilder);
 		$this->assertEquals('ok', $psListResponse->pg_status);
 		
-		$initPaymentBuilder = new InitPaymentBuilder('10.00', 'test sdk');
+		$initPaymentBuilder = new InitPaymentBuilder('10.00', 'test php sdk');
 		$initPaymentResponse = $postClient->request($initPaymentBuilder);	
 		$this->assertEquals('ok', $initPaymentResponse->pg_status);
 		
-		$getStatusBuilder = new GetStatusBuilder($initPaymentResponse->pg_payment_id);
+		$getStatusBuilder = new GetStatusBuilder((string)$initPaymentResponse->pg_payment_id);
 		$getStatusResponse = $postClient->request($getStatusBuilder);
 		$this->assertEquals('ok', $getStatusResponse->pg_status);
 	}
