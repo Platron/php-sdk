@@ -11,7 +11,7 @@ abstract class BaseData {
 	public function getParameters() {
 		$parameters = array();
 		foreach(get_object_vars($this) as $name => $value){
-			if($value){
+			if(!is_null($value)){
 				$parameters[$name] = $value;
 			}
 		}

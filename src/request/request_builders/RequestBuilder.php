@@ -19,7 +19,7 @@ abstract class RequestBuilder {
 	public function getParameters() {
 		$filledvars = array();
 		foreach (get_object_vars($this) as $name => $value) {
-			if ($value) {
+			if (!is_null($value)){
 				$filledvars[$name] = (string)$value;
 			}
 		}

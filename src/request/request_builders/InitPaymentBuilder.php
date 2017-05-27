@@ -11,6 +11,9 @@ use Platron\PhpSdk\Exception;
  */
 class InitPaymentBuilder extends RequestBuilder {
 
+	/** @var string */
+	protected $sdk = 'php';
+	
 	/** @var float Сумма транзакции */
 	protected $pg_amount;
 
