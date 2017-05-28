@@ -39,6 +39,10 @@ class ReceiptBuilder extends RequestBuilder {
 			throw new Exception('Wrong operation type. Use constants');
 		}
 		
+		if(!$paymentId && !$orderId){
+			throw new Exception('payment id or order id must be not null');
+		}
+		
 		$this->pg_operation_type = $operationType;
 		$this->pg_payment_id = $paymentId;
 		$this->pg_order_id = $orderId;
