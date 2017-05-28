@@ -5,7 +5,7 @@ namespace Platron\PhpSdk\request\request_builders;
 use Platron\PhpSdk\Exception;
 use Platron\PhpSdk\request\data_objects\Item;
 
-class CreateReceiptBuilder extends RequestBuilder {
+class ReceiptBuilder extends RequestBuilder {
 	
 	const 
 		TRANSACTION_TYPE = 'transaction',
