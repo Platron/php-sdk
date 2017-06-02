@@ -10,9 +10,9 @@ use Platron\PhpSdk\Exception;
  * Строитель для создании транзакции
  */
 class InitPaymentBuilder extends RequestBuilder {
-
-	/** @var string */
-	protected $sdk = 'php';
+	
+	/** @var string Для статистики использования SDK */
+	protected $sdk = 'phpsdk';
 	
 	/** @var float Сумма транзакции */
 	protected $pg_amount;

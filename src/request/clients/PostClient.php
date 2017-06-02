@@ -3,12 +3,15 @@
 namespace Platron\PhpSdk\request\clients;
 
 use Platron\PhpSdk\Exception;
-use Platron\PhpSdk\SigHelper;
-use SimpleXMLElement;
 use Platron\PhpSdk\request\request_builders\RequestBuilder;
+use Platron\PhpSdk\SigHelper;
+use Psr\Log\LoggerInterface;
+use SimpleXMLElement;
 
 class PostClient implements iClient {
 	
+    const LOG_LEVEL = 0;
+    
 	/** @var Описание ошибки */
 	protected $errorDescription;
 	/** @var Код ошибки */
@@ -23,14 +26,18 @@ class PostClient implements iClient {
 	/** @var string */
 	protected $secretKey;
 	
+    /** @var LoggerInterface */
+    protected $logger;
+    
 	/**
 	 * @inheritdoc
 	 * @throws Exception
 	 */
-	public function __construct($merchant, $secretKey){
+	public function __construct($merchant, $secretKey, LoggerInterface $logger = null){
 		$this->merchant = $merchant;
 		$this->sigHelper = new SigHelper($secretKey);
 		$this->secretKey = $secretKey;
+        $this->logger = $logger;
 	}
 	
 	/**
@@ -55,6 +62,11 @@ class PostClient implements iClient {
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 		$response = curl_exec($curl);
 		
+        if($this->logger){
+            $this->logger->log(self::LOG_LEVEL, 'Request url '.$requestBuilder->getRequestUrl().' with params '.print_r($parameters, true));
+            $this->logger->log(self::LOG_LEVEL, 'Response '.$response);
+        }
+        
 		if(curl_errno($curl)){
 			throw new Exception(curl_error($curl), curl_errno($curl));
 		}

@@ -3,11 +3,7 @@ Platron PHP SDK
 ## Установка
 
 Проект предполагает через установку с использованием composer. 
-
-<pre><code>composer require Platron\php_sdk
-composer install</pre></code>
-
-Если проект устанавливался без composer - есть возможность подключить в свой автолоадер файл **autoload.php** в корне проекта
+<pre><code>composer require platron/phpsdk</pre></code>
 
 ## Тесты
 Для работы тестов необходим PHPUnit, для установки необходимо выполнить команду
