@@ -25,7 +25,9 @@ class CreateReceiptTest extends IntegrationTestBase {
 	}
 	
 	public function testCreateReceipt(){
-		$item = new Item('Тестовый товар', '10.00', 1);
+		$item = new Item('Test product', 10.00, 1);
+        $item->addAmount(10.00);
+        
 		$createReceiptBuilder = new ReceiptBuilder(ReceiptBuilder::TRANSACTION_TYPE, $this->paymentId);
 		$createReceiptBuilder->addItem($item);
 		$createReceiptResponse = $this->postClient->request($createReceiptBuilder);

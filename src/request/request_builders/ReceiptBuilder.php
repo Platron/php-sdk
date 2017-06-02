@@ -8,7 +8,7 @@ use Platron\PhpSdk\request\data_objects\Item;
 class ReceiptBuilder extends RequestBuilder {
 	
 	const 
-		TRANSACTION_TYPE = 'transaction',
+		TRANSACTION_TYPE = 'payment',
 		REFUND_TYPE = 'refund',
 		MONEYBACK_TYPE = 'moneyback';
 	
