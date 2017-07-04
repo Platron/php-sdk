@@ -78,17 +78,21 @@ class SigHelper {
 		$flatParams = array();
 		$i = 0;
 		foreach ( $params as $key => $val ) {
-			
 			$i++;
-			if ( 'pg_sig' === $key )
+			if ( 'pg_sig' === $key)
 				continue;
 				
 			/**
 			 * Имя делаем вида tag001subtag001
 			 * Чтобы можно было потом нормально отсортировать и вложенные узлы не запутались при сортировке
 			 */
-			$name = $parentName . $key . sprintf('%03d', $i);
-
+            if(is_int($key)){
+                $name = substr($parentName, 0, strlen($parentName) - 3) . sprintf('%03d', $i);
+            }
+            else {
+                $name = $parentName . $key . sprintf('%03d', $i);
+            }
+            
 			if (is_array($val) ) {
 				$flatParams = array_merge($flatParams, $this->makeFlatParamsArray($val, $name));
 				continue;
