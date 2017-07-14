@@ -24,7 +24,7 @@ vendor/bin/phpunit tests/integration
 
 ### 1. Создание транзакции
 
-<pre><code>
+```php
 $client = new Platron\PhpSdk\request\clients\PostClient('82', 'sdvsfdvsfdvsdv');
 try {
     $requestBuilder = new Platron\PhpSdk\request\request_builders\InitPaymentBuilder('10.00', 'Test transaction');
@@ -38,11 +38,11 @@ catch (Platron\PhpSdk\Exception\Exception $e){
     var_dump($e);
     die();
 }
-</pre></code>
+```
 
 ### 2. Запрос реестра
 
-<pre><code>
+```php
 $client = new Platron\PhpSdk\request\clients\PostClient('82', 'sdvsfdvsfdvsdv');
 try {
     $requestBuilder = new Platron\PhpSdk\request\request_builders\GetRegistryBuilder(new DateTime('now - 1 day'));
@@ -51,11 +51,11 @@ try {
     var_dump($e);
     die();
 }
-</pre></code>
+```
 
 ### 3. Проведение клиринга 
 
-<pre><code>
+```php
 $client = new Platron\PhpSdk\request\clients\PostClient('82', 'sdvsfdvsfdvsdv');
 try {
     $requestBuilder = new Platron\PhpSdk\request\request_builders\DoCaptureBuilder($transaction);
@@ -64,12 +64,11 @@ try {
     var_dump($e);
     die();
 }
-</pre></code>
+```
 
 ### 4. Обработка запроса от Platron (check)
 
-<pre><code>
-
+```php
 $order_available = 1;
 $callback = new platron_sdk\callback\Callback('platron_dispatch.php', 'sdvsfdvsfdvsdv');
 if ($callback->validateSig($request)) {
@@ -88,6 +87,6 @@ if ($callback->validateSig($request)) {
         echo $callback->responseError($request, 'Невозможно принять запрос. Повторите еще раз');
     }
 }
-</pre></code>
+```
 
 $order_available - вместо переменной долже быть метод, проверящий - доступен ли для оплаты заказ
