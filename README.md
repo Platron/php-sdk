@@ -58,7 +58,7 @@ try {
 ```php
 $client = new Platron\PhpSdk\request\clients\PostClient('82', 'sdvsfdvsfdvsdv');
 try {
-    $requestBuilder = new Platron\PhpSdk\request\request_builders\DoCaptureBuilder($transaction);
+    $requestBuilder = new Platron\PhpSdk\request\request_builders\DoCaptureBuilder(323334422);
     $response = $client->request($requestBuilder);
 } catch (Exception $e) {
     var_dump($e);
