@@ -3,7 +3,7 @@ Platron PHP SDK
 ## Установка
 
 Проект предполагает через установку с использованием composer. 
-<pre><code>composer require platron/phpsdk</pre></code>
+<pre><code>composer require payprocessing/phpsdk</pre></code>
 
 ## Тесты
 Для работы тестов необходим PHPUnit, для установки необходимо выполнить команду
