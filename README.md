@@ -8,7 +8,7 @@ Platron PHP SDK
 ## Тесты
 Для работы тестов необходим PHPUnit, для установки необходимо выполнить команду
 ```
-composer install
+composer require phpunit/phpunit
 ```
 Запустить unit тесты можно выполнив команду из корня проекта
 ```
