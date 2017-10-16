@@ -76,7 +76,7 @@ class ReceiptBuilder extends RequestBuilder {
 	public function getParameters() {
 		$filledvars = array();
 		foreach (get_object_vars($this) as $name => $value) {
-			if ($value && !in_array($name, array('items'))) {
+			if ($value !== null && !in_array($name, array('items'))) {
 				$filledvars[$name] = (string)$value;
 			}
 		}

@@ -108,7 +108,7 @@ class InitPaymentBuilder extends RequestBuilder {
 	public function getParameters() {
 		$filledvars = array();
 		foreach (get_object_vars($this) as $name => $value) {
-			if ($value && !in_array($name, array('bankCard', 'aviaGds'))) {
+			if ($value !== null && !in_array($name, array('bankCard', 'aviaGds'))) {
 				$filledvars[$name] = (string)$value;
 			}
 		}
@@ -391,13 +391,13 @@ class InitPaymentBuilder extends RequestBuilder {
 	 * @return $this
 	 */
 	public function addMerchantParams($parameters) {
-		foreach ($parameters as $name => $value) {
+        foreach ($parameters as $name => $value) {
 			if (substr($name, 0, 3) == 'pg_') {
 				throw new Exception('Только параметры без pg_');
 			}
 			$this->$name = $value;
-			return $this;
 		}
+        return $this;
 	}
 
 	/**
