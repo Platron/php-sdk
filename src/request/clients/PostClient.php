@@ -10,10 +10,8 @@ use SimpleXMLElement;
 use Psr\Log\LogLevel;
 
 class PostClient implements iClient {
-	
-    const LOG_LEVEL = LogLevel::INFO;
 
-	/** @var Описание ошибки */
+    /** @var Описание ошибки */
 	protected $errorDescription;
 	/** @var Код ошибки */
 	protected $errorCode;
@@ -64,8 +62,8 @@ class PostClient implements iClient {
 		$response = curl_exec($curl);
 		
         if($this->logger){
-            $this->logger->log(self::LOG_LEVEL, 'Request url '.$requestBuilder->getRequestUrl().' with params '.print_r($parameters, true));
-            $this->logger->log(self::LOG_LEVEL, 'Response '.$response);
+            $this->logger->log(LogLevel::INFO, 'Request url '.$requestBuilder->getRequestUrl().' with params '.print_r($parameters, true));
+            $this->logger->log(LogLevel::INFO, 'Response '.$response);
         }
         
 		if(curl_errno($curl)){
