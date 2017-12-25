@@ -7,11 +7,12 @@ use Platron\PhpSdk\request\request_builders\RequestBuilder;
 use Platron\PhpSdk\SigHelper;
 use Psr\Log\LoggerInterface;
 use SimpleXMLElement;
+use Psr\Log\LogLevel;
 
 class PostClient implements iClient {
 	
-    const LOG_LEVEL = 0;
-    
+    const LOG_LEVEL = LogLevel::INFO;
+
 	/** @var Описание ошибки */
 	protected $errorDescription;
 	/** @var Код ошибки */
