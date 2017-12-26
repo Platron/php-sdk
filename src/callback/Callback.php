@@ -41,7 +41,7 @@ class Callback {
 	 * @return boolean
 	 */
 	public function validateSig($params){
-		return $this->sigHelper->check($params['pg_sig'], $this->urlScriptName, $params);
+		return isset($params['pg_sig']) && is_scalar($params['pg_sig']) && $this->sigHelper->check($params['pg_sig'], $this->urlScriptName, $params);
 	}
 	
 	/**
