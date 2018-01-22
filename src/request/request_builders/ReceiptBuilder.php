@@ -63,11 +63,11 @@ class ReceiptBuilder extends RequestBuilder {
 	/**
 	 * Добавить позицию чека
 	 * @param Item $item
-	 * @return self
+	 * @return $this
 	 */
 	public function addItem(Item $item){
 		$this->items[] = $item;
-		return self;
+		return $this;
 	}
 	
 	/**
