@@ -11,7 +11,8 @@ class CreateReceiptBuilderTest extends \PHPUnit_Framework_TestCase {
 		$itemStub->expects($this->any())->method('getParameters')->willReturn(array('item_parameter' => 'test'));
 		
 		$createReceiptBuilder = new ReceiptBuilder(ReceiptBuilder::TRANSACTION_TYPE, 100500, 100501);
-		$createReceiptBuilder->addItem($itemStub);
+		$result = $createReceiptBuilder->addItem($itemStub);
+		$this->assertSame($createReceiptBuilder, $result);
 		
 		$parameters = $createReceiptBuilder->getParameters();
 		$itemParameters = $parameters['pg_items'][0];
