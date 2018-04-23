@@ -28,6 +28,9 @@ class PostClient implements iClient {
     /** @var LoggerInterface */
     protected $logger;
     
+    /** @var array */
+    private $additionalCurlParameters = array();
+
 	/**
 	 * @inheritdoc
 	 * @throws Exception
@@ -55,7 +58,9 @@ class PostClient implements iClient {
 		$fileName = pathinfo($url);
 		$parameters['pg_sig'] = $this->sigHelper->make($fileName['basename'], $parameters);
 		
-		$curl = curl_init($url);
+		$curl = curl_init();
+		curl_setopt_array($curl, $this->additionalCurlParameters);
+		curl_setopt($curl, CURLOPT_URL, $url);
 		curl_setopt($curl, CURLOPT_POST, 1);
 		curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($parameters));
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -109,6 +114,14 @@ class PostClient implements iClient {
 		}
 
 		return false;
+	}
+
+	/**
+	 * Добавляет дополнительные параметры к curl клиенту.
+	 * @param array $parameters
+	 */
+	public function setAdditionalCurlParameters(array $parameters) {
+		$this->additionalCurlParameters = $parameters;
 	}
 
 }
