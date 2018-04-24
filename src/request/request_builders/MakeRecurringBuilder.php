@@ -33,6 +33,9 @@ class MakeRecurringBuilder extends RequestBuilder {
 	/** @var string Кодировка запроса */
 	protected $pg_encoding;
 
+	/** @var string IP адрес пользователя */
+	protected $pg_user_ip;
+
 	/**
 	 * @inheritdoc
 	 */
@@ -120,6 +123,15 @@ class MakeRecurringBuilder extends RequestBuilder {
 			}
 			$this->$name = $value;
 		}
+		return $this;
+	}
+
+	/**
+	 * @param string $userIp
+	 * @return $this
+	 */
+	public function addUserIp($userIp) {
+		$this->pg_user_ip = $userIp;
 		return $this;
 	}
 
