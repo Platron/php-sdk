@@ -1,18 +1,23 @@
 {
-    "name": "payprocessing/phpsdk",
-    "description": "Platron payment SDK",
-    "require": {
-        "php": ">=5.3",
-        "psr/log": "1.0.2"
-    },
-    "require-dev": {
+	"name": "payprocessing/phpsdk",
+	"description": "Platron payment SDK",
+	"license": "MIT",
+	"require": {
+		"php": ">=5.3",
+		"psr/log": "^1.0.2"
+	},
+	"require-dev": {
 		"php": ">=5.6",
-		"phpunit/phpunit": "5.7"
+		"phpunit/phpunit": "^5.7"
 	},
 	"autoload": {
 		"psr-4": {
-			"Platron\\PhpSdk\\": "src",
-                        "Platron\\PhpSdk\\tests\\": "tests"
+			"Platron\\PhpSdk\\": "src"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"Platron\\PhpSdk\\tests\\": "tests"
 		}
 	}
 }
