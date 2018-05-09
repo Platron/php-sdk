@@ -13,9 +13,9 @@ class AviaGds extends BaseData {
 	protected $pg_merchant_markup;
 	
 	/**
-	 * @param type $recLoc PNR
-	 * @param type $gds Название GDS (AMADUS|SABRE|GALILEO и т.д.)
-	 * @param type $markup Сумма надбавки магазина
+	 * @param string $recLoc PNR
+	 * @param string $gds Название GDS (AMADUS|SABRE|GALILEO и т.д.)
+	 * @param float $markup Сумма надбавки магазина
 	 */
 	public function __construct($recLoc, $gds, $markup) {
 		$this->pg_rec_log = $recLoc;

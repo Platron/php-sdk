@@ -11,9 +11,9 @@ use Psr\Log\LogLevel;
 
 class PostClient implements iClient {
 
-    /** @var Описание ошибки */
+    /** @var string|null Описание ошибки */
 	protected $errorDescription;
-	/** @var Код ошибки */
+	/** @var mixed|null Код ошибки */
 	protected $errorCode;
 	
 	/** @var int Номер магазина */
@@ -88,7 +88,6 @@ class PostClient implements iClient {
 	 * Проверить ответ на наличие ошибок
 	 * @param string $response
 	 * @param string $url
-	 * @param type $parameters Description
 	 * @return boolean
 	 */
 	protected function hasError($response, $url) {

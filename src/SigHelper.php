@@ -49,9 +49,9 @@ class SigHelper {
 	/**
 	 * Return concated string to make hash
 	 * 
-	 * @param type $scriptName
+	 * @param string $scriptName
 	 * @param array $params
-	 * @return type
+	 * @return string
 	 */
 	private function makeSigStr ( $scriptName, array $params ) {
 		if(!empty($params['pg_sig'])){
@@ -105,7 +105,7 @@ class SigHelper {
 	}
 
 	/**
-	 * @param type $secretKey
+	 * @param string $secretKey
 	 */
 	public function __construct($secretKey) {
 		$this->secretKey = $secretKey;
