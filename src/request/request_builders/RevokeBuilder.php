@@ -29,7 +29,7 @@ class RevokeBuilder extends RequestBuilder {
 
 	/**
 	 * Установка суммы возврата. По умолчанию возвращается вся сумма
-	 * @param type $amount
+	 * @param float $amount
 	 */
 	public function setAmount($amount) {
 		$this->pg_refund_amount = $amount;

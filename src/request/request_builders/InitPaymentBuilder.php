@@ -38,7 +38,7 @@ class InitPaymentBuilder extends RequestBuilder {
 	/** @var boolean Отлиженный платеж */
 	protected $pg_postpone;
 
-	/** @var strind Язык транзакции */
+	/** @var string Язык транзакции */
 	protected $pg_language;
 
 	/** @var boolean Установлен ли демо режим */
@@ -209,7 +209,6 @@ class InitPaymentBuilder extends RequestBuilder {
 
 	/**
 	 * Установить язык транзакции
-	 * @param type $language
 	 * @return $this
 	 */
 	public function addLanguageEn() {
@@ -387,8 +386,9 @@ class InitPaymentBuilder extends RequestBuilder {
 
 	/**
 	 * Установить произвольные поля магазина
-	 * @param type $parameters
+	 * @param array $parameters
 	 * @return $this
+     * @throws Exception
 	 */
 	public function addMerchantParams($parameters) {
         foreach ($parameters as $name => $value) {
@@ -404,6 +404,7 @@ class InitPaymentBuilder extends RequestBuilder {
 	 * Установить дополнительные для ПС параметры (например, для альфаклик идентификатор в интернет банке)
 	 * @param array $parameters
 	 * @return $this
+     * @throws Exception
 	 */
 	public function addPsAdditionalParameters($parameters) {
 		foreach ($parameters as $name => $value) {

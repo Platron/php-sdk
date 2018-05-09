@@ -84,7 +84,7 @@ class MakeRecurringBuilder extends RequestBuilder {
 
 	/**
 	 * Установить refund url в транзакцию
-	 * @param type $refundUrl
+	 * @param string $refundUrl
 	 * @return $this
 	 */
 	public function addRefundUrl($refundUrl) {
@@ -115,6 +115,7 @@ class MakeRecurringBuilder extends RequestBuilder {
 	/**
 	 * @param array $params Список дополнительных параметров магазина
 	 * @return $this
+     * @throws Exception
 	 */
 	public function addMerchantParams($params) {
 		foreach ($params as $name => $value) {
