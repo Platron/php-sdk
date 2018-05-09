@@ -115,7 +115,7 @@ class MakeRecurringBuilder extends RequestBuilder {
 	/**
 	 * @param array $params Список дополнительных параметров магазина
 	 * @return $this
-     * @throws Exception
+	 * @throws Exception
 	 */
 	public function addMerchantParams($params) {
 		foreach ($params as $name => $value) {

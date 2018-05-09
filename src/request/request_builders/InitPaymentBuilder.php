@@ -388,7 +388,7 @@ class InitPaymentBuilder extends RequestBuilder {
 	 * Установить произвольные поля магазина
 	 * @param array $parameters
 	 * @return $this
-     * @throws Exception
+	 * @throws Exception
 	 */
 	public function addMerchantParams($parameters) {
         foreach ($parameters as $name => $value) {
@@ -404,7 +404,7 @@ class InitPaymentBuilder extends RequestBuilder {
 	 * Установить дополнительные для ПС параметры (например, для альфаклик идентификатор в интернет банке)
 	 * @param array $parameters
 	 * @return $this
-     * @throws Exception
+	 * @throws Exception
 	 */
 	public function addPsAdditionalParameters($parameters) {
 		foreach ($parameters as $name => $value) {
