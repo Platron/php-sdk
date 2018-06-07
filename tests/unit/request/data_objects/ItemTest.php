@@ -23,11 +23,24 @@ class ItemTest extends PHPUnit_Framework_TestCase {
 	public function testExceptionSetVat(){
 		try {
 			new Item('test product', '10.00', 2, 'wrong value');
+			$this->fail();
 		} catch (Exception $ex) {
-			return true;
+			$this->assertInstanceOf('\Platron\PhpSdk\Exception', $ex);
 		}
-		
-		return false;
+
+		try {
+			new  Item('test product', '10.00', 2, '');
+		 	$this->fail();
+		} catch (Exception $ex) {
+			$this->assertInstanceOf('\Platron\PhpSdk\Exception', $ex);
+		}
+
+		try {
+			new Item('test product', '10.00', 2, false);
+			$this->fail();
+		} catch (Exception $ex) {
+			$this->assertInstanceOf('\Platron\PhpSdk\Exception', $ex);
+		}
 	}
 	
 }

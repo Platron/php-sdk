@@ -10,5 +10,8 @@ composer.phar
 # Netbeans project files
 /nbproject/
 
+# PHPStorm project files
+.idea/
+
 # Merchant settings for integration tests
 /tests/integration/MerchantSettings.php
