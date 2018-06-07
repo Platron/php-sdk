@@ -29,7 +29,7 @@ class Item extends BaseData {
 	 * @param string $vat Если отсутствует - не облягается налогом. Берется из констант
 	 */
 	public function __construct($label, $price, $quantity, $vat = null) {
-		if($vat && !in_array($vat, $this->getVatTypes())){
+		if(!is_null($vat) && !in_array($vat, $this->getVatTypes())){
 			throw new \Platron\PhpSdk\Exception('Wrong vat. Use from constant');
 		}
 		
