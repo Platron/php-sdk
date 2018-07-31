@@ -21,6 +21,7 @@ class CreateReceiptTest extends IntegrationTestBase {
 		$this->postClient = $postClient;
 		
 		$initPaymentBuilder = new InitPaymentBuilder('10.00', 'test php sdk');
+		$initPaymentBuilder->addTestingMode();
 		$this->paymentId = (int)$postClient->request($initPaymentBuilder)->pg_payment_id;
 	}
 	
