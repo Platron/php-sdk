@@ -6,47 +6,46 @@ namespace Platron\PhpSdk\tests\integration;
 use Platron\PhpSdk\request\clients\PostClient;
 use Platron\PhpSdk\request\request_builders\GetStatusBuilder;
 
-abstract class PaidTransactionTestBase extends IntegrationTestBase
-{
-    /** @var GetStatusBuilder */
-    protected $getStatusBuilder;
+abstract class PaidTransactionTestBase extends IntegrationTestBase {
+	const ITERATION_COUNT = 5;
+	const WAITING_TIME = 2;
+	/** @var GetStatusBuilder */
+	protected $getStatusBuilder;
+	/** @var PostClient */
+	protected $postClient;
 
-    /** @var PostClient */
-    protected $postClient;
+	/*
+	 * @return InitPaymentBuilder
+	 */
 
-    const ITERATION_COUNT = 5;
-    const WAITING_TIME = 2;
+	public function setUp() {
+		parent::setUp();
 
-    /*
-     * @return InitPaymentBuilder
-     */
-    abstract protected function getInitPaymentBuilder();
+		$postClient = new PostClient($this->merchantId, $this->secretKey);
+		$this->postClient = $postClient;
 
-    public function setUp() {
-        parent::setUp();
+		$initPaymentBuilder = $this->getInitPaymentBuilder();
+		$this->paymentId = (int)$postClient->request($initPaymentBuilder)->pg_payment_id;
 
-        $postClient = new PostClient($this->merchantId, $this->secretKey);
-        $this->postClient = $postClient;
+		$this->getStatusBuilder = new GetStatusBuilder($this->paymentId);
+		$this->waitForTransaction();
+	}
 
-        $initPaymentBuilder = $this->getInitPaymentBuilder();
-        $this->paymentId = (int)$postClient->request($initPaymentBuilder)->pg_payment_id;
+	abstract protected function getInitPaymentBuilder();
 
-        $this->getStatusBuilder = new GetStatusBuilder($this->paymentId);
-        $this->waitForTransaction();
-    }
+	/*
+	 * Ожидание успешного завершения платежа
+	 */
 
-    /*
-     * Ожидание успешного завершения платежа
-     */
-    public function waitForTransaction() {
-        for ($i = 0; $i < static::ITERATION_COUNT; $i++) {
-            $response = $this->postClient->request($this->getStatusBuilder);
-            $status = $response->pg_transaction_status;
-            if ($status == 'ok') {
-                return;
-            }
-            sleep(static::WAITING_TIME);
-        }
-        $this->markTestSkipped('Unable to process transaction');
-    }
+	public function waitForTransaction() {
+		for ($i = 0; $i < static::ITERATION_COUNT; $i++) {
+			$response = $this->postClient->request($this->getStatusBuilder);
+			$status = $response->pg_transaction_status;
+			if ($status == 'ok') {
+				return;
+			}
+			sleep(static::WAITING_TIME);
+		}
+		$this->markTestSkipped('Unable to process transaction');
+	}
 }

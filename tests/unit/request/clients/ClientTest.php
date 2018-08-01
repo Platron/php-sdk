@@ -18,7 +18,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase {
 	 * @dataProvider provider
 	 * @param string $url
 	 * @param array $parameters
-     * @return boolean
+	 * @return boolean
 	 */
 	public function testRequest($url, $parameters){
 		try {
