@@ -47,6 +47,7 @@ class Callback {
 	/**
 	 * Можно ли отказаться от платежа
 	 * @param array $params
+     * @return boolean
 	 */
 	public function canReject($params){
 		return !empty($params['pg_can_reject']) && $params['pg_can_reject'];
@@ -66,7 +67,7 @@ class Callback {
 	 * В ответе попросить вернуть платеж
 	 * @param array $params
 	 * @param string $description
-	 * return SimpleXMLElement
+	 * @return SimpleXMLElement
 	 */
 	public function responseRejected($params, $description){
 		return $this->response(@$params['pg_salt'], 'rejected', $description);
@@ -75,7 +76,7 @@ class Callback {
 	/**
 	 * Ответить, что успешно получил запрос
 	 * @param array $params
-	 * return SimpleXMLElement
+	 * @return SimpleXMLElement
 	 */
 	public function responseOk($params){
 		return $this->response(@$params['pg_salt'], 'ok', 'ok');

@@ -2,9 +2,7 @@
 
 namespace Platron\PhpSdk\tests\integration;
 
-use Platron\PhpSdk\request\data_objects\BankCard;
 use Platron\PhpSdk\request\request_builders\DoCaptureBuilder;
-use Platron\PhpSdk\request\request_builders\InitPaymentBuilder;
 use Platron\PhpSdk\request\request_builders\RevokeBuilder;
 
 class RefundTest extends PaidTransactionTestBase
@@ -25,8 +23,8 @@ class RefundTest extends PaidTransactionTestBase
         $refundBuilder = new RevokeBuilder($this->paymentId);
         $refundBuilder->setAmount(5.00);
 
-        $RefundResponse = $this->postClient->request($refundBuilder);
-        $this->assertEquals('ok', $RefundResponse->pg_status);
+        $refundResponse = $this->postClient->request($refundBuilder);
+        $this->assertEquals('ok', $refundResponse->pg_status);
     }
 
     public function testRevoke()

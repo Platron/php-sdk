@@ -32,13 +32,4 @@ class InitPaymentBuilderFactory
             );
         return $initPaymentBuilder;
     }
-
-    public function createForTestPaymentSystem()
-    {
-        $initPaymentBuilder = new InitPaymentBuilder('10.00', 'test php sdk');
-        $initPaymentBuilder->addUserPhone('79009999999')
-            ->addTestingMode()
-            ->addPaymentSystem('TEST');
-        return $initPaymentBuilder;
-    }
 }

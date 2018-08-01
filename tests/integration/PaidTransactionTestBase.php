@@ -43,9 +43,10 @@ abstract class PaidTransactionTestBase extends IntegrationTestBase
             $response = $this->postClient->request($this->getStatusBuilder);
             $status = $response->pg_transaction_status;
             if ($status == 'ok') {
-                break;
+                return;
             }
             sleep(static::WAITING_TIME);
         }
+        $this->markTestSkipped('Unable to process transaction');
     }
 }
