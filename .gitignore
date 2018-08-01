@@ -7,6 +7,9 @@ composer.phar
 .project
 /.settings/
 
+#PHPstorm project files
+.idea
+
 # Netbeans project files
 /nbproject/
 
