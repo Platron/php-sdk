@@ -6,7 +6,7 @@ namespace Platron\PhpSdk\tests\integration;
 use Platron\PhpSdk\request\clients\PostClient;
 use Platron\PhpSdk\request\request_builders\GetStatusBuilder;
 
-abstract class PayedTransactionTestBase extends IntegrationTestBase
+abstract class PaidTransactionTestBase extends IntegrationTestBase
 {
     /** @var GetStatusBuilder */
     protected $getStatusBuilder;
@@ -36,10 +36,10 @@ abstract class PayedTransactionTestBase extends IntegrationTestBase
      * Ожидание успешного завершения платежа
      */
     public function waitForTransaction() {
-        for($i = 0; $i < 5; $i++) {
+        for ($i = 0; $i < 5; $i++) {
             $response = $this->postClient->request($this->getStatusBuilder);
             $status = $response->pg_transaction_status;
-            if($status == 'ok') {
+            if ($status == 'ok') {
                 break;
             }
             sleep(2);

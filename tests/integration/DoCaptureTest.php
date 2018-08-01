@@ -9,7 +9,7 @@ use Platron\PhpSdk\request\request_builders\InitPaymentBuilder;
 /*
  * Интеграционный тест создания и клиринга транзакции
  */
-class DoCaptureTest extends PayedTransactionTestBase {
+class DoCaptureTest extends PaidTransactionTestBase {
     /** @var int */
     protected $paymentId;
 

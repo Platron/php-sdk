@@ -7,7 +7,7 @@ use Platron\PhpSdk\request\request_builders\DoCaptureBuilder;
 use Platron\PhpSdk\request\request_builders\InitPaymentBuilder;
 use Platron\PhpSdk\request\request_builders\RevokeBuilder;
 
-class RefoundTest extends PayedTransactionTestBase
+class RefundTest extends PaidTransactionTestBase
 {
     /** @var int */
     protected $paymentId;
@@ -28,17 +28,17 @@ class RefoundTest extends PayedTransactionTestBase
         return $initPaymentBuilder;
     }
 
-    public function testRefound(){
+    public function testRefund(){
         $this->waitForTransaction();
 
         // Клиринг
         $doCaptureBuilder = new DoCaptureBuilder($this->paymentId);
         $this->postClient->request($doCaptureBuilder);
 
-        $refoundBuilder = new RevokeBuilder($this->paymentId);
-        $refoundBuilder->setAmount(5.00);
+        $refundBuilder = new RevokeBuilder($this->paymentId);
+        $refundBuilder->setAmount(5.00);
 
-        $RefoundResponse = $this->postClient->request($refoundBuilder);
-        $this->assertEquals('ok', $RefoundResponse->pg_status);
+        $RefundResponse = $this->postClient->request($refundBuilder);
+        $this->assertEquals('ok', $RefundResponse->pg_status);
     }
 }

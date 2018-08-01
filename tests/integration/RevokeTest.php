@@ -6,7 +6,7 @@ use Platron\PhpSdk\request\data_objects\BankCard;
 use Platron\PhpSdk\request\request_builders\InitPaymentBuilder;
 use Platron\PhpSdk\request\request_builders\RevokeBuilder;
 
-class RevokeTest extends PayedTransactionTestBase
+class RevokeTest extends PaidTransactionTestBase
 {
     /** @var int */
     protected $paymentId;
