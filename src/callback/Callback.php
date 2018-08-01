@@ -47,7 +47,7 @@ class Callback {
 	/**
 	 * Можно ли отказаться от платежа
 	 * @param array $params
-     * @return boolean
+	 * @return boolean
 	 */
 	public function canReject($params){
 		return !empty($params['pg_can_reject']) && $params['pg_can_reject'];
