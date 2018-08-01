@@ -14,6 +14,9 @@ abstract class PaidTransactionTestBase extends IntegrationTestBase
     /** @var PostClient */
     protected $postClient;
 
+    const ITERATION_COUNT = 5;
+    const WAITING_TIME = 2;
+
     /*
      * @return InitPaymentBuilder
      */
@@ -36,13 +39,13 @@ abstract class PaidTransactionTestBase extends IntegrationTestBase
      * Ожидание успешного завершения платежа
      */
     public function waitForTransaction() {
-        for ($i = 0; $i < 5; $i++) {
+        for ($i = 0; $i < static::ITERATION_COUNT; $i++) {
             $response = $this->postClient->request($this->getStatusBuilder);
             $status = $response->pg_transaction_status;
             if ($status == 'ok') {
                 break;
             }
-            sleep(2);
+            sleep(static::WAITING_TIME);
         }
     }
 }
