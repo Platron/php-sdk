@@ -9,7 +9,6 @@ use Platron\PhpSdk\request\request_builders\MoneybackSystemListBuilder;
 /*
  * Интеграционный тест запроса списка систем для выплат
  */
-
 class GetMoneybackSystemsListTest extends IntegrationTestBase {
 	public function testGetMoneybackSystemsList() {
 		$postClient = new PostClient($this->merchantId, $this->secretKey);

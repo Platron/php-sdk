@@ -5,6 +5,9 @@ namespace Platron\PhpSdk\tests\integration;
 use Platron\PhpSdk\request\request_builders\DoCaptureBuilder;
 use Platron\PhpSdk\request\request_builders\RevokeBuilder;
 
+/*
+ * Интеграционный тест отмены и частичного возврата платежа
+ */
 class RefundTest extends PaidTransactionTestBase {
 	/** @var int */
 	protected $paymentId;

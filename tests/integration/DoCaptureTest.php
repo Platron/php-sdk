@@ -7,7 +7,6 @@ use Platron\PhpSdk\request\request_builders\DoCaptureBuilder;
 /*
  * Интеграционный тест создания и клиринга транзакции
  */
-
 class DoCaptureTest extends PaidTransactionTestBase {
 	/** @var int */
 	protected $paymentId;
