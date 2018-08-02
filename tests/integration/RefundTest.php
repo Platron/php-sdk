@@ -12,7 +12,7 @@ class RefundTest extends PaidTransactionTestBase {
 	/** @var int */
 	protected $paymentId;
 
-	public function getInitPaymentBuilder() {
+	protected function getInitPaymentBuilder() {
 		$factory = new InitPaymentBuilderFactory();
 		return $factory->createForTestCardPaymentSystem();
 	}

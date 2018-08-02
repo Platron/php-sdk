@@ -37,7 +37,7 @@ abstract class PaidTransactionTestBase extends IntegrationTestBase {
 	 * Ожидание успешного завершения платежа
 	 */
 
-	public function waitForTransaction() {
+	private function waitForTransaction() {
 		for ($i = 0; $i < static::ITERATION_COUNT; $i++) {
 			$response = $this->postClient->request($this->getStatusBuilder);
 			$status = $response->pg_transaction_status;
