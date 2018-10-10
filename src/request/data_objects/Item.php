@@ -21,12 +21,15 @@ class Item extends BaseData {
 	protected $pg_quantity;
 	/** @var string */
 	protected $pg_vat;
+	/** @var string */
+	protected $pg_type = 'product';
 	
 	/**
 	 * @param string $label Название товара
 	 * @param float $price Цена единицы товара
 	 * @param int $quantity Количество
 	 * @param string $vat Если отсутствует - не облягается налогом. Берется из констант
+	 * @throws \Platron\PhpSdk\Exception
 	 */
 	public function __construct($label, $price, $quantity, $vat = null) {
 		if(!is_null($vat) && !in_array($vat, $this->getVatTypes())){
@@ -45,6 +48,14 @@ class Item extends BaseData {
 	 */
 	public function addAmount($amount){
 		$this->pg_amount = $amount;
+	}
+
+	/**
+	 * Добавить тип товара
+	 * @param string $type
+	 */
+	public function addType($type){
+		$this->pg_type = $type;
 	}
 	
 	/**
