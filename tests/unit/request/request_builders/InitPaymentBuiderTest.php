@@ -5,45 +5,47 @@ namespace Platron\PhpSdk\tests\unit;
 use Platron\PhpSdk\request\request_builders\InitPaymentBuilder;
 use Platron\PhpSdk\Exception;
 
-class InitPaymentBuiderTest extends \PHPUnit_Framework_TestCase {
-	public function testGetParameters(){
+class InitPaymentBuiderTest extends \PHPUnit_Framework_TestCase
+{
+	public function testGetParameters()
+	{
 		$requestBuilder = new InitPaymentBuilder('10.00', 'test');
-		
+
 		$bankCardStub = $this->getMockBuilder('Platron\PhpSdk\request\data_objects\BankCard')->disableOriginalConstructor()->setMethods(array())->getMock();
 		$bankCardStub->expects($this->any())->method('getParameters')->willReturn(array('bank_card_parameter' => 'test'));
-		
+
 		$aviaGdsStub = $this->getMockBuilder('Platron\PhpSdk\request\data_objects\AviaGds')->disableOriginalConstructor()->setMethods(array())->getMock();
 		$aviaGdsStub->expects($this->any())->method('getParameters')->willReturn(array('avia_gds_parameter' => 'test'));
-		
+
 		$requestBuilder->addBankCard($bankCardStub)
-				->addCaptureUrl('www.site.ru/capture.php')
-				->addCheckUrl('www.site.ru/check.php')
-				->addCurrency('RUB')
-				->addFailureUrl('www.site.ru/failure.php')
-				->addFailureUrlMethod('POST')
-				->addGds($aviaGdsStub)
-				->addLifetime(604800)
-				->addMerchantParams(array('merchant_param' => 'test'))
-				->addOrderId('555')
-				->addPaymentSystem('RUSSIANSTANDARD')
-				->addPostpone()
-				->addPsAdditionalParameters(array('pg_alfaclick_client_id' => 111333))
-				->addRecurringStart()
-				->addRefundUrl('www.site.ru/refund.php')
-				->addRequestMethod('POST')
-				->addResultUrl('www.site.ru/result.php')
-				->addSiteUrl('www.site.ru')
-				->addStateUrl('www.site.ru/state.php')
-				->addStateUrlMethod('POST')
-				->addSuccessUrl('www.site.ru/success.php')
-				->addSuccessUrlMethod('POST')
-				->addTestingMode()
-				->addUserEmail('test@test.ru')
-				->addUserIp('62.213.64.221')
-				->addUserPhone('79268750000');
-		
+			->addCaptureUrl('www.site.ru/capture.php')
+			->addCheckUrl('www.site.ru/check.php')
+			->addCurrency('RUB')
+			->addFailureUrl('www.site.ru/failure.php')
+			->addFailureUrlMethod('POST')
+			->addGds($aviaGdsStub)
+			->addLifetime(604800)
+			->addMerchantParams(array('merchant_param' => 'test'))
+			->addOrderId('555')
+			->addPaymentSystem('RUSSIANSTANDARD')
+			->addPostpone()
+			->addPsAdditionalParameters(array('pg_alfaclick_client_id' => 111333))
+			->addRecurringStart()
+			->addRefundUrl('www.site.ru/refund.php')
+			->addRequestMethod('POST')
+			->addResultUrl('www.site.ru/result.php')
+			->addSiteUrl('www.site.ru')
+			->addStateUrl('www.site.ru/state.php')
+			->addStateUrlMethod('POST')
+			->addSuccessUrl('www.site.ru/success.php')
+			->addSuccessUrlMethod('POST')
+			->addTestingMode()
+			->addUserEmail('test@test.ru')
+			->addUserIp('62.213.64.221')
+			->addUserPhone('79268750000');
+
 		$requestBuilderParameters = $requestBuilder->getParameters();
-		
+
 		$this->assertEquals('test', $requestBuilderParameters['bank_card_parameter']);
 		$this->assertEquals('www.site.ru/capture.php', $requestBuilderParameters['pg_capture_url']);
 		$this->assertEquals('www.site.ru/check.php', $requestBuilderParameters['pg_check_url']);
@@ -71,26 +73,28 @@ class InitPaymentBuiderTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals('62.213.64.221', $requestBuilderParameters['pg_user_ip']);
 		$this->assertEquals('79268750000', $requestBuilderParameters['pg_user_phone']);
 	}
-	
-	public function testExceptionAddMerchantParams(){
+
+	public function testExceptionAddMerchantParams()
+	{
 		$requestBuilder = new InitPaymentBuilder('10.00', 'test');
 		try {
 			$requestBuilder->addMerchantParams(array('pg_some_param' => 'test'));
 		} catch (Exception $ex) {
 			return true;
 		}
-		
+
 		return false;
 	}
-	
-	public function testExceptionAddPsAdditionalParameters(){
+
+	public function testExceptionAddPsAdditionalParameters()
+	{
 		$requestBuilder = new InitPaymentBuilder('10.00', 'test');
 		try {
 			$requestBuilder->addPaymentSystem(array('some_param' => 'test'));
 		} catch (Exception $ex) {
 			return true;
 		}
-		
+
 		return false;
 	}
 }

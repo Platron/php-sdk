@@ -4,12 +4,14 @@ namespace Platron\PhpSdk\tests\unit;
 
 use Platron\PhpSdk\request\data_objects\LongRecordTripleg;
 
-class LongRecordTriplegTest extends \PHPUnit_Framework_TestCase {
-	public function testGetParameters(){
+class LongRecordTriplegTest extends \PHPUnit_Framework_TestCase
+{
+	public function testGetParameters()
+	{
 		$dataObject = new LongRecordTripleg(1, '2017-01-01', 'SU', 'E', 'KRR', 'VKO', 'X', 'NVOR', '6062');
-		
+
 		$parameters = $dataObject->getParameters();
-		
+
 		$this->assertEquals('2017-01-01', $parameters['pg_tripleg_1_date']);
 		$this->assertEquals('SU', $parameters['pg_tripleg_1_carrier']);
 		$this->assertEquals('E', $parameters['pg_tripleg_1_class']);

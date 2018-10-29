@@ -9,11 +9,12 @@ use Platron\PhpSdk\Exception;
 /**
  * Строитель для создании транзакции
  */
-class InitPaymentBuilder extends RequestBuilder {
-	
+class InitPaymentBuilder extends RequestBuilder
+{
+
 	/** @var string Для статистики использования SDK */
 	protected $sdk = 'phpsdk';
-	
+
 	/** @var float Сумма транзакции */
 	protected $pg_amount;
 
@@ -98,14 +99,16 @@ class InitPaymentBuilder extends RequestBuilder {
 	/**
 	 * @inheritdoc
 	 */
-	public function getRequestUrl() {
+	public function getRequestUrl()
+	{
 		return self::PLATRON_URL . 'init_payment.php';
 	}
 
 	/**
 	 * @inheritdoc
 	 */
-	public function getParameters() {
+	public function getParameters()
+	{
 		$filledvars = array();
 		foreach (get_object_vars($this) as $name => $value) {
 			if ($value !== null && !in_array($name, array('bankCard', 'aviaGds'))) {
@@ -132,7 +135,8 @@ class InitPaymentBuilder extends RequestBuilder {
 	 * @param float $amount Сумма транзакции
 	 * @param string $description Описание транзакции
 	 */
-	public function __construct($amount, $description) {
+	public function __construct($amount, $description)
+	{
 		$this->pg_amount = $amount;
 		$this->pg_description = $description;
 	}
@@ -143,7 +147,8 @@ class InitPaymentBuilder extends RequestBuilder {
 	 * @param BankCard $bankCard
 	 * @return $this
 	 */
-	public function addBankCard(BankCard $bankCard) {
+	public function addBankCard(BankCard $bankCard)
+	{
 		$this->bankCard = $bankCard;
 		return $this;
 	}
@@ -153,7 +158,8 @@ class InitPaymentBuilder extends RequestBuilder {
 	 * @param AviaGds $aviaGds
 	 * @return $this
 	 */
-	public function addGds(AviaGds $aviaGds) {
+	public function addGds(AviaGds $aviaGds)
+	{
 		$this->aviaGds = $aviaGds;
 		return $this;
 	}
@@ -163,7 +169,8 @@ class InitPaymentBuilder extends RequestBuilder {
 	 * @param string $paymentSystem
 	 * @return $this
 	 */
-	public function addPaymentSystem($paymentSystem) {
+	public function addPaymentSystem($paymentSystem)
+	{
 		$this->pg_payment_system = $paymentSystem;
 		return $this;
 	}
@@ -173,7 +180,8 @@ class InitPaymentBuilder extends RequestBuilder {
 	 * @param string $order
 	 * @return $this
 	 */
-	public function addOrderId($order) {
+	public function addOrderId($order)
+	{
 		$this->pg_order_id = $order;
 		return $this;
 	}
@@ -183,7 +191,8 @@ class InitPaymentBuilder extends RequestBuilder {
 	 * @param string $currency
 	 * @return $this
 	 */
-	public function addCurrency($currency) {
+	public function addCurrency($currency)
+	{
 		$this->pg_currency = $currency;
 		return $this;
 	}
@@ -193,7 +202,8 @@ class InitPaymentBuilder extends RequestBuilder {
 	 * @param int $lifetime
 	 * @return $this
 	 */
-	public function addLifetime($lifetime) {
+	public function addLifetime($lifetime)
+	{
 		$this->pg_lifetime = $lifetime;
 		return $this;
 	}
@@ -202,7 +212,8 @@ class InitPaymentBuilder extends RequestBuilder {
 	 * Установить транзакцию как отложенную
 	 * @return $this
 	 */
-	public function addPostpone() {
+	public function addPostpone()
+	{
 		$this->pg_postpone = 1;
 		return $this;
 	}
@@ -211,7 +222,8 @@ class InitPaymentBuilder extends RequestBuilder {
 	 * Установить язык транзакции
 	 * @return $this
 	 */
-	public function addLanguageEn() {
+	public function addLanguageEn()
+	{
 		$this->pg_language = 'en';
 		return $this;
 	}
@@ -220,7 +232,8 @@ class InitPaymentBuilder extends RequestBuilder {
 	 * Установить демо режим транзакции
 	 * @return $this
 	 */
-	public function addTestingMode() {
+	public function addTestingMode()
+	{
 		$this->pg_testing_mode = 1;
 		return $this;
 	}
@@ -229,7 +242,8 @@ class InitPaymentBuilder extends RequestBuilder {
 	 * Установить старт рекуррентной транзакции. Необходимо согласование с магазином
 	 * @return $this
 	 */
-	public function addRecurringStart() {
+	public function addRecurringStart()
+	{
 		$this->pg_recurring_start = 1;
 		return $this;
 	}
@@ -239,7 +253,8 @@ class InitPaymentBuilder extends RequestBuilder {
 	 * @param string $url
 	 * @return $this
 	 */
-	public function addCheckUrl($url) {
+	public function addCheckUrl($url)
+	{
 		$this->pg_check_url = $url;
 		return $this;
 	}
@@ -249,7 +264,8 @@ class InitPaymentBuilder extends RequestBuilder {
 	 * @param string $url
 	 * @return $this
 	 */
-	public function addResultUrl($url) {
+	public function addResultUrl($url)
+	{
 		$this->pg_result_url = $url;
 		return $this;
 	}
@@ -259,7 +275,8 @@ class InitPaymentBuilder extends RequestBuilder {
 	 * @param string $url
 	 * @return $this
 	 */
-	public function addRefundUrl($url) {
+	public function addRefundUrl($url)
+	{
 		$this->pg_refund_url = $url;
 		return $this;
 	}
@@ -269,7 +286,8 @@ class InitPaymentBuilder extends RequestBuilder {
 	 * @param string $url
 	 * @return $this
 	 */
-	public function addCaptureUrl($url) {
+	public function addCaptureUrl($url)
+	{
 		$this->pg_capture_url = $url;
 		return $this;
 	}
@@ -279,7 +297,8 @@ class InitPaymentBuilder extends RequestBuilder {
 	 * @param string $method
 	 * @return $this
 	 */
-	public function addRequestMethod($method) {
+	public function addRequestMethod($method)
+	{
 		$this->pg_request_method = $method;
 		return $this;
 	}
@@ -289,7 +308,8 @@ class InitPaymentBuilder extends RequestBuilder {
 	 * @param string $url
 	 * @return $this
 	 */
-	public function addSuccessUrl($url) {
+	public function addSuccessUrl($url)
+	{
 		$this->pg_success_url = $url;
 		return $this;
 	}
@@ -299,7 +319,8 @@ class InitPaymentBuilder extends RequestBuilder {
 	 * @param string $method
 	 * @return $this
 	 */
-	public function addSuccessUrlMethod($method) {
+	public function addSuccessUrlMethod($method)
+	{
 		$this->pg_success_url_method = $method;
 		return $this;
 	}
@@ -309,7 +330,8 @@ class InitPaymentBuilder extends RequestBuilder {
 	 * @param string $url
 	 * @return $this
 	 */
-	public function addStateUrl($url) {
+	public function addStateUrl($url)
+	{
 		$this->pg_state_url = $url;
 		return $this;
 	}
@@ -319,7 +341,8 @@ class InitPaymentBuilder extends RequestBuilder {
 	 * @param string $method
 	 * @return $this
 	 */
-	public function addStateUrlMethod($method) {
+	public function addStateUrlMethod($method)
+	{
 		$this->pg_state_url_method = $method;
 		return $this;
 	}
@@ -329,7 +352,8 @@ class InitPaymentBuilder extends RequestBuilder {
 	 * @param string $url
 	 * @return $this
 	 */
-	public function addFailureUrl($url) {
+	public function addFailureUrl($url)
+	{
 		$this->pg_failure_url = $url;
 		return $this;
 	}
@@ -339,7 +363,8 @@ class InitPaymentBuilder extends RequestBuilder {
 	 * @param string $method
 	 * @return $this
 	 */
-	public function addFailureUrlMethod($method) {
+	public function addFailureUrlMethod($method)
+	{
 		$this->pg_failure_url_method = $method;
 		return $this;
 	}
@@ -349,7 +374,8 @@ class InitPaymentBuilder extends RequestBuilder {
 	 * @param string $url
 	 * @return $this
 	 */
-	public function addSiteUrl($url) {
+	public function addSiteUrl($url)
+	{
 		$this->pg_site_url = $url;
 		return $this;
 	}
@@ -359,7 +385,8 @@ class InitPaymentBuilder extends RequestBuilder {
 	 * @param int $phone
 	 * @return $this
 	 */
-	public function addUserPhone($phone) {
+	public function addUserPhone($phone)
+	{
 		$this->pg_user_phone = $phone;
 		return $this;
 	}
@@ -369,7 +396,8 @@ class InitPaymentBuilder extends RequestBuilder {
 	 * @param string $email
 	 * @return $this
 	 */
-	public function addUserEmail($email) {
+	public function addUserEmail($email)
+	{
 		$this->pg_user_contact_email = $email;
 		return $this;
 	}
@@ -379,7 +407,8 @@ class InitPaymentBuilder extends RequestBuilder {
 	 * @param string $ip
 	 * @return $this
 	 */
-	public function addUserIp($ip) {
+	public function addUserIp($ip)
+	{
 		$this->pg_user_ip = $ip;
 		return $this;
 	}
@@ -390,14 +419,15 @@ class InitPaymentBuilder extends RequestBuilder {
 	 * @return $this
 	 * @throws Exception
 	 */
-	public function addMerchantParams($parameters) {
-        foreach ($parameters as $name => $value) {
+	public function addMerchantParams($parameters)
+	{
+		foreach ($parameters as $name => $value) {
 			if (substr($name, 0, 3) == 'pg_') {
 				throw new Exception('Только параметры без pg_');
 			}
 			$this->$name = $value;
 		}
-        return $this;
+		return $this;
 	}
 
 	/**
@@ -406,9 +436,10 @@ class InitPaymentBuilder extends RequestBuilder {
 	 * @return $this
 	 * @throws Exception
 	 */
-	public function addPsAdditionalParameters($parameters) {
+	public function addPsAdditionalParameters($parameters)
+	{
 		foreach ($parameters as $name => $value) {
-			if(substr($name, 0, 3) !== 'pg_'){
+			if (substr($name, 0, 3) !== 'pg_') {
 				throw new Exception('Только параметры с pg_');
 			}
 			$this->$name = $value;

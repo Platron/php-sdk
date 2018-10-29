@@ -2,7 +2,8 @@
 
 namespace Platron\PhpSdk\request\data_objects;
 
-class BankCard extends BaseData {
+class BankCard extends BaseData
+{
 	/** @var int Номер карты */
 	public $pg_card_number;
 	/** @var string Имя на карте */
@@ -15,7 +16,7 @@ class BankCard extends BaseData {
 	public $pg_cvv2;
 	/** @var string IP пользователя в формате long */
 	public $pg_user_ip;
-	
+
 	/**
 	 * @param int $cardNumber Номер карты
 	 * @param string $cardHolderName Имя на карте
@@ -24,7 +25,8 @@ class BankCard extends BaseData {
 	 * @param int $cvv CVV
 	 * @param string $userIp IP пользователя в формате long
 	 */
-	public function __construct($cardNumber, $cardHolderName, $expYear, $expMonth, $cvv, $userIp) {
+	public function __construct($cardNumber, $cardHolderName, $expYear, $expMonth, $cvv, $userIp)
+	{
 		$this->pg_card_number = $cardNumber;
 		$this->pg_user_cardholder = $cardHolderName;
 		$this->pg_exp_year = $expYear;

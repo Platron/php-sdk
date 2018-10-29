@@ -7,7 +7,8 @@ use Platron\PhpSdk\request\data_objects\LongRecord;
 /**
  * Строитель для проведения клиринга по транзакции. Для возможности работы по двухстадийной схеме нужно связаться с менеджером
  */
-class DoCaptureBuilder extends RequestBuilder {
+class DoCaptureBuilder extends RequestBuilder
+{
 
 	/** @var int Id платежа */
 	protected $pg_payment_id;
@@ -18,14 +19,16 @@ class DoCaptureBuilder extends RequestBuilder {
 	/**
 	 * @inheritdoc
 	 */
-	public function getRequestUrl() {
+	public function getRequestUrl()
+	{
 		return self::PLATRON_URL . 'do_capture.php';
 	}
 
 	/**
 	 * @inheritdoc
 	 */
-	public function getParameters() {
+	public function getParameters()
+	{
 		$parameters = array();
 		$parameters['pg_payment_id'] = $this->pg_payment_id;
 
@@ -43,7 +46,8 @@ class DoCaptureBuilder extends RequestBuilder {
 	/**
 	 * @param int $payment Id платежа
 	 */
-	public function __construct($payment) {
+	public function __construct($payment)
+	{
 		$this->pg_payment_id = $payment;
 	}
 
@@ -51,7 +55,8 @@ class DoCaptureBuilder extends RequestBuilder {
 	 * Добавить длинную запись к клирингу. Для использования длинной записи нужно согласовать это с менеджером
 	 * @param LongRecord $longRecord
 	 */
-	public function addLongRecord(LongRecord $longRecord) {
+	public function addLongRecord(LongRecord $longRecord)
+	{
 		$this->longRecord = $longRecord;
 	}
 

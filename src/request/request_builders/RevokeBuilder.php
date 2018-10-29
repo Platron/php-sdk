@@ -5,7 +5,8 @@ namespace Platron\PhpSdk\request\request_builders;
 /**
  * Строитель для полного / частичного возврата оплаченной транзакции
  */
-class RevokeBuilder extends RequestBuilder {
+class RevokeBuilder extends RequestBuilder
+{
 
 	/** @var int Id платежа */
 	protected $pg_payment_id;
@@ -16,14 +17,16 @@ class RevokeBuilder extends RequestBuilder {
 	/**
 	 * @inheritdoc
 	 */
-	public function getRequestUrl() {
+	public function getRequestUrl()
+	{
 		return self::PLATRON_URL . 'revoke.php';
 	}
 
 	/**
 	 * @param int $payment Id платежа
 	 */
-	public function __construct($payment) {
+	public function __construct($payment)
+	{
 		$this->pg_payment_id = $payment;
 	}
 
@@ -31,7 +34,8 @@ class RevokeBuilder extends RequestBuilder {
 	 * Установка суммы возврата. По умолчанию возвращается вся сумма
 	 * @param float $amount
 	 */
-	public function setAmount($amount) {
+	public function setAmount($amount)
+	{
 		$this->pg_refund_amount = $amount;
 	}
 

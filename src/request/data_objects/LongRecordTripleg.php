@@ -2,8 +2,9 @@
 
 namespace Platron\PhpSdk\request\data_objects;
 
-class LongRecordTripleg extends BaseData {
-	
+class LongRecordTripleg extends BaseData
+{
+
 	/**
 	 * @param int $triplegNumber Номер шага
 	 * @param string $date Дата полета
@@ -15,29 +16,30 @@ class LongRecordTripleg extends BaseData {
 	 * @param string $basisCode Код тарифа
 	 * @param string $flightNumber Номер рейса
 	 */
-	public function __construct($triplegNumber, $date, $carrier, $class, $destFrom, $destTo, $stopOver, $basisCode, $flightNumber) {
-		$dateParamName = 'pg_tripleg_'.$triplegNumber.'_date';
+	public function __construct($triplegNumber, $date, $carrier, $class, $destFrom, $destTo, $stopOver, $basisCode, $flightNumber)
+	{
+		$dateParamName = 'pg_tripleg_' . $triplegNumber . '_date';
 		$this->$dateParamName = $date;
-		
-		$carrierName = 'pg_tripleg_'.$triplegNumber.'_carrier';
+
+		$carrierName = 'pg_tripleg_' . $triplegNumber . '_carrier';
 		$this->$carrierName = $carrier;
-		
-		$className = 'pg_tripleg_'.$triplegNumber.'_class';
+
+		$className = 'pg_tripleg_' . $triplegNumber . '_class';
 		$this->$className = $class;
-		
-		$destFromName = 'pg_tripleg_'.$triplegNumber.'_destination_from';
+
+		$destFromName = 'pg_tripleg_' . $triplegNumber . '_destination_from';
 		$this->$destFromName = $destFrom;
-		
-		$destToName = 'pg_tripleg_'.$triplegNumber.'_destination_to';
+
+		$destToName = 'pg_tripleg_' . $triplegNumber . '_destination_to';
 		$this->$destToName = $destTo;
-		
-		$stopOverName = 'pg_tripleg_'.$triplegNumber.'_stopover';
+
+		$stopOverName = 'pg_tripleg_' . $triplegNumber . '_stopover';
 		$this->$stopOverName = $stopOver;
-		
-		$basisCodeName = 'pg_tripleg_'.$triplegNumber.'_fare_basis_code';
+
+		$basisCodeName = 'pg_tripleg_' . $triplegNumber . '_fare_basis_code';
 		$this->$basisCodeName = $basisCode;
-		
-		$flightNumberName = 'pg_tripleg_'.$triplegNumber.'_flight_number';
+
+		$flightNumberName = 'pg_tripleg_' . $triplegNumber . '_flight_number';
 		$this->$flightNumberName = $flightNumber;
 	}
 }

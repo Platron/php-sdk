@@ -2,7 +2,8 @@
 
 namespace Platron\PhpSdk\request\request_builders;
 
-abstract class RequestBuilder {
+abstract class RequestBuilder
+{
 
 	const PLATRON_URL = 'https://www.platron.ru/';
 
@@ -16,10 +17,11 @@ abstract class RequestBuilder {
 	 * Получить параметры, сгенерированные командой
 	 * @return array
 	 */
-	public function getParameters() {
+	public function getParameters()
+	{
 		$filledvars = array();
 		foreach (get_object_vars($this) as $name => $value) {
-			if (!is_null($value)){
+			if (!is_null($value)) {
 				$filledvars[$name] = (string)$value;
 			}
 		}

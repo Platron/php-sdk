@@ -5,7 +5,8 @@ namespace Platron\PhpSdk\request\request_builders;
 /**
  * Строитель для создания выплаты. Может быть связана с платежной транзакцией
  */
-class CreateMoneybackBuilder extends RequestBuilder {
+class CreateMoneybackBuilder extends RequestBuilder
+{
 
 	/** @var int Id договора */
 	protected $pg_contract_id;
@@ -25,7 +26,8 @@ class CreateMoneybackBuilder extends RequestBuilder {
 	/**
 	 * @inheritdoc
 	 */
-	public function getRequestUrl() {
+	public function getRequestUrl()
+	{
 		return self::PLATRON_URL . 'create_moneyback.php';
 	}
 
@@ -36,12 +38,13 @@ class CreateMoneybackBuilder extends RequestBuilder {
 	 * @param string $description Описание выплаты
 	 * @param array $additionalParams Дополнительные параметры, необходимые для системы выплат (можно получить из GetMoneybackList)
 	 */
-	public function __construct($contract, $moneybackSystem, $amount, $description, $additionalParams) {
+	public function __construct($contract, $moneybackSystem, $amount, $description, $additionalParams)
+	{
 		$this->pg_contract_id = $contract;
 		$this->pg_moneyback_system = $moneybackSystem;
 		$this->pg_amount = $amount;
 		$this->pg_description = $description;
-		foreach($additionalParams as $name => $param){
+		foreach ($additionalParams as $name => $param) {
 			$this->$name = $param;
 		}
 	}
@@ -50,7 +53,8 @@ class CreateMoneybackBuilder extends RequestBuilder {
 	 * Привязать выплату к транзакции
 	 * @param int $payment Id транзакции
 	 */
-	public function bindToTransaction($payment) {
+	public function bindToTransaction($payment)
+	{
 		$this->pg_payment_id = $payment;
 	}
 

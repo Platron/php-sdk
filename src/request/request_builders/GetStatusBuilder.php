@@ -5,18 +5,20 @@ namespace Platron\PhpSdk\request\request_builders;
 /**
  * Строитель для получения статуса по транзакции
  */
-class GetStatusBuilder extends RequestBuilder {
+class GetStatusBuilder extends RequestBuilder
+{
 
 	/** @var int Id транзакции */
 	protected $pg_payment_id;
-	
+
 	/** @var string Order id транзакции у магазина */
 	protected $pg_order_id;
 
 	/**
 	 * @inheritdoc
 	 */
-	public function getRequestUrl() {
+	public function getRequestUrl()
+	{
 		return self::PLATRON_URL . 'get_status.php';
 	}
 
@@ -25,11 +27,11 @@ class GetStatusBuilder extends RequestBuilder {
 	 * @param int $payment Id транзакции
 	 * @param string $order Order id транзакции в магазине
 	 */
-	public function __construct($payment = null, $order = null) {
-		if($payment){
+	public function __construct($payment = null, $order = null)
+	{
+		if ($payment) {
 			$this->pg_payment_id = $payment;
-		}
-		else {
+		} else {
 			$this->pg_order_id = $order;
 		}
 	}

@@ -4,7 +4,8 @@ namespace Platron\PhpSdk\request\clients;
 
 use Platron\PhpSdk\request\request_builders\RequestBuilder;
 
-interface iClient {
+interface iClient
+{
 
 	/**
 	 * @param int $merchant

@@ -5,7 +5,8 @@ namespace Platron\PhpSdk\request\request_builders;
 /**
  * Строитель для отмены транзакции, которая еще не была оплачена
  */
-class CancelBuilder extends RequestBuilder {
+class CancelBuilder extends RequestBuilder
+{
 
 	/** @var int $payment */
 	protected $pg_payment_id;
@@ -13,14 +14,16 @@ class CancelBuilder extends RequestBuilder {
 	/**
 	 * @inheritdoc
 	 */
-	public function getRequestUrl() {
+	public function getRequestUrl()
+	{
 		return self::PLATRON_URL . 'cancel.php';
 	}
 
 	/**
 	 * @param int $payment
 	 */
-	public function __construct($payment) {
+	public function __construct($payment)
+	{
 		$this->pg_payment_id = $payment;
 	}
 

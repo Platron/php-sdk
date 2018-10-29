@@ -7,7 +7,8 @@ use Platron\PhpSdk\Exception;
 /**
  * Строитель для создании транзакции по рекуррентному платежу. Рекуррентные платежи нужно согласовать с менеджером
  */
-class MakeRecurringBuilder extends RequestBuilder {
+class MakeRecurringBuilder extends RequestBuilder
+{
 
 	/** @var int Id рекурретного профиля */
 	protected $pg_recurring_profile;
@@ -39,7 +40,8 @@ class MakeRecurringBuilder extends RequestBuilder {
 	/**
 	 * @inheritdoc
 	 */
-	public function getRequestUrl() {
+	public function getRequestUrl()
+	{
 		return self::PLATRON_URL . 'make_recurring_payment.php';
 	}
 
@@ -47,7 +49,8 @@ class MakeRecurringBuilder extends RequestBuilder {
 	 * @param int $recurringProfile Id рекуррентного платежа
 	 * @param string $description Опсиание платежа
 	 */
-	public function __construct($recurringProfile, $description) {
+	public function __construct($recurringProfile, $description)
+	{
 		$this->pg_recurring_profile = $recurringProfile;
 		$this->pg_description = $description;
 	}
@@ -57,7 +60,8 @@ class MakeRecurringBuilder extends RequestBuilder {
 	 * @param int $order
 	 * @return $this
 	 */
-	public function addOrderId($order) {
+	public function addOrderId($order)
+	{
 		$this->pg_order_id = $order;
 		return $this;
 	}
@@ -67,7 +71,8 @@ class MakeRecurringBuilder extends RequestBuilder {
 	 * @param float $amount
 	 * @return $this
 	 */
-	public function addAmount($amount) {
+	public function addAmount($amount)
+	{
 		$this->pg_amount = $amount;
 		return $this;
 	}
@@ -77,7 +82,8 @@ class MakeRecurringBuilder extends RequestBuilder {
 	 * @param string $resultUrl
 	 * @return $this
 	 */
-	public function addResultUrl($resultUrl) {
+	public function addResultUrl($resultUrl)
+	{
 		$this->pg_result_url = $resultUrl;
 		return $this;
 	}
@@ -87,7 +93,8 @@ class MakeRecurringBuilder extends RequestBuilder {
 	 * @param string $refundUrl
 	 * @return $this
 	 */
-	public function addRefundUrl($refundUrl) {
+	public function addRefundUrl($refundUrl)
+	{
 		$this->pg_refund_url = $refundUrl;
 		return $this;
 	}
@@ -97,7 +104,8 @@ class MakeRecurringBuilder extends RequestBuilder {
 	 * @param string $reqestMethod
 	 * @return $this
 	 */
-	public function addRequestMethod($reqestMethod) {
+	public function addRequestMethod($reqestMethod)
+	{
 		$this->pg_request_method = $reqestMethod;
 		return $this;
 	}
@@ -107,7 +115,8 @@ class MakeRecurringBuilder extends RequestBuilder {
 	 * @param string $encoding
 	 * @return $this
 	 */
-	public function addEncoding($encoding) {
+	public function addEncoding($encoding)
+	{
 		$this->pg_encoding = $encoding;
 		return $this;
 	}
@@ -117,7 +126,8 @@ class MakeRecurringBuilder extends RequestBuilder {
 	 * @return $this
 	 * @throws Exception
 	 */
-	public function addMerchantParams($params) {
+	public function addMerchantParams($params)
+	{
 		foreach ($params as $name => $value) {
 			if (substr($name, 0, 3) == 'pg_') {
 				throw new Exception('Только параметры без pg_');
@@ -131,7 +141,8 @@ class MakeRecurringBuilder extends RequestBuilder {
 	 * @param string $userIp
 	 * @return $this
 	 */
-	public function addUserIp($userIp) {
+	public function addUserIp($userIp)
+	{
 		$this->pg_user_ip = $userIp;
 		return $this;
 	}

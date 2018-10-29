@@ -2,4 +2,6 @@
 
 namespace Platron\PhpSdk;
 
-class Exception extends \Exception {}
+class Exception extends \Exception
+{
+}

@@ -5,7 +5,8 @@ namespace Platron\PhpSdk\request\request_builders;
 /**
  * Строитель для получения списка доступных платежных систем и расчета итоговой стоимости
  */
-class PsListBuilder extends RequestBuilder {
+class PsListBuilder extends RequestBuilder
+{
 
 	/** @var float Сумма */
 	protected $pg_amount;
@@ -19,14 +20,16 @@ class PsListBuilder extends RequestBuilder {
 	/**
 	 * @inheritdoc
 	 */
-	public function getRequestUrl() {
+	public function getRequestUrl()
+	{
 		return self::PLATRON_URL . 'ps_list.php';
 	}
 
 	/**
 	 * @param float $amount Сумма для расчета стоимости по каждой ПС
 	 */
-	public function __construct($amount) {
+	public function __construct($amount)
+	{
 		$this->pg_amount = $amount;
 	}
 
@@ -35,7 +38,8 @@ class PsListBuilder extends RequestBuilder {
 	 * @param string $currency
 	 * @return $this
 	 */
-	public function addCurrency($currency) {
+	public function addCurrency($currency)
+	{
 		$this->pg_currency = $currency;
 		return $this;
 	}
@@ -45,7 +49,8 @@ class PsListBuilder extends RequestBuilder {
 	 * @param bool $testingMode
 	 * @return $this
 	 */
-	public function addTestingMode() {
+	public function addTestingMode()
+	{
 		$this->pg_testing_mode = 1;
 		return $this;
 	}
