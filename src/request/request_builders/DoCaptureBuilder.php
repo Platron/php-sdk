@@ -11,10 +11,10 @@ class DoCaptureBuilder extends RequestBuilder
 {
 
 	/** @var int Id платежа */
-	protected $pg_payment_id;
+	private $pg_payment_id;
 
 	/** @var LongRecord Длинная запись */
-	protected $longRecord;
+	private $longRecord;
 
 	/**
 	 * @inheritdoc

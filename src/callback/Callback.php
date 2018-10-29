@@ -9,15 +9,15 @@ class Callback
 {
 
 	/** @var string Скрипт магазина, на который делается запрос */
-	protected $urlScriptName;
+	private $urlScriptName;
 
 	/** @var SigHelper Помощник для создания подписи */
-	protected $sigHelper;
+	private $sigHelper;
 
 	/**
 	 * Ответить в Platron
 	 */
-	protected function response($salt, $status, $description)
+	private function response($salt, $status, $description)
 	{
 		$xml = new SimpleXMLElement('<?xml version="1.0" encoding="utf-8"?><response/>');
 		$xml->addChild('pg_salt', $salt); // в ответе необходимо указывать тот же pg_salt, что и в запросе

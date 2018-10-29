@@ -2,8 +2,24 @@
 
 namespace Platron\PhpSdk\request\data_objects;
 
+use Platron\PhpSdk\Exception;
+
 class Item extends BaseData
 {
+	const
+		TYPE_PRODUCT = 'product',
+		TYPE_PRODUCT_EXCISE = 'product_excise',
+		TYPE_WORK = 'work',
+		TYPE_SERVICE = 'service',
+		TYPE_GAMBLING_BET = 'gambling_bet',
+		TYPE_GAMBLING_WIN = 'gambling_win',
+		TYPE_LOTTERY_BET = 'lottery_bet',
+		TYPE_LOTTERY_WIN = 'lottery_win',
+		TYPE_RID = 'rid',
+		TYPE_PAYMENT = 'payment',
+		TYPE_COMMISSION = 'commission',
+		TYPE_COMPOSITE = 'composite',
+		TYPE_OTHER = 'other';
 
 	const
 		VAT0 = '0', // 0%
@@ -12,27 +28,38 @@ class Item extends BaseData
 		VAT110 = '110', // формула 10/110
 		VAT118 = '118'; // формула 18/118
 
-	/** @var string */
-	protected $pg_label;
-	/** @var float */
-	protected $pg_amount;
-	/** @var float */
-	protected $pg_price;
-	/** @var int */
-	protected $pg_quantity;
-	/** @var string */
-	protected $pg_vat;
-	/** @var string */
-	protected $pg_type = 'product';
+	const
+		PAYMENT_FULL_PAYMENT = 'full_payment',
+		PAYMENT_PRE_PAYMENT_FULL = 'pre_payment_full',
+		PAYMENT_PRE_PAYMENT_PART = 'pre_payment_part',
+		PAYMENT_ADVANCE = 'advance',
+		PAYMENT_CREDIT_PART = 'credit_part',
+		PAYMENT_CREDIT_PAY = 'credit_pay',
+		PAYMENT_CREDIT = 'credit';
 
 	/** @var string */
-	protected $pg_agent_type;
+	private $pg_label;
+	/** @var float */
+	private $pg_amount;
+	/** @var float */
+	private $pg_price;
+	/** @var int */
+	private $pg_quantity;
 	/** @var string */
-	protected $pg_agent_name;
+	private $pg_vat;
+	/** @var string */
+	private $pg_type = 'product';
+	/** @var string */
+	private $pg_payment_type;
+
+	/** @var string */
+	private $pg_agent_type;
+	/** @var string */
+	private $pg_agent_name;
 	/** @var int */
-	protected $pg_agent_inn;
+	private $pg_agent_inn;
 	/** @var int */
-	protected $pg_agent_phone;
+	private $pg_agent_phone;
 
 	/**
 	 * @param string $label Название товара
@@ -65,10 +92,29 @@ class Item extends BaseData
 	/**
 	 * Добавить тип товара
 	 * @param string $type
+	 * @throws Exception
 	 */
 	public function addType($type)
 	{
+		if (!in_array($type, $this->getTypes())) {
+			throw new \Platron\PhpSdk\Exception('Wrong type. Use type from constant');
+		}
+
 		$this->pg_type = $type;
+	}
+
+	/**
+	 * Добавить тип товара
+	 * @param string $type
+	 * @throws Exception
+	 */
+	public function addPaymentType($type)
+	{
+		if (!in_array($type, $this->getPaymentTypes())) {
+			throw new \Platron\PhpSdk\Exception('Wrong payment type. Use payment type from constant');
+		}
+
+		$this->pg_payment_type = $type;
 	}
 
 	/**
@@ -89,7 +135,7 @@ class Item extends BaseData
 	 * Получить возможные варианты НДС
 	 * @return array
 	 */
-	protected function getVatTypes()
+	private function getVatTypes()
 	{
 		return array(
 			self::VAT0,
@@ -97,6 +143,43 @@ class Item extends BaseData
 			self::VAT110,
 			self::VAT118,
 			self::VAT18,
+		);
+	}
+
+	/**
+	 * @return array
+	 */
+	private function getTypes(){
+		return array(
+			self::TYPE_PRODUCT,
+			self::TYPE_PRODUCT_EXCISE,
+			self::TYPE_WORK,
+			self::TYPE_SERVICE,
+			self::TYPE_GAMBLING_BET,
+			self::TYPE_GAMBLING_WIN,
+			self::TYPE_LOTTERY_BET,
+			self::TYPE_LOTTERY_WIN,
+			self::TYPE_RID,
+			self::TYPE_PAYMENT,
+			self::TYPE_COMMISSION,
+			self::TYPE_COMPOSITE,
+			self::TYPE_OTHER
+		);
+	}
+
+	/**
+	 * @return array
+	 */
+	private function getPaymentTypes()
+	{
+		return array(
+			self::PAYMENT_FULL_PAYMENT,
+			self::PAYMENT_PRE_PAYMENT_FULL,
+			self::PAYMENT_PRE_PAYMENT_PART,
+			self::PAYMENT_ADVANCE,
+			self::PAYMENT_CREDIT_PART,
+			self::PAYMENT_CREDIT_PAY,
+			self::PAYMENT_CREDIT,
 		);
 	}
 }

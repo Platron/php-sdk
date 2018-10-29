@@ -10,9 +10,9 @@ abstract class PaidTransactionTestBase extends IntegrationTestBase
 	const ITERATION_COUNT = 5;
 	const WAITING_TIME = 2;
 	/** @var GetStatusBuilder */
-	protected $getStatusBuilder;
+	private $getStatusBuilder;
 	/** @var PostClient */
-	protected $postClient;
+	private $postClient;
 
 	/*
 	 * @return InitPaymentBuilder
@@ -32,7 +32,7 @@ abstract class PaidTransactionTestBase extends IntegrationTestBase
 		$this->waitForTransaction();
 	}
 
-	abstract protected function getInitPaymentBuilder();
+	abstract private function getInitPaymentBuilder();
 
 	/*
 	 * Ожидание успешного завершения платежа

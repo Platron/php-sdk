@@ -8,9 +8,9 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
 {
 
 	/** @var Callback */
-	protected $fixture;
+	private $fixture;
 
-	protected function setUp()
+	private function setUp()
 	{
 		$this->fixture = new Callback('test.php', 'adfsvsdfvsd');
 	}

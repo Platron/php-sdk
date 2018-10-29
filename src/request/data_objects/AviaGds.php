@@ -5,13 +5,13 @@ namespace Platron\PhpSdk\request\data_objects;
 class AviaGds extends BaseData
 {
 	/** @var string[] Список брендов карт, принимаемых к оплате */
-	protected $pg_card_brand;
+	private $pg_card_brand;
 	/** @var string PNR */
-	protected $pg_rec_log;
+	private $pg_rec_log;
 	/** @var string Название GDS (AMADUS|SABRE|GALILEO и т.д.) */
-	protected $pg_gds;
+	private $pg_gds;
 	/** @var float Сумма надбавки магазина */
-	protected $pg_merchant_markup;
+	private $pg_merchant_markup;
 
 	/**
 	 * @param string $recLoc PNR

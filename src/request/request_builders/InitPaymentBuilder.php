@@ -13,88 +13,88 @@ class InitPaymentBuilder extends RequestBuilder
 {
 
 	/** @var string Для статистики использования SDK */
-	protected $sdk = 'phpsdk';
+	private $sdk = 'phpsdk';
 
 	/** @var float Сумма транзакции */
-	protected $pg_amount;
+	private $pg_amount;
 
 	/** @var string Описание транзакции */
-	protected $pg_description;
+	private $pg_description;
 
 	/** @var BankCard Данные банковской карты */
-	protected $bankCard;
+	private $bankCard;
 
 	/** @var AviaGds Данные по GDS */
-	protected $aviaGds;
+	private $aviaGds;
 
 	/** @var string Номер заказа в магазине */
-	protected $pg_order_id;
+	private $pg_order_id;
 
 	/** @var string Валюта транзакции */
-	protected $pg_currency;
+	private $pg_currency;
 
 	/** @var int Время жизни счета транзакции */
-	protected $pg_lifetime;
+	private $pg_lifetime;
 
 	/** @var boolean Отлиженный платеж */
-	protected $pg_postpone;
+	private $pg_postpone;
 
 	/** @var string Язык транзакции */
-	protected $pg_language;
+	private $pg_language;
 
 	/** @var boolean Установлен ли демо режим */
-	protected $pg_testing_mode;
+	private $pg_testing_mode;
 
 	/** @var boolean Стартовать ли рекуррентный профиль */
-	protected $pg_recurring_start;
+	private $pg_recurring_start;
 
 	/** @var string Заранее выбранная платежная система */
-	protected $pg_payment_system;
+	private $pg_payment_system;
 
 	/** @var string Check url */
-	protected $pg_check_url;
+	private $pg_check_url;
 
 	/** @var string Result url */
-	protected $pg_result_url;
+	private $pg_result_url;
 
 	/** @var string Refund url */
-	protected $pg_refund_url;
+	private $pg_refund_url;
 
 	/** @var string Capture url */
-	protected $pg_capture_url;
+	private $pg_capture_url;
 
 	/** @var string Request method */
-	protected $pg_request_method;
+	private $pg_request_method;
 
 	/** @var string Success url */
-	protected $pg_success_url;
+	private $pg_success_url;
 
 	/** @var string Success url method */
-	protected $pg_success_url_method;
+	private $pg_success_url_method;
 
 	/** @var string State url */
-	protected $pg_state_url;
+	private $pg_state_url;
 
 	/** @var string State url method */
-	protected $pg_state_url_method;
+	private $pg_state_url_method;
 
 	/** @var string Failure url */
-	protected $pg_failure_url;
+	private $pg_failure_url;
 
 	/** @var string Failure url method */
-	protected $pg_failure_url_method;
+	private $pg_failure_url_method;
 
 	/** @var string Site url */
-	protected $pg_site_url;
+	private $pg_site_url;
 
 	/** @var string IP клиента в формате long */
-	protected $pg_user_ip;
+	private $pg_user_ip;
 
 	/** @var string Email клиента */
-	protected $pg_user_contact_email;
+	private $pg_user_contact_email;
 
 	/** @var string Телефон клиента */
-	protected $pg_user_phone;
+	private $pg_user_phone;
 
 	/**
 	 * @inheritdoc

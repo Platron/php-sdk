@@ -17,17 +17,17 @@ class ReceiptBuilder extends RequestBuilder
 		MONEYBACK_TYPE = 'moneyback';
 
 	/** @var string */
-	protected $pg_operation_type;
+	private $pg_operation_type;
 	/** @var int */
-	protected $pg_payment_id;
+	private $pg_payment_id;
 	/** @var string */
-	protected $pg_order_id;
+	private $pg_order_id;
 	/** @var Item[] */
-	protected $items;
+	private $items;
 	/** @var double */
-	protected $pg_additional_payment_amount;
+	private $pg_additional_payment_amount;
 	/** @var string */
-	protected $pg_additional_payment_type;
+	private $pg_additional_payment_type;
 
 	/**
 	 * @inheritdoc
@@ -63,7 +63,7 @@ class ReceiptBuilder extends RequestBuilder
 	 * Получить возможные варианты операций
 	 * @return array
 	 */
-	protected function getPossibleOperationTypes()
+	private function getPossibleOperationTypes()
 	{
 		return array(
 			self::TRANSACTION_TYPE,

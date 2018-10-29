@@ -9,7 +9,7 @@ class SigHelperTest extends \PHPUnit_Framework_TestCase
 {
 
 	/** @var SigHelper */
-	protected $fixture;
+	private $fixture;
 
 	public function setUp()
 	{

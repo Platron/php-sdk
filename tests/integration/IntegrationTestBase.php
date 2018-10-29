@@ -5,9 +5,9 @@ namespace Platron\PhpSdk\tests\integration;
 abstract class IntegrationTestBase extends \PHPUnit_Framework_TestCase
 {
 	/** @var int */
-	protected $merchantId;
+	private $merchantId;
 	/** @var string */
-	protected $secretKey;
+	private $secretKey;
 
 	public function setUp()
 	{

@@ -9,7 +9,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 {
 
 	/** @var PostClient */
-	protected $fixture;
+	private $fixture;
 
 	public function setUp()
 	{
@@ -49,7 +49,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 	 * @param array $params
 	 * @return Platron\PhpSdk\request\request_builders\RequestBuilder
 	 */
-	protected function generateMock($url, $params)
+	private function generateMock($url, $params)
 	{
 		$stubRequestBuilder = $this->getMockBuilder('Platron\PhpSdk\request\request_builders\RequestBuilder')->disableOriginalConstructor()->setMethods(array('getParameters', 'getRequestUrl'))->getMock();
 		$stubRequestBuilder->expects($this->any())->method('getParameters')->willReturn($params);

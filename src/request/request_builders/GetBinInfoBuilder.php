@@ -9,7 +9,7 @@ class GetBinInfoBuilder extends RequestBuilder
 {
 
 	/** @var int Бин карты */
-	protected $pg_bin;
+	private $pg_bin;
 
 	/**
 	 * @inheritdoc

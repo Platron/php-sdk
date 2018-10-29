@@ -9,19 +9,19 @@ class CreateMoneybackBuilder extends RequestBuilder
 {
 
 	/** @var int Id договора */
-	protected $pg_contract_id;
+	private $pg_contract_id;
 
 	/** @var string Название системы выплат */
-	protected $pg_moneyback_system;
+	private $pg_moneyback_system;
 
 	/** @var float Сумма */
-	protected $pg_amount;
+	private $pg_amount;
 
 	/** @var string Описание */
-	protected $pg_description;
+	private $pg_description;
 
 	/** @var int $transaction Id транзакции */
-	protected $pg_payment_id;
+	private $pg_payment_id;
 
 	/**
 	 * @inheritdoc

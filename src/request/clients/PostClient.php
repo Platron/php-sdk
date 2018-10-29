@@ -13,21 +13,21 @@ class PostClient implements iClient
 {
 
 	/** @var string|null Описание ошибки */
-	protected $errorDescription;
+	private $errorDescription;
 	/** @var mixed|null Код ошибки */
-	protected $errorCode;
+	private $errorCode;
 
 	/** @var int Номер магазина */
-	protected $merchant;
+	private $merchant;
 
 	/** @var SigHelper Помощник создания подписи */
-	protected $sigHelper;
+	private $sigHelper;
 
 	/** @var string */
-	protected $secretKey;
+	private $secretKey;
 
 	/** @var LoggerInterface */
-	protected $logger;
+	private $logger;
 
 	/** @var array */
 	private $additionalCurlParameters = array();
@@ -93,7 +93,7 @@ class PostClient implements iClient
 	 * @param string $url
 	 * @return boolean
 	 */
-	protected function hasError($response, $url)
+	private function hasError($response, $url)
 	{
 		try {
 			$xml = new SimpleXMLElement($response);

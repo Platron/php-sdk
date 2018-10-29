@@ -9,13 +9,13 @@ class PsListBuilder extends RequestBuilder
 {
 
 	/** @var float Сумма */
-	protected $pg_amount;
+	private $pg_amount;
 
 	/** @var string Валюта */
-	protected $pg_currency;
+	private $pg_currency;
 
 	/** @var bool Тестовый режим */
-	protected $pg_testing_mode;
+	private $pg_testing_mode;
 
 	/**
 	 * @inheritdoc

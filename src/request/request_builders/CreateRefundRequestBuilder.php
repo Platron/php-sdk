@@ -9,13 +9,13 @@ class CreateRefundRequestBuilder extends RequestBuilder
 {
 
 	/** @var int Id Платежа */
-	protected $pg_payment_id;
+	private $pg_payment_id;
 
 	/** @var float Сумма заявки на возврат */
-	protected $pg_refund_amount;
+	private $pg_refund_amount;
 
 	/** @var string Причина возврата */
-	protected $pg_comment;
+	private $pg_comment;
 
 	/**
 	 * @inheritdoc

@@ -10,10 +10,10 @@ use Platron\PhpSdk\request\data_objects\Item;
 class CreateReceiptTest extends IntegrationTestBase
 {
 	/** @var int */
-	protected $paymentId;
+	private $paymentId;
 
 	/** @var PostClient */
-	protected $postClient;
+	private $postClient;
 
 	public function setUp()
 	{

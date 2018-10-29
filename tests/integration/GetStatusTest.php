@@ -12,10 +12,10 @@ use Platron\PhpSdk\request\request_builders\GetStatusBuilder;
 class GetStatusTest extends IntegrationTestBase
 {
 	/** @var int */
-	protected $paymentId;
+	private $paymentId;
 
 	/** @var PostClient */
-	protected $postClient;
+	private $postClient;
 
 	public function setUp()
 	{

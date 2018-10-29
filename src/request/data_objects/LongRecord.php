@@ -8,15 +8,15 @@ class LongRecord extends BaseData
 {
 
 	/** @var string Имя пассажира */
-	protected $pg_ticket_passenger_name;
+	private $pg_ticket_passenger_name;
 	/** @var string Номер билета */
-	protected $pg_ticket_number;
+	private $pg_ticket_number;
 	/** @var string Возможна ли остановка */
-	protected $pg_ticket_restricted;
+	private $pg_ticket_restricted;
 	/** @var string Билетная система */
-	protected $pg_ticket_system;
+	private $pg_ticket_system;
 	/** @var string Код билетного агента */
-	protected $pg_ticket_agency_code;
+	private $pg_ticket_agency_code;
 
 	/** @var LongRecordTripleg[] Список шагов полета */
 	public $triplegs = array();
