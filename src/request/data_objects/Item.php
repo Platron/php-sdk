@@ -37,6 +37,9 @@ class Item extends BaseData
 		PAYMENT_CREDIT_PAY = 'credit_pay',
 		PAYMENT_CREDIT = 'credit';
 
+	const
+		AGENT_TYPE_COMMISSIONAIRE = 'commissionaire';
+
 	/** @var string */
 	private $pg_label;
 	/** @var float */
@@ -122,9 +125,14 @@ class Item extends BaseData
 	 * @param string $name
 	 * @param int $inn
 	 * @param int $phone
+	 * @throws Exception
 	 */
 	public function addAgent($type, $name, $inn, $phone)
 	{
+		if (!in_array($type, $this->getAgentTypes())) {
+			throw new \Platron\PhpSdk\Exception('Wrong agent type. Use agent type from constant');
+		}
+
 		$this->pg_agent_type = $type;
 		$this->pg_agent_name = $name;
 		$this->pg_agent_inn = $inn;
@@ -180,6 +188,16 @@ class Item extends BaseData
 			self::PAYMENT_CREDIT_PART,
 			self::PAYMENT_CREDIT_PAY,
 			self::PAYMENT_CREDIT,
+		);
+	}
+
+	/**
+	 * @return array
+	 */
+	private function getAgentTypes()
+	{
+		return array(
+			self::AGENT_TYPE_COMMISSIONAIRE,
 		);
 	}
 }
