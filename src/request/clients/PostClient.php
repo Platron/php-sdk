@@ -13,24 +13,24 @@ class PostClient implements iClient
 {
 
 	/** @var string|null Описание ошибки */
-	private $errorDescription;
+	protected $errorDescription;
 	/** @var mixed|null Код ошибки */
-	private $errorCode;
+	protected $errorCode;
 
 	/** @var int Номер магазина */
-	private $merchant;
+	protected $merchant;
 
 	/** @var SigHelper Помощник создания подписи */
-	private $sigHelper;
+	protected $sigHelper;
 
 	/** @var string */
-	private $secretKey;
+	protected $secretKey;
 
 	/** @var LoggerInterface */
-	private $logger;
+	protected $logger;
 
 	/** @var array */
-	private $additionalCurlParameters = array();
+	protected $additionalCurlParameters = array();
 
 	/**
 	 * @inheritdoc

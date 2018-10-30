@@ -17,17 +17,17 @@ class ReceiptBuilder extends RequestBuilder
 		MONEYBACK_TYPE = 'moneyback';
 
 	/** @var string */
-	private $pg_operation_type;
+	protected $pg_operation_type;
 	/** @var int */
-	private $pg_payment_id;
+	protected $pg_payment_id;
 	/** @var string */
-	private $pg_order_id;
+	protected $pg_order_id;
 	/** @var Item[] */
-	private $items;
+	protected $items;
 	/** @var double */
-	private $pg_additional_payment_amount;
+	protected $pg_additional_payment_amount;
 	/** @var string */
-	private $pg_additional_payment_type;
+	protected $pg_additional_payment_type;
 
 	/**
 	 * @inheritdoc

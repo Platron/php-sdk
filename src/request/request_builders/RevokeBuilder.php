@@ -9,10 +9,10 @@ class RevokeBuilder extends RequestBuilder
 {
 
 	/** @var int Id платежа */
-	private $pg_payment_id;
+	protected $pg_payment_id;
 
 	/** @var float Сумма */
-	private $pg_refund_amount;
+	protected $pg_refund_amount;
 
 	/**
 	 * @inheritdoc

@@ -9,7 +9,7 @@ class GetRegistryBuilder extends RequestBuilder
 {
 
 	/** @var string */
-	private $pg_date;
+	protected $pg_date;
 
 	/**
 	 * @inheritdoc

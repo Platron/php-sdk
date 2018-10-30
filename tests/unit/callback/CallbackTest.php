@@ -8,7 +8,7 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
 {
 
 	/** @var Callback */
-	private $fixture;
+	protected $fixture;
 
 	private function setUp()
 	{

@@ -9,7 +9,7 @@ class GetMoneybackStatusBulder extends RequestBuilder
 {
 
 	/** @var $moneyback */
-	private $pg_moneyback_id;
+	protected $pg_moneyback_id;
 
 	/**
 	 * @inheritdoc

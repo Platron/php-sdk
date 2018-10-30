@@ -11,7 +11,7 @@ use Platron\PhpSdk\request\request_builders\DoCaptureBuilder;
 class DoCaptureTest extends PaidTransactionTestBase
 {
 	/** @var int */
-	private $paymentId;
+	protected $paymentId;
 
 	public function getInitPaymentBuilder()
 	{

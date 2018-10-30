@@ -11,31 +11,31 @@ class MakeRecurringBuilder extends RequestBuilder
 {
 
 	/** @var int Id рекурретного профиля */
-	private $pg_recurring_profile;
+	protected $pg_recurring_profile;
 
 	/** @var string Описание платежа */
-	private $pg_description;
+	protected $pg_description;
 
 	/** @var string Номер заказа магазина */
-	private $pg_order_id;
+	protected $pg_order_id;
 
 	/** @var float Сумма */
-	private $pg_amount;
+	protected $pg_amount;
 
 	/** @var string Result Url */
-	private $pg_result_url;
+	protected $pg_result_url;
 
 	/** @var string Refund Url */
-	private $pg_refund_url;
+	protected $pg_refund_url;
 
 	/** @var string Метод запросов */
-	private $pg_request_method;
+	protected $pg_request_method;
 
 	/** @var string Кодировка запроса */
-	private $pg_encoding;
+	protected $pg_encoding;
 
 	/** @var string IP адрес пользователя */
-	private $pg_user_ip;
+	protected $pg_user_ip;
 
 	/**
 	 * @inheritdoc

@@ -12,10 +12,10 @@ use Platron\PhpSdk\request\request_builders\CancelBuilder;
 class CancelTest extends IntegrationTestBase
 {
 	/** @var int */
-	private $paymentId;
+	protected $paymentId;
 
 	/** @var PostClient */
-	private $postClient;
+	protected $postClient;
 
 	public function setUp()
 	{

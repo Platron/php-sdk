@@ -9,10 +9,10 @@ class Callback
 {
 
 	/** @var string Скрипт магазина, на который делается запрос */
-	private $urlScriptName;
+	protected $urlScriptName;
 
 	/** @var SigHelper Помощник для создания подписи */
-	private $sigHelper;
+	protected $sigHelper;
 
 	/**
 	 * Ответить в Platron

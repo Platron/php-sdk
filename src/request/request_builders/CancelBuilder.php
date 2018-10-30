@@ -9,7 +9,7 @@ class CancelBuilder extends RequestBuilder
 {
 
 	/** @var int $payment */
-	private $pg_payment_id;
+	protected $pg_payment_id;
 
 	/**
 	 * @inheritdoc

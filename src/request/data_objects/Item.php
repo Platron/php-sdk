@@ -41,28 +41,28 @@ class Item extends BaseData
 		AGENT_TYPE_COMMISSIONAIRE = 'commissionaire';
 
 	/** @var string */
-	private $pg_label;
+	protected $pg_label;
 	/** @var float */
-	private $pg_amount;
+	protected $pg_amount;
 	/** @var float */
-	private $pg_price;
+	protected $pg_price;
 	/** @var int */
-	private $pg_quantity;
+	protected $pg_quantity;
 	/** @var string */
-	private $pg_vat;
+	protected $pg_vat;
 	/** @var string */
-	private $pg_type = 'product';
+	protected $pg_type = 'product';
 	/** @var string */
-	private $pg_payment_type;
+	protected $pg_payment_type;
 
 	/** @var string */
-	private $pg_agent_type;
+	protected $pg_agent_type;
 	/** @var string */
-	private $pg_agent_name;
+	protected $pg_agent_name;
 	/** @var int */
-	private $pg_agent_inn;
+	protected $pg_agent_inn;
 	/** @var int */
-	private $pg_agent_phone;
+	protected $pg_agent_phone;
 
 	/**
 	 * @param string $label Название товара

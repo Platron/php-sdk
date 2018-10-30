@@ -10,9 +10,9 @@ abstract class PaidTransactionTestBase extends IntegrationTestBase
 	const ITERATION_COUNT = 5;
 	const WAITING_TIME = 2;
 	/** @var GetStatusBuilder */
-	private $getStatusBuilder;
+	protected $getStatusBuilder;
 	/** @var PostClient */
-	private $postClient;
+	protected $postClient;
 
 	/*
 	 * @return InitPaymentBuilder

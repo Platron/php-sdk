@@ -11,7 +11,7 @@ use Platron\PhpSdk\request\request_builders\RevokeBuilder;
 class RefundTest extends PaidTransactionTestBase
 {
 	/** @var int */
-	private $paymentId;
+	protected $paymentId;
 
 	public function getInitPaymentBuilder()
 	{

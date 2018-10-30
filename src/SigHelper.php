@@ -8,7 +8,7 @@ class SigHelper
 {
 
 	/** @var string Секретное слово */
-	private $secretKey;
+	protected $secretKey;
 
 	/**
 	 * Returns flat array of XML params

@@ -9,10 +9,10 @@ class GetStatusBuilder extends RequestBuilder
 {
 
 	/** @var int Id транзакции */
-	private $pg_payment_id;
+	protected $pg_payment_id;
 
 	/** @var string Order id транзакции у магазина */
-	private $pg_order_id;
+	protected $pg_order_id;
 
 	/**
 	 * @inheritdoc

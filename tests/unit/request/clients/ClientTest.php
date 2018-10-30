@@ -9,7 +9,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 {
 
 	/** @var PostClient */
-	private $fixture;
+	protected $fixture;
 
 	public function setUp()
 	{
