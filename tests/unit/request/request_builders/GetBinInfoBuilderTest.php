@@ -4,7 +4,7 @@ namespace Platron\PhpSdk\tests\unit;
 
 use Platron\PhpSdk\request\request_builders\GetBinInfoBuilder;
 
-class GetBinInfoBuiderTest extends \PHPUnit_Framework_TestCase
+class GetBinInfoBuilderTest extends \PHPUnit_Framework_TestCase
 {
 	public function testExecute()
 	{

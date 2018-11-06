@@ -22,7 +22,7 @@ abstract class RequestBuilder
 		$filledvars = array();
 		foreach (get_object_vars($this) as $name => $value) {
 			if (!is_null($value)) {
-				$filledvars[$name] = (string)$value;
+				$filledvars[$name] = $value;
 			}
 		}
 

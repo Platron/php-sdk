@@ -10,7 +10,7 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
 	/** @var Callback */
 	protected $fixture;
 
-	private function setUp()
+	protected function setUp()
 	{
 		$this->fixture = new Callback('test.php', 'adfsvsdfvsd');
 	}

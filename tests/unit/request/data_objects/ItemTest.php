@@ -13,7 +13,13 @@ class ItemTest extends PHPUnit_Framework_TestCase
 	{
 		$item = new Item('test product', '10.00', 2, Item::VAT0);
 		$item->addAmount('20.00');
-		$item->addType('product');
+		$item->addType(Item::TYPE_WORK);
+		$item->addPaymentType(Item::PAYMENT_FULL_PAYMENT);
+
+		$agentName = 'TestAgent';
+		$agentInn = '123456789012';
+		$agentPhone = '79050000000';
+		$item->addAgent(Item::AGENT_TYPE_COMMISSIONAIRE, $agentName, $agentInn, $agentPhone);
 
 		$parameters = $item->getParameters();
 		$this->assertEquals('test product', $parameters['pg_label']);
@@ -21,7 +27,12 @@ class ItemTest extends PHPUnit_Framework_TestCase
 		$this->assertEquals(2, $parameters['pg_quantity']);
 		$this->assertEquals('20.00', $parameters['pg_amount']);
 		$this->assertEquals(Item::VAT0, $parameters['pg_vat']);
-		$this->assertEquals('product', $parameters['pg_type']);
+		$this->assertEquals(Item::TYPE_WORK, $parameters['pg_type']);
+		$this->assertEquals(Item::PAYMENT_FULL_PAYMENT, $parameters['pg_payment_type']);
+		$this->assertEquals(Item::AGENT_TYPE_COMMISSIONAIRE, $parameters['pg_agent_type']);
+		$this->assertEquals($agentName, $parameters['pg_agent_name']);
+		$this->assertEquals($agentInn, $parameters['pg_agent_inn']);
+		$this->assertEquals($agentPhone, $parameters['pg_agent_phone']);
 	}
 
 	public function testExceptionSetVat()

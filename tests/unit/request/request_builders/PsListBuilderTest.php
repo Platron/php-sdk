@@ -4,7 +4,7 @@ namespace Platron\PhpSdk\tests\unit;
 
 use Platron\PhpSdk\request\request_builders\PsListBuilder;
 
-class PsListBuiderTest extends \PHPUnit_Framework_TestCase
+class PsListBuilderTest extends \PHPUnit_Framework_TestCase
 {
 	public function testExecute()
 	{
