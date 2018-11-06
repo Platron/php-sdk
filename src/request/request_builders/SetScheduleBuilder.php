@@ -20,15 +20,8 @@ class SetScheduleBuilder extends RequestBuilder
 	protected $pg_amount;
 	/** @var string[] */
 	protected $pg_dates;
-
 	/** @var string */
-	protected $pg_start_date;
-	/** @var string */
-	protected $pg_interval;
-	/** @var int */
-	protected $pg_period;
-	/** @var int */
-	protected $pg_max_periods;
+	protected $pg_template;
 
 	/**
 	 * @return string
@@ -73,10 +66,10 @@ class SetScheduleBuilder extends RequestBuilder
 			throw new Exception('Wrong interval type. Use from constants');
 		}
 
-		$this->pg_start_date = $startDate;
-		$this->pg_interval = $interval;
-		$this->pg_period = $period;
-		$this->pg_max_periods = $maxPeriods;
+		$this->pg_template['pg_start_date'] = $startDate;
+		$this->pg_template['pg_interval'] = $interval;
+		$this->pg_template['pg_period'] = $period;
+		$this->pg_template['pg_max_periods'] = $maxPeriods;
 	}
 
 	/**
