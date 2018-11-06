@@ -27,11 +27,13 @@ class SetScheduleBuilderTest extends \PHPUnit_Framework_TestCase
 	{
 		$startDate = '2020-01-01';
 		$period = 10;
+		$maxPeriods = 10;
 		$templateRequest = new SetScheduleBuilder('82', '231231', '10.00');
-		$templateRequest->addTemplate($startDate, SetScheduleBuilder::INTERVAL_WEEK, $period);
+		$templateRequest->addTemplate($startDate, SetScheduleBuilder::INTERVAL_WEEK, $period, $maxPeriods);
 		$parameters = $templateRequest->getParameters();
 		$this->assertEquals($startDate, $parameters['pg_start_date']);
 		$this->assertEquals(SetScheduleBuilder::INTERVAL_WEEK, $parameters['pg_interval']);
 		$this->assertEquals($period, $parameters['pg_period']);
+		$this->assertEquals($maxPeriods, $parameters['pg_max_periods']);
 	}
 }

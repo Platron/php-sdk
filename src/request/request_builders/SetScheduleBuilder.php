@@ -27,6 +27,8 @@ class SetScheduleBuilder extends RequestBuilder
 	protected $pg_interval;
 	/** @var int */
 	protected $pg_period;
+	/** @var int */
+	protected $pg_max_periods;
 
 	/**
 	 * @return string
@@ -62,9 +64,10 @@ class SetScheduleBuilder extends RequestBuilder
 	 * @param string $startDate
 	 * @param string $interval
 	 * @param int $period
+	 * @param int $maxPeriods
 	 * @throws Exception
 	 */
-	public function addTemplate($startDate, $interval, $period)
+	public function addTemplate($startDate, $interval, $period, $maxPeriods = null)
 	{
 		if(!in_array($interval, $this->getPeriods())){
 			throw new Exception('Wrong interval type. Use from constants');
@@ -73,6 +76,7 @@ class SetScheduleBuilder extends RequestBuilder
 		$this->pg_start_date = $startDate;
 		$this->pg_interval = $interval;
 		$this->pg_period = $period;
+		$this->pg_max_periods = $maxPeriods;
 	}
 
 	/**
