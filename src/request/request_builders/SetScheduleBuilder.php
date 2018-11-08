@@ -62,7 +62,7 @@ class SetScheduleBuilder extends RequestBuilder
 	 */
 	public function addTemplate($startDate, $interval, $period, $maxPeriods = null)
 	{
-		if(!in_array($interval, $this->getPeriods())){
+		if(!in_array($interval, $this->getPossibleIntervals())){
 			throw new Exception('Wrong interval type. Use from constants');
 		}
 
@@ -75,7 +75,7 @@ class SetScheduleBuilder extends RequestBuilder
 	/**
 	 * @return array
 	 */
-	private function getPeriods()
+	private function getPossibleIntervals()
 	{
 		return array(
 			self::INTERVAL_DAY,
