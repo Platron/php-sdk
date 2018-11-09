@@ -45,28 +45,28 @@ class SetScheduleBuilder extends RequestBuilder
 	}
 
 	/**
-	 * @param string[] $dates
+	 * @param \DateTime $dates
 	 */
-	public function addDates($dates)
+	public function addDate(\DateTime $dates)
 	{
-		$this->pg_dates = $dates;
+		$this->pg_dates[] = $dates->format('Y-m-d H:i:s');
 	}
 
 	/**
 	 * ScheduleTemplate constructor.
-	 * @param string $startDate
+	 * @param \DateTime $startDate
 	 * @param string $interval
 	 * @param int $period
 	 * @param int $maxPeriods
 	 * @throws Exception
 	 */
-	public function addTemplate($startDate, $interval, $period, $maxPeriods = null)
+	public function addTemplate(\DateTime $startDate, $interval, $period, $maxPeriods = null)
 	{
 		if(!in_array($interval, $this->getPossibleIntervals())){
 			throw new Exception('Wrong interval type. Use from constants');
 		}
 
-		$this->pg_template['pg_start_date'] = $startDate;
+		$this->pg_template['pg_start_date'] = $startDate->format('Y-m-d H:i:s');
 		$this->pg_template['pg_interval'] = $interval;
 		$this->pg_template['pg_period'] = $period;
 		$this->pg_template['pg_max_periods'] = $maxPeriods;

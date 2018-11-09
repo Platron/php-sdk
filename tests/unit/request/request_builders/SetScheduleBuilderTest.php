@@ -14,24 +14,24 @@ class SetScheduleBuilderTest extends \PHPUnit_Framework_TestCase
 		$amount = '10.00';
 
 		$templateRequest = new SetScheduleBuilder($merchantId, $recurringProfile, $amount);
-		$dates = array('2020-01-01 00:00:00');
-		$templateRequest->addDates($dates);
+		$date = new \DateTime('2020-01-01 00:00:00');
+		$templateRequest->addDate($date);
 		$parameters = $templateRequest->getParameters();
 		$this->assertEquals($merchantId, $parameters['pg_merchant_id']);
 		$this->assertEquals($recurringProfile, $parameters['pg_recurring_profile']);
 		$this->assertEquals($amount, $parameters['pg_amount']);
-		$this->assertEquals($dates[0], $parameters['pg_dates'][0]);
+		$this->assertEquals($date->format('Y-m-d H:i:s'), $parameters['pg_dates'][0]);
 	}
 
 	public function testGetParametersWithTemplate()
 	{
-		$startDate = '2020-01-01 00:00:00';
+		$startDate = new \DateTime('2020-01-01 00:00:00');
 		$period = 10;
 		$maxPeriods = 10;
 		$templateRequest = new SetScheduleBuilder('82', '231231', '10.00');
 		$templateRequest->addTemplate($startDate, SetScheduleBuilder::INTERVAL_WEEK, $period, $maxPeriods);
 		$parameters = $templateRequest->getParameters();
-		$this->assertEquals($startDate, $parameters['pg_template']['pg_start_date']);
+		$this->assertEquals($startDate->format('Y-m-d H:i:s'), $parameters['pg_template']['pg_start_date']);
 		$this->assertEquals(SetScheduleBuilder::INTERVAL_WEEK, $parameters['pg_template']['pg_interval']);
 		$this->assertEquals($period, $parameters['pg_template']['pg_period']);
 		$this->assertEquals($maxPeriods, $parameters['pg_template']['pg_max_periods']);
