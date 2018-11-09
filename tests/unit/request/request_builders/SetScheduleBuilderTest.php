@@ -14,7 +14,7 @@ class SetScheduleBuilderTest extends \PHPUnit_Framework_TestCase
 		$amount = '10.00';
 
 		$templateRequest = new SetScheduleBuilder($merchantId, $recurringProfile, $amount);
-		$dates = array('2020-01-01');
+		$dates = array('2020-01-01 00:00:00');
 		$templateRequest->addDates($dates);
 		$parameters = $templateRequest->getParameters();
 		$this->assertEquals($merchantId, $parameters['pg_merchant_id']);
@@ -25,7 +25,7 @@ class SetScheduleBuilderTest extends \PHPUnit_Framework_TestCase
 
 	public function testGetParametersWithTemplate()
 	{
-		$startDate = '2020-01-01';
+		$startDate = '2020-01-01 00:00:00';
 		$period = 10;
 		$maxPeriods = 10;
 		$templateRequest = new SetScheduleBuilder('82', '231231', '10.00');
