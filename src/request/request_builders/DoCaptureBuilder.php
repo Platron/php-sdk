@@ -16,6 +16,9 @@ class DoCaptureBuilder extends RequestBuilder
 	/** @var LongRecord Длинная запись */
 	protected $longRecord;
 
+	/** @var double Сумма частичного клиринга */
+	protected $pg_amount;
+
 	/**
 	 * @inheritdoc
 	 */
@@ -40,6 +43,10 @@ class DoCaptureBuilder extends RequestBuilder
 			}
 		}
 
+		if($this->pg_amount){
+			$parameters['pg_amount'] = $this->pg_amount;
+		}
+
 		return $parameters;
 	}
 
@@ -58,6 +65,14 @@ class DoCaptureBuilder extends RequestBuilder
 	public function addLongRecord(LongRecord $longRecord)
 	{
 		$this->longRecord = $longRecord;
+	}
+
+	/**
+	 * @param double $amount
+	 */
+	public function addAmount($amount)
+	{
+		$this->pg_amount = $amount;
 	}
 
 }
