@@ -3,7 +3,7 @@
 namespace Platron\PhpSdk\tests\integration;
 
 use Platron\PhpSdk\request\clients\PostClient;
-use Platron\PhpSdk\request\request_builders\GetReceiptStatus;
+use Platron\PhpSdk\request\request_builders\GetReceiptStatusBuilder;
 use Platron\PhpSdk\request\request_builders\InitPaymentBuilder;
 use Platron\PhpSdk\request\request_builders\ReceiptBuilder;
 use Platron\PhpSdk\request\data_objects\Item;
@@ -38,7 +38,7 @@ class GetReceiptStatusTest extends IntegrationTestBase
 
 	public function testCreateReceipt()
 	{
-		$getReceiptStatusBuilder = new GetReceiptStatus($this->receiptId);
+		$getReceiptStatusBuilder = new GetReceiptStatusBuilder($this->receiptId);
 		$getStatusReceiptResponse = $this->postClient->request($getReceiptStatusBuilder);
 		$this->assertEquals('ok', $getStatusReceiptResponse->pg_status);
 	}

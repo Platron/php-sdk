@@ -5,7 +5,7 @@ namespace Platron\PhpSdk\request\request_builders;
 /**
  * Строитель для получения статуса чека
  */
-class GetReceiptStatus extends RequestBuilder
+class GetReceiptStatusBuilder extends RequestBuilder
 {
 	/** @var int */
 	protected $pg_receipt_id;
