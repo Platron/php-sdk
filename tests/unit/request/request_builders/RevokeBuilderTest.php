@@ -4,7 +4,7 @@ namespace Platron\PhpSdk\tests\unit;
 
 use Platron\PhpSdk\request\request_builders\RevokeBuilder;
 
-class RevokeBuiderTest extends \PHPUnit_Framework_TestCase
+class RevokeBuilderTest extends \PHPUnit_Framework_TestCase
 {
 	public function testExecute()
 	{

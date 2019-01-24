@@ -4,7 +4,7 @@ namespace Platron\PhpSdk\tests\unit;
 
 use Platron\PhpSdk\request\request_builders\DoCaptureBuilder;
 
-class DoCaptureBuiderTest extends \PHPUnit_Framework_TestCase
+class DoCaptureBuilderTest extends \PHPUnit_Framework_TestCase
 {
 	public function testExecute()
 	{

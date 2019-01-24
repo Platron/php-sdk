@@ -5,7 +5,7 @@ namespace Platron\PhpSdk\tests\unit;
 use Platron\PhpSdk\request\request_builders\MakeRecurringBuilder;
 use Platron\PhpSdk\Exception;
 
-class MakeRecurringBuiderTest extends \PHPUnit_Framework_TestCase
+class MakeRecurringBuilderTest extends \PHPUnit_Framework_TestCase
 {
 	public function testExecute()
 	{

@@ -2,7 +2,6 @@
 
 namespace Platron\PhpSdk\tests\integration;
 
-
 use Platron\PhpSdk\request\data_objects\BankCard;
 use Platron\PhpSdk\request\request_builders\InitPaymentBuilder;
 

@@ -32,7 +32,7 @@ abstract class PaidTransactionTestBase extends IntegrationTestBase
 		$this->waitForTransaction();
 	}
 
-	abstract private function getInitPaymentBuilder();
+	abstract public function getInitPaymentBuilder();
 
 	/*
 	 * Ожидание успешного завершения платежа

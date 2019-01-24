@@ -4,7 +4,7 @@ namespace Platron\PhpSdk\tests\unit;
 
 use Platron\PhpSdk\request\request_builders\CreateRefundRequestBuilder;
 
-class CreateRefundRequestBuiderTest extends \PHPUnit_Framework_TestCase
+class CreateRefundRequestBuilderTest extends \PHPUnit_Framework_TestCase
 {
 	public function testExecute()
 	{

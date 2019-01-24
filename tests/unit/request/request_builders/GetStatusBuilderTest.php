@@ -5,7 +5,7 @@ namespace Platron\PhpSdk\tests\unit;
 use Platron\PhpSdk\request\request_builders\GetStatusBuilder;
 use Platron\PhpSdk\Exception;
 
-class GetStatusBuiderTest extends \PHPUnit_Framework_TestCase
+class GetStatusBuilderTest extends \PHPUnit_Framework_TestCase
 {
 	public function testExecute()
 	{

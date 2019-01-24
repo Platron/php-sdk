@@ -4,7 +4,7 @@ namespace Platron\PhpSdk\tests\unit;
 
 use Platron\PhpSdk\request\request_builders\CreateMoneybackBuilder;
 
-class CreateMoneybackBuiderTest extends \PHPUnit_Framework_TestCase
+class CreateMoneybackBuilderTest extends \PHPUnit_Framework_TestCase
 {
 
 	public function testExecute()

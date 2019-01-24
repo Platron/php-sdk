@@ -5,7 +5,7 @@ namespace Platron\PhpSdk\tests\unit;
 use Platron\PhpSdk\request\request_builders\InitPaymentBuilder;
 use Platron\PhpSdk\Exception;
 
-class InitPaymentBuiderTest extends \PHPUnit_Framework_TestCase
+class InitPaymentBuilderTest extends \PHPUnit_Framework_TestCase
 {
 	public function testGetParameters()
 	{
