@@ -65,6 +65,10 @@ class SigHelper
 		array_unshift($params, $scriptName);
 		array_push($params, $this->secretKey);
 
+        if (isset($params['pg_template004pg_max_periods004']) && $params['pg_template004pg_max_periods004'] == '') {
+            unset($params['pg_template004pg_max_periods004']);
+        }
+
 		return join(';', $params);
 	}
 
