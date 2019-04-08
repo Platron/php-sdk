@@ -29,7 +29,7 @@ class Callback
 	}
 
 	/**
-	 * @param string $urlScriptName Название скрипта, из url, на который Platron делает запрос. Например, www.site.ru/request - будет request
+	 * @param string $urlScriptName Название скрипта (часть после последнего /), из url, на который Platron делает запрос. Например, www.site.ru/request/handle - будет handle
 	 * @param string $secretKey
 	 */
 	public function __construct($urlScriptName, $secretKey)
