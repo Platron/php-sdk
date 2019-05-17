@@ -28,6 +28,10 @@ class ReceiptBuilder extends RequestBuilder
 	protected $pg_additional_payment_amount;
 	/** @var string */
 	protected $pg_additional_payment_type;
+	/** @var string */
+	protected $pg_customer_name;
+	/** @var int */
+	protected $pg_customer_inn;
 
 	/**
 	 * @inheritdoc
@@ -83,6 +87,12 @@ class ReceiptBuilder extends RequestBuilder
 		return $this;
 	}
 
+	/**
+	 * Добавить оплату, которая не проходила через platron
+	 * @param string $type
+	 * @param double $amount
+	 * @throws Exception
+	 */
 	public function addAdditionalPayment($type, $amount)
 	{
 		if (!in_array($type, $this->getAdditionalPaymentTypes())) {
@@ -91,6 +101,17 @@ class ReceiptBuilder extends RequestBuilder
 
 		$this->pg_additional_payment_type = $type;
 		$this->pg_additional_payment_amount = $amount;
+	}
+
+	/**
+	 * Добавить данные покупателя
+	 * @param string $name
+	 * @param int $inn
+	 */
+	public function addCustomer($name, $inn)
+	{
+		$this->pg_customer_name = $name;
+		$this->pg_customer_inn = $inn;
 	}
 
 	/**
