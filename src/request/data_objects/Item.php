@@ -24,9 +24,9 @@ class Item extends BaseData
 	const
 		VAT0 = '0', // 0%
 		VAT10 = '10', // 10%
-		VAT18 = '18', // 18%
+		VAT20 = '20', // 20%
 		VAT110 = '110', // формула 10/110
-		VAT118 = '118'; // формула 18/118
+		VAT120 = '120'; // формула 20/120
 
 	const
 		PAYMENT_FULL_PAYMENT = 'full_payment',
@@ -149,8 +149,8 @@ class Item extends BaseData
 			self::VAT0,
 			self::VAT10,
 			self::VAT110,
-			self::VAT118,
-			self::VAT18,
+			self::VAT120,
+			self::VAT20,
 		);
 	}
 
