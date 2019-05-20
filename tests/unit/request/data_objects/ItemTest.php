@@ -35,10 +35,20 @@ class ItemTest extends PHPUnit_Framework_TestCase
 		$this->assertEquals($agentPhone, $parameters['pg_agent_phone']);
 	}
 
-	public function testExceptionSetVat()
+	/**
+	 * @param $productName
+	 * @param $price
+	 * @param $quantity
+	 * @param $vat
+	 * @return bool
+	 *
+	 * @return bool
+	 * @dataProvider wrongVatProvider
+	 */
+	public function testExceptionSetVat($productName, $price, $quantity, $vat)
 	{
 		try {
-			new Item('test product', '10.00', 2, 'wrong value');
+			new Item($productName, $price, $quantity, $vat);
 		} catch (Exception $ex) {
 			return true;
 		}
@@ -46,4 +56,15 @@ class ItemTest extends PHPUnit_Framework_TestCase
 		return false;
 	}
 
+	/**
+	 * @return array
+	 */
+	public function wrongVatProvider()
+	{
+		return array(
+			array('test product', '10.00', 2, 'wrong value'),
+			array('test product', '10.00', 2, '18'),
+			array('test product', '10.00', 2, '18/118'),
+		);
+	}
 }
