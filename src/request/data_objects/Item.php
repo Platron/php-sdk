@@ -38,7 +38,13 @@ class Item extends BaseData
 		PAYMENT_CREDIT = 'credit';
 
 	const
-		AGENT_TYPE_COMMISSIONAIRE = 'commissionaire';
+		AGENT_TYPE_COMMISSIONAIRE = 'commissionaire',
+		AGENT_TYPE_BANK_PAYMENT_AGENT = 'bank_payment_agent',
+		AGENT_TYPE_BANK_PAYMENT_SUBAGENT = 'bank_payment_subagent',
+		AGENT_TYPE_PAYMENT_AGENT = 'payment_agent',
+		AGENT_TYPE_PAYMENT_SUBAGENT = 'payment_subagent',
+		AGENT_TYPE_AGENT = 'agent',
+		AGENT_TYPE_SOLICITOR = 'solicitor';
 
 	/** @var string */
 	protected $pg_label;
@@ -198,6 +204,12 @@ class Item extends BaseData
 	{
 		return array(
 			self::AGENT_TYPE_COMMISSIONAIRE,
+			self::AGENT_TYPE_BANK_PAYMENT_AGENT,
+			self::AGENT_TYPE_BANK_PAYMENT_SUBAGENT,
+			self::AGENT_TYPE_PAYMENT_AGENT,
+			self::AGENT_TYPE_PAYMENT_SUBAGENT,
+			self::AGENT_TYPE_AGENT,
+			self::AGENT_TYPE_SOLICITOR,
 		);
 	}
 }
