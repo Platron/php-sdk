@@ -31,6 +31,7 @@ class CreateReceiptTest extends IntegrationTestBase
 	{
 		$item = new Item('Test product', 10.00, 1);
 		$item->addAmount(10.00);
+		$item->addAgent(Item::AGENT_TYPE_AGENT, 'agent name', 111222333, 79999999999);
 
 		$createReceiptBuilder = new ReceiptBuilder(ReceiptBuilder::TRANSACTION_TYPE, $this->paymentId);
 		$createReceiptBuilder->addItem($item);
