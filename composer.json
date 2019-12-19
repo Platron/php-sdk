@@ -4,7 +4,9 @@
     "license": "MIT",
     "require": {
         "php": ">=5.3",
-        "psr/log": "^1.0"
+        "psr/log": "^1.0",
+        "ext-curl": "*",
+        "ext-simplexml": "*"
     },
     "require-dev": {
         "php": ">=5.6",
