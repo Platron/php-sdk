@@ -59,6 +59,8 @@ class Item extends BaseData
 	/** @var string */
 	protected $pg_type = 'product';
 	/** @var string */
+	protected $pg_nomenclature_code;
+	/** @var string */
 	protected $pg_payment_type;
 
 	/** @var string */
@@ -110,6 +112,15 @@ class Item extends BaseData
 		}
 
 		$this->pg_type = $type;
+	}
+
+	/**
+	 * Добавить маркировку товара
+	 * @param string $nomenclatureCode
+	 */
+	public function addNomenclatureCode($nomenclatureCode)
+	{
+		$this->pg_nomenclature_code = $nomenclatureCode;
 	}
 
 	/**

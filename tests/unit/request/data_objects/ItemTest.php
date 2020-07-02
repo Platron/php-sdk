@@ -14,6 +14,8 @@ class ItemTest extends PHPUnit_Framework_TestCase
 		$item = new Item('test product', '10.00', 2, Item::VAT0);
 		$item->addAmount('20.00');
 		$item->addType(Item::TYPE_WORK);
+		$nomenclatureCode = '44h4Dh04h2Fh1Fh96h81h78h4Ah67h58h4Ah35h2Eh54h31h31h32h30h30h30h';
+		$item->addNomenclatureCode($nomenclatureCode);
 		$item->addPaymentType(Item::PAYMENT_FULL_PAYMENT);
 
 		$agentName = 'TestAgent';
@@ -33,6 +35,7 @@ class ItemTest extends PHPUnit_Framework_TestCase
 		$this->assertEquals($agentName, $parameters['pg_agent_name']);
 		$this->assertEquals($agentInn, $parameters['pg_agent_inn']);
 		$this->assertEquals($agentPhone, $parameters['pg_agent_phone']);
+		$this->assertEquals($nomenclatureCode, $parameters['pg_nomenclature_code']);
 	}
 
 	/**
