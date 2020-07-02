@@ -31,7 +31,11 @@ class CreateReceiptTest extends IntegrationTestBase
 	{
 		$item = new Item('Test product', 10.00, 1);
 		$item->addAmount(10.00);
-		$item->addAgent(Item::AGENT_TYPE_AGENT, 'agent name', 111222333, 79999999999);
+		$item->addType(Item::TYPE_WORK);
+		$item->addAgent(Item::AGENT_TYPE_AGENT, 'agent name', 7707357618, 79999999999);
+		$nomenclatureCode = '44h4Dh04h2Fh1Fh96h81h78h4Ah67h58h4Ah35h2Eh54h31h31h32h30h30h30h';
+		$item->addNomenclatureCode($nomenclatureCode);
+		$item->addPaymentType(Item::PAYMENT_FULL_PAYMENT);
 
 		$createReceiptBuilder = new ReceiptBuilder(ReceiptBuilder::TRANSACTION_TYPE, $this->paymentId);
 		$createReceiptBuilder->addItem($item);
